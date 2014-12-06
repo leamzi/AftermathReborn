@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:13c4aba3b70522f7d6c5757412a06768$ -->
+<TextureAtlas imagePath="Buildings.png">
+    <SubTexture name="AutoCinema" x="242" y="428" width="140" height="170" frameX="-104" frameY="-21" frameWidth="256" frameHeight="192"/>
+    <SubTexture name="B_Music_RadioTower" x="296" y="600" width="134" height="206" frameX="-29" frameY="-35" frameWidth="192" frameHeight="248"/>
+    <SubTexture name="B_Music_Theater" x="2" y="618" width="292" height="286" frameX="-12" frameY="-13" frameWidth="320" frameHeight="310"/>
+    <SubTexture name="Blue_Car_01_a" x="306" y="942" width="48" height="36" frameX="-7" frameY="-26" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Blue_Car_01_b" x="306" y="904" width="48" height="36" frameX="-8" frameY="-26" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Burnt_Car_01_a" x="542" y="976" width="50" height="36" frameX="-7" frameY="-26" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Burnt_Car_01_b" x="490" y="976" width="50" height="36" frameX="-6" frameY="-26" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Burnt_Cars_01" x="542" y="976" width="50" height="36" frameX="-7" frameY="-26" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Classic_Car_01_a" x="594" y="976" width="46" height="36" frameX="-9" frameY="-26" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Classic_Car_01_b" x="306" y="980" width="46" height="36" frameX="-9" frameY="-26" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Classic_Cars_01" x="594" y="976" width="46" height="36" frameX="-9" frameY="-26" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="GasStation_01_a" x="614" y="883" width="108" height="71" frameX="-11" frameY="-22" frameWidth="192" frameHeight="93"/>
+    <SubTexture name="GasStation_01_b" x="444" y="523" width="108" height="71" frameX="-73" frameY="-22" frameWidth="192" frameHeight="93"/>
+    <SubTexture name="IndutrialBuilding_01_a" x="2" y="310" width="238" height="306" frameX="-82" frameY="-4" frameWidth="320" frameHeight="310"/>
+    <SubTexture name="IndutrialBuilding_01_b" x="2" y="2" width="238" height="306" frameX="0" frameY="-4" frameWidth="320" frameHeight="310"/>
+    <SubTexture name="ModularBuilding_01_a" x="490" y="883" width="122" height="91" frameX="-2" frameY="-2" frameWidth="128" frameHeight="93"/>
+    <SubTexture name="Rusty_Car_01_a" x="742" y="2" width="50" height="34" frameX="-7" frameY="-28" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Rusty_Car_01_b" x="690" y="956" width="50" height="34" frameX="-6" frameY="-28" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="Rusty_Cars_01" x="742" y="2" width="50" height="34" frameX="-7" frameY="-28" frameWidth="64" frameHeight="62"/>
+    <SubTexture name="ShopBuilding_01_a" x="242" y="215" width="192" height="211" frameX="0" frameY="-5" frameWidth="256" frameHeight="217"/>
+    <SubTexture name="ShopBuilding_01_b" x="242" y="2" width="192" height="211" frameX="-64" frameY="-6" frameWidth="256" frameHeight="217"/>
+    <SubTexture name="ShopBuilding_02_a" x="432" y="597" width="132" height="189" frameX="-10" frameY="-28" frameWidth="192" frameHeight="217"/>
+    <SubTexture name="ShopBuilding_02_b" x="356" y="808" width="132" height="189" frameX="-49" frameY="-28" frameWidth="192" frameHeight="217"/>
+    <SubTexture name="SmallShopBuilding_01_a" x="154" y="906" width="150" height="110" frameX="-12" frameY="-14" frameWidth="192" frameHeight="124"/>
+    <SubTexture name="SmallShopBuilding_01_b" x="2" y="906" width="150" height="110" frameX="-21" frameY="-14" frameWidth="192" frameHeight="124"/>
+    <SubTexture name="SmallShopBuilding_02_a" x="490" y="788" width="128" height="93"/>
+    <SubTexture name="SmallShopBuilding_02_b" x="384" y="428" width="128" height="93"/>
+    <SubTexture name="TREE_BUSH" x="642" y="956" width="46" height="50" frameX="-7" frameY="-46" frameWidth="64" frameHeight="96"/>
+    <SubTexture name="TREE_NOR" x="384" y="523" width="58" height="72" frameX="-1" frameY="-24" frameWidth="64" frameHeight="96"/>
+    <SubTexture name="TREE_PINE" x="296" y="808" width="58" height="94" frameX="-3" frameY="0" frameWidth="64" frameHeight="96"/>
+</TextureAtlas>

@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<link rel="stylesheet" href="../../../../prettify.css" type="text/css">
+<meta content="UserAgent,com.google.analytics.utils.UserAgent,minimal,applicationComment,applicationProduct,applicationProductToken,applicationVersion,tamarinProductToken,vendorProductToken,toString" name="keywords">
+<title>com.google.analytics.utils.UserAgent</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../prettify.js"></script><script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'UserAgent - Google Analytics Tracking For Adobe Flash v1.0.1.319';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Google Analytics Tracking For Adobe Flash</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?com/google/analytics/utils/UserAgent.html&amp;com/google/analytics/utils/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;UserAgent</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class UserAgent"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">com.google.analytics.utils</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class UserAgent</td>
+</tr>
+</table>
+<p></p>
+     This class constructs an user agent string for Flash.
+     <p><b>Information :</b></p>
+     <p>Here we mimic a user-agent string for Flash based on :</p>
+     <li>http://www.mozilla.org/build/user-agent-strings.html</li>
+     <li>http://www.mozilla.org/build/revised-user-agent-strings.html</li>
+     <li>RFC 1945 - http://www.ietf.org/rfc/rfc1945.txt</li>
+     <li>RFC 2068 - http://www.ietf.org/rfc/rfc2068.txt</li>
+     <pre class="prettyprint">
+     User-Agent        = "User-Agent" ":" 1 product | comment )
+     product           = token ["/" product-version ]
+     product-version   = token
+     comment           = "("  ctext | comment ) ")"
+     ctext             = <any TEXT excluding "(" and ")">
+     token             = 1any CHAR except CTLs or tspecials>
+     tspecials         = "(" | ")" | "<" | ">" | "<p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#applicationComment">applicationComment</a> : String<div class="summaryTableDescription">[read-only]
+         Indicates the application comment String value.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#applicationProduct">applicationProduct</a> : String<div class="summaryTableDescription">
+         Indicates the application product String representation.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#applicationProductToken">applicationProductToken</a> : String<div class="summaryTableDescription">[read-only]
+         Indicates the application product token String representation.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#applicationVersion">applicationVersion</a> : String<div class="summaryTableDescription">
+         Indicates the application version String representation.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#minimal">minimal</a> : Boolean = false<div class="summaryTableDescription">[static]
+         For privacy concern.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#tamarinProductToken">tamarinProductToken</a> : String<div class="summaryTableDescription">[read-only]
+         Indicates the Tamarin engine token or an empty string if vmVersion can not be found.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#vendorProductToken">vendorProductToken</a> : String<div class="summaryTableDescription">[read-only]
+         Indicates the vendor production token String representation.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#UserAgent()">UserAgent</a>(localInfo:<a href="Environment.html">Environment</a>, product:String = "", version:String = "")</div>
+<div class="summaryTableDescription">
+         Creates a new UserAgent instance.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>():String</div>
+<div class="summaryTableDescription">
+         Returns the String representation of the object.</div>
+</td><td class="summaryTableOwnerCol">UserAgent</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="applicationComment"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">applicationComment</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>applicationComment:String</code>&nbsp;&nbsp;[read-only]<p>
+         Indicates the application comment String value. ( Platform ;  PlayerType ;  OS ;  Localization information  ?[; DebugVersion ; PrereleaseVersion] )
+         </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get applicationComment():String</code>
+<br>
+</div>
+<a name="applicationProduct"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">applicationProduct</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>applicationProduct:String</code>&nbsp;&nbsp;[read-write]<p>
+         Indicates the application product String representation.
+         </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get applicationProduct():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set applicationProduct(value:String):void</code>
+<br>
+</div>
+<a name="applicationProductToken"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">applicationProductToken</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>applicationProductToken:String</code>&nbsp;&nbsp;[read-only]<p>
+         Indicates the application product token String representation.
+         </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get applicationProductToken():String</code>
+<br>
+</div>
+<a name="applicationVersion"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">applicationVersion</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>applicationVersion:String</code>&nbsp;&nbsp;[read-write]<p>
+         Indicates the application version String representation.
+         </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get applicationVersion():String</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set applicationVersion(value:String):void</code>
+<br>
+</div>
+<a name="minimal"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">minimal</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var minimal:Boolean = false</code><p>
+         For privacy concern.
+         </p></div>
+<a name="tamarinProductToken"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">tamarinProductToken</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>tamarinProductToken:String</code>&nbsp;&nbsp;[read-only]<p>
+         Indicates the Tamarin engine token or an empty string if vmVersion can not be found.
+         </p><p><b>Example :</b> <code>Tamarin/1.0d684</code></p>
+         <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get tamarinProductToken():String</code>
+<br>
+</div>
+<a name="vendorProductToken"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">vendorProductToken</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>vendorProductToken:String</code>&nbsp;&nbsp;[read-only]<p>
+         Indicates the vendor production token String representation.
+         </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get vendorProductToken():String</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="UserAgent()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">UserAgent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function UserAgent(localInfo:<a href="Environment.html">Environment</a>, product:String = "", version:String = "")</code><p>
+         Creates a new UserAgent instance.
+         </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">localInfo</span>:<a href="Environment.html">Environment</a></code> &mdash; The product String representation.
+         </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">product</span>:String</code> (default = "<code></code>")<code></code> &mdash; The version String representation.
+         </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">version</span>:String</code> (default = "<code></code>")<code></code></td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toString():String</code><p>
+         Returns the String representation of the object.
+         </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; the String representation of the object.
+         </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">gaforflash v1.0.1.319 - generated the 04 December 2008</center>
+</div>
+</body>
+</html>
+<!--gaforflash v1.0.1.319 - generated the 04 December 2008-->

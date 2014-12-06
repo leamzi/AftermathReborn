@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:a9d3ab3a24c616ad4717f965556df9dc$ -->
+<TextureAtlas imagePath="Botones.png">
+    <SubTexture name="Actors" x="194" y="370" width="43" height="30" frameX="-9" frameY="-18" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="Movies" x="102" y="528" width="37" height="38" frameX="-12" frameY="-11" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="btnAccept" x="98" y="427" width="94" height="55"/>
+    <SubTexture name="btnBack" x="2" y="427" width="94" height="55"/>
+    <SubTexture name="btnBack2" x="2" y="370" width="94" height="55"/>
+    <SubTexture name="btnDecline" x="98" y="370" width="94" height="55"/>
+    <SubTexture name="btnRight" x="300" y="430" width="94" height="55"/>
+    <SubTexture name="btn_dontcare_00" x="388" y="661" width="26" height="26" frameX="-12" frameY="-12" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_dontcare_01" x="396" y="430" width="34" height="34" frameX="-8" frameY="-8" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_hate1_00" x="2" y="684" width="22" height="22" frameX="-14" frameY="-14" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_hate1_01" x="464" y="828" width="40" height="40" frameX="-5" frameY="-5" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_hate2_00" x="387" y="739" width="24" height="24" frameX="-14" frameY="-13" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_hate2_01" x="464" y="786" width="40" height="40" frameX="-5" frameY="-5" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_hate3_00" x="389" y="599" width="28" height="28" frameX="-12" frameY="-11" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_hate3_01" x="466" y="744" width="40" height="40" frameX="-5" frameY="-5" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_love1_00" x="387" y="713" width="24" height="24" frameX="-14" frameY="-13" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_love1_01" x="345" y="733" width="40" height="40" frameX="-5" frameY="-5" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_love2_00" x="393" y="569" width="28" height="28" frameX="-11" frameY="-11" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_love2_01" x="345" y="691" width="40" height="40" frameX="-4" frameY="-5" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_love3_00" x="388" y="689" width="26" height="22" frameX="-12" frameY="-14" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="btn_love3_01" x="470" y="702" width="40" height="40" frameX="-5" frameY="-5" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="click_001" x="393" y="504" width="32" height="31" frameX="-46" frameY="-2" frameWidth="94" frameHeight="49"/>
+    <SubTexture name="click_002" x="292" y="640" width="94" height="49"/>
+    <SubTexture name="click_003" x="293" y="589" width="94" height="49"/>
+    <SubTexture name="click_004" x="416" y="702" width="52" height="29" frameX="-23" frameY="-13" frameWidth="94" frameHeight="49"/>
+    <SubTexture name="click_005" x="237" y="545" width="58" height="35" frameX="-18" frameY="-9" frameWidth="94" frameHeight="49"/>
+    <SubTexture name="click_006" x="417" y="653" width="88" height="47" frameX="-3" frameY="-1" frameWidth="94" frameHeight="49"/>
+    <SubTexture name="click_007" x="297" y="538" width="94" height="49"/>
+    <SubTexture name="click_008" x="297" y="487" width="94" height="49"/>
+    <SubTexture name="click_009" x="293" y="589" width="94" height="49"/>
+    <SubTexture name="click_010" x="416" y="702" width="52" height="29" frameX="-23" frameY="-13" frameWidth="94" frameHeight="49"/>
+    <SubTexture name="click_011" x="237" y="545" width="58" height="35" frameX="-18" frameY="-9" frameWidth="94" frameHeight="49"/>
+    <SubTexture name="click_012" x="417" y="653" width="88" height="47" frameX="-3" frameY="-1" frameWidth="94" frameHeight="49"/>
+    <SubTexture name="click_013" x="297" y="538" width="94" height="49"/>
+    <SubTexture name="click_014" x="297" y="487" width="94" height="49"/>
+    <SubTexture name="comicButton" x="239" y="274" width="64" height="58"/>
+    <SubTexture name="comic_loader_00" x="305" y="322" width="128" height="33" frameX="0" frameY="-49" frameWidth="128" frameHeight="85"/>
+    <SubTexture name="comic_loader_01" x="311" y="210" width="128" height="63" frameX="0" frameY="-19" frameWidth="128" frameHeight="85"/>
+    <SubTexture name="comic_loader_02" x="311" y="62" width="128" height="77" frameX="0" frameY="-5" frameWidth="128" frameHeight="85"/>
+    <SubTexture name="comic_loader_03" x="311" y="141" width="128" height="67" frameX="0" frameY="-15" frameWidth="128" frameHeight="85"/>
+    <SubTexture name="comic_loader_04" x="305" y="275" width="128" height="45" frameX="0" frameY="-37" frameWidth="128" frameHeight="85"/>
+    <SubTexture name="comic_loader_05" x="304" y="405" width="128" height="23" frameX="0" frameY="-59" frameWidth="128" frameHeight="85"/>
+    <SubTexture name="comlink" x="239" y="188" width="70" height="84" frameX="-7" frameY="0" frameWidth="84" frameHeight="84"/>
+    <SubTexture name="comlinkHumana" x="441" y="62" width="68" height="84" frameX="-8" frameY="0" frameWidth="84" frameHeight="84"/>
+    <SubTexture name="comlinkMolesta" x="441" y="148" width="66" height="84" frameX="-9" frameY="0" frameWidth="84" frameHeight="84"/>
+    <SubTexture name="completed" x="292" y="691" width="51" height="62" frameX="-6" frameY="-7" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="configBtn" x="435" y="300" width="64" height="50"/>
+    <SubTexture name="directors" x="396" y="466" width="33" height="36" frameX="-15" frameY="-12" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="guiArrow" x="164" y="564" width="20" height="41"/>
+    <SubTexture name="guiClose" x="393" y="537" width="30" height="30"/>
+    <SubTexture name="guiPlayBtn" x="2" y="188" width="235" height="180"/>
+    <SubTexture name="guiProgressBar" x="304" y="357" width="206" height="46"/>
+    <SubTexture name="hate_overlay" x="2" y="775" width="48" height="48" frameX="-4" frameY="-5" frameWidth="56" frameHeight="56"/>
+    <SubTexture name="hub-new" x="237" y="582" width="54" height="52"/>
+    <SubTexture name="junkButton" x="237" y="481" width="58" height="62"/>
+    <SubTexture name="labButton" x="441" y="234" width="64" height="64"/>
+    <SubTexture name="love_overlay" x="2" y="870" width="50" height="50" frameX="-2" frameY="-4" frameWidth="56" frameHeight="56"/>
+    <SubTexture name="meterCount" x="194" y="438" width="41" height="244"/>
+    <SubTexture name="mission_image" x="425" y="567" width="84" height="84"/>
+    <SubTexture name="music_note" x="387" y="765" width="23" height="26"/>
+    <SubTexture name="objectBox" x="412" y="777" width="50" height="50"/>
+    <SubTexture name="question_icon" x="389" y="629" width="26" height="30" frameX="-14" frameY="-13" frameWidth="56" frameHeight="56"/>
+    <SubTexture name="radial_menu_btn_info_00" x="102" y="484" width="48" height="42" frameX="-54" frameY="-133" frameWidth="156" frameHeight="176"/>
+    <SubTexture name="radial_menu_btn_info_01" x="52" y="714" width="48" height="42" frameX="-54" frameY="-133" frameWidth="156" frameHeight="176"/>
+    <SubTexture name="radial_menu_btn_pickup_00" x="2" y="714" width="48" height="42" frameX="-54" frameY="0" frameWidth="156" frameHeight="156"/>
+    <SubTexture name="radial_menu_btn_pickup_01" x="52" y="775" width="48" height="42" frameX="-54" frameY="0" frameWidth="156" frameHeight="156"/>
+    <SubTexture name="radial_menu_btn_shoot_00" x="152" y="524" width="38" height="38" frameX="-117" frameY="-57" frameWidth="156" frameHeight="156"/>
+    <SubTexture name="radial_menu_btn_shoot_01" x="152" y="484" width="38" height="38" frameX="-118" frameY="-57" frameWidth="156" frameHeight="156"/>
+    <SubTexture name="radial_menu_btn_use_00" x="42" y="829" width="38" height="38" frameX="0" frameY="-57" frameWidth="156" frameHeight="156"/>
+    <SubTexture name="radial_menu_btn_use_01" x="2" y="829" width="38" height="38" frameX="0" frameY="-57" frameWidth="156" frameHeight="156"/>
+    <SubTexture name="success" x="2" y="2" width="307" height="184"/>
+    <SubTexture name="target_01" x="237" y="636" width="53" height="76" frameX="-5" frameY="-4" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="target_02" x="434" y="405" width="61" height="80" frameX="-1" frameY="0" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="target_03" x="431" y="487" width="59" height="78" frameX="-2" frameY="-2" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="target_04" x="239" y="334" width="63" height="80"/>
+    <SubTexture name="target_05" x="431" y="487" width="59" height="78" frameX="-2" frameY="-2" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="target_06" x="434" y="405" width="61" height="80" frameX="-1" frameY="0" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="trophyButton" x="238" y="416" width="60" height="63"/>
+    <SubTexture name="tutorialBtn" x="311" y="2" width="198" height="58"/>
+    <SubTexture name="unknow" x="141" y="564" width="21" height="36" frameX="-22" frameY="-13" frameWidth="63" frameHeight="80"/>
+    <SubTexture name="volMute" x="194" y="402" width="42" height="34"/>
+    <SubTexture name="volOn" x="413" y="733" width="51" height="42"/>
+</TextureAtlas>

@@ -1,0 +1,49 @@
+{
+  "taskList": [
+    {
+	  "id": 01,
+      "finished": 0,
+      "available": 0,
+      "Ingles": {
+        "name": "",
+        "text1": "",
+        "text2": ""
+      },
+      "Español": {
+        "name": "",
+        "text1": "",
+        "text2": ""
+      }
+    },
+	{
+	  "id": 02,
+      "finished": 0,
+      "available": 0,
+      "Ingles": {
+        "name": "",
+        "text1": "",
+        "text2": ""
+      },
+      "Español": {
+        "name": "",
+        "text1": "",
+        "text2": ""
+      }
+    },
+	{
+	  "id": 03,
+      "finished": 0,
+      "available": 0,
+      "Ingles": {
+        "name": "",
+        "text1": "",
+        "text2": ""
+      },
+      "Español": {
+        "name": "",
+        "text1": "",
+        "text2": ""
+      }
+    }
+  ]
+}

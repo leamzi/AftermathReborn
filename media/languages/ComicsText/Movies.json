@@ -1,0 +1,26 @@
+{
+  "Español": {
+    "Movies": {
+	  "title": "CAPITULO 02 \n Películas para la Colonia",
+      "text1": "Descubrí investigando en la colonia, que la gente quiere ser capaz de entretenerse.",
+      "text2": "Reuní información acerca de diferentes cosas y se me ocurrió una cosa que debemos buscar.",
+      "text3": "Necesitamos un proyector de cine. He configurar los datos para ayudar a Predictvia localizar películas. Ella puede utilizar los datos para encontrar más películas para nosotros.",
+      "text4": "Dependiendo si a la Colonia le gustan o no las películas! Esto es impresionante! Me aseguraré de decirle a Predictvia cómo la gente reaccionaba a cada película.",
+      "text5": "Me acuerdo de los premios … había muchas películas que me gustaban, pero había otros que no... No estoy segura de si deberíamos traer todas las películas de nuevo a la colonia.",
+      "text6": "Sí, Películas traerá esperanza y tranquilidad a la gente. Recuerdo un montón de cosas acerca de ellas, sobretodo para disfrutar viendolas juntos."
+    }
+  },
+  "Ingles": {
+    "Movies": {
+	  "title": "CHAPTER 02 \n Movies for the Colony",
+      "text1": "We have discovered by doing research in the colony, that people want to be able to entertain themselves.",
+      "text2": "I gathered information about different things and came up with one thing to look for.",
+      "text3": "We need a Movie Projector. I’ve setup the data to help Predictvia locate movies, Predcitvia can then use the data to find more movies for us if the Colony likes or hates a Movie!! ",
+      "text4": "This is Awesome!! I’ll make sure to tell Predictvia how people reacted to each movie.",
+      "text5": "I remember the awards… there were many movies that I liked but there were others that I didn’t like… I’m not sure if we should bring all movies back to the colony.",
+      "text6": "Yes, Movies will bring hope and tranquility to the people. I remember lots of things about them. We used to enjoy watching them together.",
+      "text7": "",
+      "text8": ""
+    }
+  }
+}

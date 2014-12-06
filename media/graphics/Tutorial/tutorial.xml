@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:244a3112ddcfece2b44dc8837db1aed2$ -->
+<TextureAtlas imagePath="tutorial.png">
+    <SubTexture name="Cristales_01" x="294" y="912" width="290" height="180"/>
+    <SubTexture name="Cristales_02" x="2" y="912" width="290" height="180"/>
+    <SubTexture name="Cryogel_01" x="586" y="730" width="290" height="180"/>
+    <SubTexture name="Cryogel_02" x="294" y="730" width="290" height="180"/>
+    <SubTexture name="Explosives_01" x="2" y="730" width="290" height="180"/>
+    <SubTexture name="Explosives_02" x="586" y="548" width="290" height="180"/>
+    <SubTexture name="Finish_01" x="2" y="2" width="290" height="180"/>
+    <SubTexture name="FuelEmpty_01" x="294" y="548" width="290" height="180"/>
+    <SubTexture name="FuelEmpty_02" x="2" y="548" width="290" height="180"/>
+    <SubTexture name="Fuel_01" x="586" y="2" width="290" height="180"/>
+    <SubTexture name="Fuel_02" x="2" y="548" width="290" height="180"/>
+    <SubTexture name="Full_01" x="586" y="366" width="290" height="180"/>
+    <SubTexture name="Full_02" x="294" y="366" width="290" height="180"/>
+    <SubTexture name="PickupsDestroy_01" x="294" y="184" width="290" height="180"/>
+    <SubTexture name="Pickups_01" x="2" y="366" width="290" height="180"/>
+    <SubTexture name="Pickups_02" x="586" y="184" width="290" height="180"/>
+    <SubTexture name="Pickups_03" x="294" y="2" width="290" height="180"/>
+    <SubTexture name="Principal_01" x="2" y="184" width="290" height="180"/>
+</TextureAtlas>

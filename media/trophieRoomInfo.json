@@ -1,0 +1,42 @@
+[
+    {
+      "object_id": 1,
+      "type": "Junk",
+      "vote": "UNKNOWN"
+    },
+	{
+      "object_id": 2,
+      "type": "Junk",
+      "vote": "UNKNOWN"
+    },
+	{
+      "object_id": 3,
+      "type": "Junk",
+      "vote": "UNKNOWN"
+    },
+	{
+      "object_id": 4,
+      "type": "Junk",
+      "vote": "UNKNOWN"
+    },
+	{
+      "object_id": 5,
+      "type": "trophy",
+      "vote": "UNKNOWN"
+    },
+	{
+      "object_id": 6,
+      "type": "trophy",
+      "vote": "UNKNOWN"
+    },
+	{
+      "object_id": 7,
+      "type": "trophy",
+      "vote": "UNKNOWN"
+    },
+	{
+      "object_id": 8,
+      "type": "trophy",
+      "vote": "UNKNOWN"
+    }
+]

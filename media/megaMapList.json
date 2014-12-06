@@ -1,0 +1,123 @@
+[
+    {
+      "id": 0,
+      "name": "MusicWorld",
+      "width": 2,
+      "height": 2,
+      "megaTiles": [
+        {
+          "id": 0,
+          "name": "Rock",
+          "unlocked": 1,
+          "targetList": [
+            {
+              "picture": "https://s3.amazonaws.com/tucomoyo-games/aftermath/game_meta/missions/2/picture_desc_002.jpg",
+              "description": "En esta misi\\u00f3n debes encontrar objetos en este desierto.",
+              "mission_id": 2,
+              "source": "https://s3.amazonaws.com/tucomoyo-games/aftermath/users/3624/missions/mission_3624_2_886310ad259fce95c6ebb78f9ceda504.json",
+              "finished": 0,
+              "targetPositionY": 240,
+              "targetPositionX": 85,
+              "id": 2711,
+              "name": "Mini Desierto 1",
+			  "category": "Movies"
+            },
+			{
+              "picture": "https://scontent-a-lga.xx.fbcdn.net/hphotos-ash2/t1.0-9/198724_10151440737434852_1622581885_n.jpg",
+              "description": "Prueba tus mapas locos troll. Si no te corre el mapa, te culpo a ti",
+              "mission_id": 1000,
+              "source": "https://s3.amazonaws.com/tucomoyo-games/aftermath/9j2003/media/maps/dummy.json",
+              "finished": 0,
+              "targetPositionY": 200,
+              "targetPositionX": 380,
+              "id": 2587,
+              "name": "Dummy Map Yorch",
+			  "category": ""
+            },
+			{
+              "picture": "https://nobodyputsbabyinahorner.files.wordpress.com/2010/06/olsen-twin-pizza-face.jpg",
+              "description": "Prueba de mapas con animaciones en el mundo",
+              "mission_id": 1001,
+              "source": "https://s3.amazonaws.com/tucomoyo-games/aftermath/9j2003/media/maps/Animations.json",
+              "finished": 0,
+              "targetPositionY": 300,
+              "targetPositionX": 500,
+              "id": 2587,
+              "name": "Animations map",
+			  "category": "Actors"
+            }
+          ]
+        },
+    	{
+          "id": 1,
+          "name": "Reggae",
+          "unlocked": 1,
+          "targetList": [
+            {
+              "picture": "https://s3.amazonaws.com/tucomoyo-games/aftermath/game_meta/missions/3/picture_desc_003.jpg",
+			  "description": "En esta misi\u00f3n debes rescatar objetos que encontrar\u00e1s en este sitio nevado.",
+			  "mission_id": 3,
+			  "source": "https://s3.amazonaws.com/tucomoyo-games/aftermath/users/3624/missions/mission_3624_3_886310ad259fce95c6ebb78f9ceda504.json",
+			  "finished": 0,
+			  "targetPositionY": 100,
+			  "targetPositionX": 340,
+			  "id": 2588,
+			  "name": "Mini Nevada 1",
+			  "category": "Movies"
+            }
+          ]
+        },
+		{
+          "id": 2,
+          "name": "Techno",
+          "unlocked": 1,
+          "targetList": [
+            {
+              "picture": "https://s3.amazonaws.com/tucomoyo-games/aftermath/game_meta/missions/4/picture_desc_004.jpg",
+			  "description": "Esta ciudad fue devastada, pero al parecer hay otros objetos que encontrar\u00e1s en este sitio.",
+			  "mission_id": 4,
+			  "source": "https://s3.amazonaws.com/tucomoyo-games/aftermath/users/3624/missions/mission_3624_4_7afc67c9ae913ee5987ec24aa5b24376.json",
+			  "finished": 0,
+			  "targetPositionY": 275,
+			  "targetPositionX": 480,
+			  "id": 2589,
+			  "name": "Ciudad Devastada 1",
+			  "category": "Movies"
+            }
+          ]
+        },
+		{
+          "id": 3,
+          "name": "Reggaeton",
+          "unlocked": 1,
+          "targetList": [
+            {
+              "picture": "https://s3.amazonaws.com/tucomoyo-games/aftermath/game_meta/missions/5/picture_desc_005.jpg",
+			  "description": "Esto es un n\u00facleo de CRISTALES un desierto muy peligroso pero al parecer hay m\u00e1s objetos que rescatar en este sitio.",
+			  "mission_id": 5,
+			  "source": "https://s3.amazonaws.com/tucomoyo-games/aftermath/users/3624/missions/mission_3624_5_7afc67c9ae913ee5987ec24aa5b24376.json",
+			  "finished": 0,
+			  "targetPositionY": 200,
+			  "targetPositionX": 400,
+			  "id": 2590,
+			  "name": "N\u00facleo de Cristales 1",
+			  "category": "Movies"
+            }
+          ]
+        }
+      ],
+      "comLink": {
+		"View": false,
+        "Español": {
+          "text1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget eleifend justo. Duis gravida dui nisl, sit amet iaculis magna rhoncus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "text2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget eleifend justo. Duis gravida dui nisl, sit amet iaculis magna rhoncus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "text3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget eleifend justo. Duis gravida dui nisl, sit amet iaculis magna rhoncus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        "Ingles": {
+          "text1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget eleifend justo. Duis gravida dui nisl, sit amet iaculis magna rhoncus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "text2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget eleifend justo. Duis gravida dui nisl, sit amet iaculis magna rhoncus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "text3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget eleifend justo. Duis gravida dui nisl, sit amet iaculis magna rhoncus vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        }
+      }
+    }
+]

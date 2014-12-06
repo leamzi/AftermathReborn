@@ -1,0 +1,384 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<link rel="stylesheet" href="../../../../prettify.css" type="text/css">
+<meta content="CampaignTracker,com.google.analytics.campaign.CampaignTracker,clickId,content,id,medium,name,source,term,isValid,toTrackerString" name="keywords">
+<title>com.google.analytics.campaign.CampaignTracker</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../prettify.js"></script><script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'CampaignTracker - Google Analytics Tracking For Adobe Flash v1.0.1.319';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Google Analytics Tracking For Adobe Flash</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?com/google/analytics/campaign/CampaignTracker.html&amp;com/google/analytics/campaign/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;CampaignTracker</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class CampaignTracker"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">com.google.analytics.campaign</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class CampaignTracker</td>
+</tr>
+</table>
+<p></p>
+     Campaign tracker object.
+     Contains all the data associated with a campaign.
+     
+     AdWords:
+     The following variables
+     name, source, medium, term, content
+     are automatically generated for AdWords hits when autotagging
+     is turned on through the AdWords interface.
+     
+     
+     note:
+     we can not use a CampaignInfo because here the serialization
+     to URL have to be injected into __utmz and is then a special case.
+     
+     links:
+     
+     Understanding campaign variables: The five dimensions of campaign tracking
+     http://www.google.com/support/googleanalytics/bin/answer.py?answer=55579&hl=en
+     
+     How does campaign tracking work? 
+     http://www.google.com/support/googleanalytics/bin/answer.py?hl=en&answer=55540
+     
+     What is A/B Testing and how can it help me?
+     http://www.google.com/support/googleanalytics/bin/answer.py?answer=55589
+     
+     What information do the filter fields represent?
+     http://www.google.com/support/googleanalytics/bin/answer.py?hl=en&answer=55588
+     <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#clickId">clickId</a> : String<div class="summaryTableDescription">
+        google ad click id
+        
+        variable: utmgclid
+        </div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#content">content</a> : String<div class="summaryTableDescription">
+         The content dimension describes the version of an advertisement on which a visitor clicked.</div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#id">id</a> : String<div class="summaryTableDescription">
+         The campaign code or id can be used to refer to a campaign lookup table,
+         or chart of referring codes used to define variables in place of multiple request query tags.</div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#medium">medium</a> : String<div class="summaryTableDescription">
+        Method of Delivery.</div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#name">name</a> : String<div class="summaryTableDescription">
+        Usually refers to name given to the marketing campaign or is used to differentiate campaign source.</div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#source">source</a> : String<div class="summaryTableDescription">
+         The resource that provided the click.</div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#term">term</a> : String<div class="summaryTableDescription">
+         The term or keyword is the word or phrase that a user types into a search engine.</div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#CampaignTracker()">CampaignTracker</a>(id:String = "", source:String = "", clickId:String = "", name:String = "", medium:String = "", term:String = "", content:String = "")</div>
+<div class="summaryTableDescription">
+         Creates a new CampaingTracker instance.</div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#isValid()">isValid</a>():Boolean</div>
+<div class="summaryTableDescription">
+         Returns a flag indicating whether this tracker object is valid.</div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toTrackerString()">toTrackerString</a>():String</div>
+<div class="summaryTableDescription">
+         Format for tracker have the following fields (seperated by "|"):
+                 <table>
+                   <tr><td>utmcsr - campaign source</td></tr>
+                   <tr><td>utmccn - campaign name</td></tr>
+                   <tr><td>utmcmd - campaign medium</td></tr>
+                   <tr><td>utmctr - keywords</td></tr>
+                   <tr><td>utmcct - ad content description</td></tr>
+                   <tr><td>utmcid - lookup table id</td></tr>
+                   <tr><td>utmgclid - google ad click id</td></tr>
+                 </table>
+         </div>
+</td><td class="summaryTableOwnerCol">CampaignTracker</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="clickId"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clickId</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var clickId:String</code><p>
+        google ad click id
+        
+        variable: utmgclid
+        </p></div>
+<a name="content"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">content</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var content:String</code><p>
+         The content dimension describes the version of an advertisement on which a visitor clicked.
+         </p><p>It is used in content-targeted advertising and Content (A/B) Testing to determine which version of an advertisement is most effective at attracting profitable leads.</p>
+         <p>Alternative: Used for A/B testing and content-targeted ads to differentiate ads or links that point to the same URL.</p>
+         <p>variable: utmcct</p>
+         </div>
+<a name="id"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">id</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var id:String</code><p>
+         The campaign code or id can be used to refer to a campaign lookup table,
+         or chart of referring codes used to define variables in place of multiple request query tags.
+         variable: utmcid
+         </p></div>
+<a name="medium"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">medium</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var medium:String</code><p>
+        Method of Delivery.
+        The medium helps to qualify the source;
+        together, the source and medium provide specific information
+        about the origin of a referral.
+        For example, in the case of a Google search engine source,
+        the medium might be "cost-per-click", indicating a sponsored link for which the advertiser paid,
+        or "organic", indicating a link in the unpaid search engine results.
+        In the case of a newsletter source, examples of medium include "email" and "print".
+        Other examples: "Organic", "CPC", or "PPC".
+        
+        variable: utmcmd
+        </p></div>
+<a name="name"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">name</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var name:String</code><p>
+        Usually refers to name given to the marketing campaign or is used to differentiate campaign source.
+        The campaign name differentiates product promotions such as "Spring Ski Sale"
+        or slogan campaigns such as "Get Fit For Summer".
+        
+        alternative:
+        Used for keyword analysis to identify a specific product promotion or strategic campaign.
+        
+        variable: utmccn
+        </p></div>
+<a name="source"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">source</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var source:String</code><p>
+         The resource that provided the click.
+         Every referral to a web site has an origin, or source.
+         Examples of sources are the Google search engine,
+         the AOL search engine, the name of a newsletter,
+         or the name of a referring web site.
+         Other example: "AdWords".
+         
+         variable: utmcsr
+         </p></div>
+<a name="term"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">term</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var term:String</code><p>
+         The term or keyword is the word or phrase that a user types into a search engine.
+         Used for paid search.
+         variable: utmctr
+         </p></div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="CampaignTracker()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">CampaignTracker</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function CampaignTracker(id:String = "", source:String = "", clickId:String = "", name:String = "", medium:String = "", term:String = "", content:String = "")</code><p>
+         Creates a new CampaingTracker instance.
+         </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">id</span>:String</code> (default = "<code></code>")<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">source</span>:String</code> (default = "<code></code>")<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">clickId</span>:String</code> (default = "<code></code>")<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">name</span>:String</code> (default = "<code></code>")<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">medium</span>:String</code> (default = "<code></code>")<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">term</span>:String</code> (default = "<code></code>")<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">content</span>:String</code> (default = "<code></code>")<code></code></td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="isValid()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">isValid</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function isValid():Boolean</code><p>
+         Returns a flag indicating whether this tracker object is valid.
+         A tracker object is considered to be valid if and only if one of id, source or clickId is present.
+         </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code></td>
+</tr>
+</table>
+</div>
+<a name="toTrackerString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toTrackerString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toTrackerString():String</code><p>
+         Format for tracker have the following fields (seperated by "|"):
+                 <table>
+                   <tr><td>utmcsr - campaign source</td></tr>
+                   <tr><td>utmccn - campaign name</td></tr>
+                   <tr><td>utmcmd - campaign medium</td></tr>
+                   <tr><td>utmctr - keywords</td></tr>
+                   <tr><td>utmcct - ad content description</td></tr>
+                   <tr><td>utmcid - lookup table id</td></tr>
+                   <tr><td>utmgclid - google ad click id</td></tr>
+                 </table>
+         </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code></td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">gaforflash v1.0.1.319 - generated the 04 December 2008</center>
+</div>
+</body>
+</html>
+<!--gaforflash v1.0.1.319 - generated the 04 December 2008-->

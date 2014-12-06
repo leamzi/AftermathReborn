@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:0935f73ca98bcff37a16fa65f510b371$ -->
+<TextureAtlas imagePath="Comics.png">
+    <SubTexture name="Intro_000" x="2" y="1208" width="574" height="400"/>
+    <SubTexture name="Intro_001" x="2" y="806" width="574" height="400"/>
+    <SubTexture name="Intro_002" x="2" y="404" width="574" height="400"/>
+    <SubTexture name="Intro_003" x="2" y="2" width="574" height="400"/>
+</TextureAtlas>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:cab6790176e25e40ae1ab5b2bc4d587c$ -->
+<TextureAtlas imagePath="Animations.png">
+    <SubTexture name="B_Music_RnRCafe_00" x="280" y="170" width="238" height="193" frameX="-7" frameY="-21" frameWidth="256" frameHeight="217"/>
+    <SubTexture name="Bank_00" x="842" y="304" width="180" height="197" frameX="-6" frameY="-18" frameWidth="192" frameHeight="217"/>
+    <SubTexture name="Cinema_00" x="650" y="440" width="178" height="136" frameX="-8" frameY="-22" frameWidth="192" frameHeight="160"/>
+    <SubTexture name="Cinema_01" x="470" y="400" width="178" height="142" frameX="-8" frameY="-16" frameWidth="192" frameHeight="160"/>
+    <SubTexture name="Cinema_03" x="844" y="154" width="178" height="148" frameX="-8" frameY="-10" frameWidth="192" frameHeight="160"/>
+    <SubTexture name="Cinema_04" x="844" y="2" width="178" height="150" frameX="-8" frameY="-8" frameWidth="192" frameHeight="160"/>
+    <SubTexture name="DropBattery_00" x="2" y="492" width="128" height="114" frameX="0" frameY="-12" frameWidth="128" frameHeight="128"/>
+    <SubTexture name="DropBattery_01" x="132" y="376" width="128" height="114" frameX="0" frameY="-12" frameWidth="128" frameHeight="128"/>
+    <SubTexture name="DropBattery_02" x="2" y="376" width="128" height="114" frameX="0" frameY="-12" frameWidth="128" frameHeight="128"/>
+    <SubTexture name="DropBattery_03" x="602" y="578" width="128" height="114" frameX="0" frameY="-12" frameWidth="128" frameHeight="128"/>
+    <SubTexture name="Market_00" x="2" y="170" width="276" height="204" frameX="-16" frameY="-17" frameWidth="384" frameHeight="224"/>
+    <SubTexture name="Market_01" x="566" y="2" width="276" height="204" frameX="-16" frameY="-17" frameWidth="384" frameHeight="224"/>
+    <SubTexture name="PowerPlant_00" x="830" y="503" width="130" height="114" frameX="-62" frameY="-12" frameWidth="192" frameHeight="128"/>
+    <SubTexture name="PowerPlant_01" x="470" y="544" width="130" height="114" frameX="-62" frameY="-12" frameWidth="192" frameHeight="128"/>
+    <SubTexture name="PowerPlant_02" x="710" y="324" width="130" height="114" frameX="-62" frameY="-12" frameWidth="192" frameHeight="128"/>
+    <SubTexture name="PowerPlant_03" x="710" y="208" width="130" height="114" frameX="-62" frameY="-12" frameWidth="192" frameHeight="128"/>
+    <SubTexture name="Predilab_00" x="280" y="365" width="188" height="190" frameX="-3" frameY="-1" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="Predilab_01" x="520" y="208" width="188" height="190" frameX="-3" frameY="-1" frameWidth="192" frameHeight="192"/>
+    <SubTexture name="Theater_00" x="284" y="2" width="280" height="166" frameX="-184" frameY="-25" frameWidth="512" frameHeight="192"/>
+    <SubTexture name="Theater_01" x="2" y="2" width="280" height="166" frameX="-184" frameY="-25" frameWidth="512" frameHeight="192"/>
+</TextureAtlas>

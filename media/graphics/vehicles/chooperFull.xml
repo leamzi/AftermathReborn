@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:1d9f7f04bc137948c3cde4cc9ae14129$ -->
+<TextureAtlas imagePath="chooperFull2.png">
+    <SubTexture name="00-chopper_full0001" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0002" x="228" y="38" width="18" height="24" frameX="-183" frameY="-212" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0003" x="182" y="72" width="30" height="30" frameX="-177" frameY="-205" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0004" x="182" y="38" width="44" height="32" frameX="-169" frameY="-200" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0005" x="182" y="2" width="64" height="34" frameX="-162" frameY="-193" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0006" x="92" y="212" width="88" height="24" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0007" x="92" y="176" width="88" height="34" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0008" x="92" y="130" width="88" height="44" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0009" x="2" y="192" width="88" height="50" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0010" x="2" y="136" width="88" height="54" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0011" x="2" y="78" width="88" height="56" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0012" x="92" y="70" width="88" height="58" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0013" x="92" y="2" width="88" height="66" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0014" x="2" y="2" width="88" height="74" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0015" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0016" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0017" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0018" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0019" x="228" y="38" width="18" height="24" frameX="-183" frameY="-212" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0020" x="182" y="72" width="30" height="30" frameX="-177" frameY="-205" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0021" x="182" y="38" width="44" height="32" frameX="-169" frameY="-200" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0022" x="182" y="2" width="64" height="34" frameX="-162" frameY="-193" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0023" x="92" y="212" width="88" height="24" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0024" x="92" y="176" width="88" height="34" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0025" x="92" y="130" width="88" height="44" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0026" x="2" y="192" width="88" height="50" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0027" x="2" y="136" width="88" height="54" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0028" x="2" y="78" width="88" height="56" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0029" x="92" y="70" width="88" height="58" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0030" x="92" y="2" width="88" height="66" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0031" x="2" y="2" width="88" height="74" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0032" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0033" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0034" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0035" x="228" y="38" width="18" height="24" frameX="-183" frameY="-212" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0036" x="182" y="72" width="30" height="30" frameX="-177" frameY="-205" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0037" x="182" y="38" width="44" height="32" frameX="-169" frameY="-200" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0038" x="182" y="2" width="64" height="34" frameX="-162" frameY="-193" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0039" x="92" y="212" width="88" height="24" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0040" x="92" y="176" width="88" height="34" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0041" x="92" y="130" width="88" height="44" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0042" x="2" y="192" width="88" height="50" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0043" x="2" y="136" width="88" height="54" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0044" x="2" y="78" width="88" height="56" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0045" x="92" y="70" width="88" height="58" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0046" x="92" y="2" width="88" height="66" frameX="-156" frameY="-187" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0047" x="2" y="2" width="88" height="74" frameX="-156" frameY="-188" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0048" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0049" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0050" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0051" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0052" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+    <SubTexture name="00-chopper_full0053" x="248" y="2" width="0" height="0" frameX="0" frameY="0" frameWidth="400" frameHeight="400"/>
+</TextureAtlas>

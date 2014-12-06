@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<link rel="stylesheet" href="../../../../prettify.css" type="text/css">
+<meta content="GIFRequest,com.google.analytics.core.GIFRequest,utmac,utmcc,utmhn,utmn,utmsp,utmwv,onComplete,onIOError,onSecurityError,send,sendRequest,updateToken" name="keywords">
+<title>com.google.analytics.core.GIFRequest</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../prettify.js"></script><script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'GIFRequest - Google Analytics Tracking For Adobe Flash v1.0.1.319';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Google Analytics Tracking For Adobe Flash</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?com/google/analytics/core/GIFRequest.html&amp;com/google/analytics/core/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td><td rowspan="3" align="right" class="titleTableLogo"><img alt="Adobe Logo" title="Adobe Logo" class="logoImage" src="../../../../images/logo.jpg"></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;GIFRequest</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class GIFRequest"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">com.google.analytics.core</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class GIFRequest</td>
+</tr>
+</table>
+<p></p>
+     Google Analytics Tracker Code (GATC)'s GIF request module.
+     This file encapsulates all the necessary components that are required to
+     generate a GIF request to the Google Analytics Back End (GABE).
+     <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#utmac">utmac</a> : String<div class="summaryTableDescription">[read-only]
+         Account String.</div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#utmcc">utmcc</a> : String<div class="summaryTableDescription">[read-only]
+         Cookie values.</div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#utmhn">utmhn</a> : String<div class="summaryTableDescription">[read-only]
+         Host Name, which is a URL-encoded string.</div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#utmn">utmn</a> : String<div class="summaryTableDescription">[read-only]
+         Unique ID generated for each GIF request to prevent caching of the GIF image.</div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#utmsp">utmsp</a> : String<div class="summaryTableDescription">[read-only]
+         Sample rate
+         </div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#utmwv">utmwv</a> : String<div class="summaryTableDescription">[read-only]
+         Tracking code version
+         <p><b>Example :</b> utmwv=1</p>
+         </div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#GIFRequest()">GIFRequest</a>(config:<a href="../v4/Configuration.html">Configuration</a>, debug:<a href="../debug/DebugConfiguration.html">DebugConfiguration</a>, buffer:<a href="Buffer.html">Buffer</a>, info:<a href="../utils/Environment.html">Environment</a>)</div>
+<div class="summaryTableDescription">
+         Creates a new GIFRequest instance.</div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onComplete()">onComplete</a>(event:Event):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onIOError()">onIOError</a>(event:IOErrorEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#onSecurityError()">onSecurityError</a>(event:SecurityErrorEvent):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#send()">send</a>(account:String, variables:<a href="../utils/Variables.html">Variables</a> = null, force:Boolean = false, rateLimit:Boolean = false):void</div>
+<div class="summaryTableDescription">
+        Send the Gif Request to the server(s).</div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#sendRequest()">sendRequest</a>(request:URLRequest):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateToken()">updateToken</a>():void</div>
+<div class="summaryTableDescription">
+         Updates the token in the bucket.</div>
+</td><td class="summaryTableOwnerCol">GIFRequest</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="utmac"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">utmac</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>utmac:String</code>&nbsp;&nbsp;[read-only]<p>
+         Account String. Appears on all requests.
+         </p><p><b>Example :</b> utmac=UA-2202604-2</p>
+         <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get utmac():String</code>
+<br>
+</div>
+<a name="utmcc"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">utmcc</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>utmcc:String</code>&nbsp;&nbsp;[read-only]<p>
+         Cookie values. This request parameter sends all the cookies requested from the page.
+         
+         ex:
+         utmcc=__utma%3D117243.1695285.22%3B%2B__utmz%3D117945243.1202416366.21.10.utmcsr%3Db%7Cutmccn%3D(referral)%7Cutmcmd%3Dreferral%7Cutmcct%3D%252Fissue%3B%2B
+         
+         note:
+         you first get each cookie
+         __utma=117243.1695285.22;
+         __utmz=117945243.1202416366.21.10.utmcsr=b|utmccn=(referral)|utmcmd=referral|utmcct=%2Fissue;
+         the rhs can already be URLencoded , see for ex %2Fissue is for /issue
+         you join all the cookie and separate them with +
+         __utma=117243.1695285.22;+__utmz=117945243.1202416366.21.10.utmcsr=b|etc
+         the you URLencode all
+         __utma%3D117243.1695285.22%3B%2B__utmz%3D117945243.1202416366.21.10.utmcsr%3Db%7Cetc
+         </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get utmcc():String</code>
+<br>
+</div>
+<a name="utmhn"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">utmhn</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>utmhn:String</code>&nbsp;&nbsp;[read-only]<p>
+         Host Name, which is a URL-encoded string.
+         </p><p><b>Example :</b> utmhn=x343.gmodules.com</p>
+         <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get utmhn():String</code>
+<br>
+</div>
+<a name="utmn"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">utmn</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>utmn:String</code>&nbsp;&nbsp;[read-only]<p>
+         Unique ID generated for each GIF request to prevent caching of the GIF image.
+         </p><p><b>Example :</b> utmn=1142651215</p>
+         <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get utmn():String</code>
+<br>
+</div>
+<a name="utmsp"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">utmsp</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>utmsp:String</code>&nbsp;&nbsp;[read-only]<p>
+         Sample rate
+         </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get utmsp():String</code>
+<br>
+</div>
+<a name="utmwv"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">utmwv</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>utmwv:String</code>&nbsp;&nbsp;[read-only]<p>
+         Tracking code version
+         </p><p><b>Example :</b> utmwv=1</p>
+         <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get utmwv():String</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="GIFRequest()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">GIFRequest</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function GIFRequest(config:<a href="../v4/Configuration.html">Configuration</a>, debug:<a href="../debug/DebugConfiguration.html">DebugConfiguration</a>, buffer:<a href="Buffer.html">Buffer</a>, info:<a href="../utils/Environment.html">Environment</a>)</code><p>
+         Creates a new GIFRequest instance.
+         </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">config</span>:<a href="../v4/Configuration.html">Configuration</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">debug</span>:<a href="../debug/DebugConfiguration.html">DebugConfiguration</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">buffer</span>:<a href="Buffer.html">Buffer</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">info</span>:<a href="../utils/Environment.html">Environment</a></code></td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="onComplete()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onComplete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function onComplete(event:Event):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:Event</code></td>
+</tr>
+</table>
+</div>
+<a name="onIOError()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onIOError</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function onIOError(event:IOErrorEvent):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:IOErrorEvent</code></td>
+</tr>
+</table>
+</div>
+<a name="onSecurityError()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">onSecurityError</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function onSecurityError(event:SecurityErrorEvent):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">event</span>:SecurityErrorEvent</code></td>
+</tr>
+</table>
+</div>
+<a name="send()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">send</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function send(account:String, variables:<a href="../utils/Variables.html">Variables</a> = null, force:Boolean = false, rateLimit:Boolean = false):void</code><p>
+        Send the Gif Request to the server(s).
+        </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">account</span>:String</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">variables</span>:<a href="../utils/Variables.html">Variables</a></code> (default = <code>null</code>)<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">force</span>:Boolean</code> (default = <code>false</code>)<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">rateLimit</span>:Boolean</code> (default = <code>false</code>)<code></code></td>
+</tr>
+</table>
+</div>
+<a name="sendRequest()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sendRequest</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function sendRequest(request:URLRequest):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">request</span>:URLRequest</code></td>
+</tr>
+</table>
+</div>
+<a name="updateToken()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateToken</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function updateToken():void</code><p>
+         Updates the token in the bucket.
+         This method first calculates the token delta since
+         the last time the bucket count is updated.
+         
+         If there are no change (zero delta), then it does nothing.
+         However, if there is a delta, then the delta is added to the bucket,
+         and a new timestamp is updated for the bucket as well.
+         
+         To prevent spiking in traffic after a large number of token
+         has accumulated in the bucket (after a long period of time),
+         we have added a maximum capacity to the bucket.
+         In other words, we will not allow the bucket to accumulate
+         token passed a certain threshold.
+         </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">gaforflash v1.0.1.319 - generated the 04 December 2008</center>
+</div>
+</body>
+</html>
+<!--gaforflash v1.0.1.319 - generated the 04 December 2008-->

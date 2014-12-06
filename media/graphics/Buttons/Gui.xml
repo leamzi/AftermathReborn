@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:5aa6e5e27a0fc041b1aed3c891012c28$ -->
+<TextureAtlas imagePath="Gui.png">
+    <SubTexture name="guiAvatar" x="764" y="2" width="140" height="147"/>
+    <SubTexture name="guiFrame01" x="2" y="726" width="558" height="323"/>
+    <SubTexture name="guiFrameOption" x="562" y="808" width="446" height="246"/>
+    <SubTexture name="guiLabScreen" x="2" y="1545" width="526" height="293" frameX="-23" frameY="0" frameWidth="582" frameHeight="321"/>
+    <SubTexture name="guiMap" x="2" y="2" width="760" height="400"/>
+    <SubTexture name="guiMeterBar" x="764" y="151" width="123" height="110"/>
+    <SubTexture name="guiMissionComplete" x="2" y="404" width="636" height="320"/>
+    <SubTexture name="guiSubframe01" x="2" y="1051" width="558" height="219"/>
+    <SubTexture name="guiSubframe02" x="562" y="726" width="449" height="80"/>
+    <SubTexture name="guiSubframeTuto" x="2" y="1272" width="545" height="271"/>
+    <SubTexture name="meterCount" x="906" y="2" width="41" height="244"/>
+</TextureAtlas>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:a6f4afa1ee622498c35fc952697d35cd$ -->
+<TextureAtlas imagePath="Game_objectives.png">
+    <SubTexture name="game_objectives_boxes" x="2" y="583" width="188" height="292"/>
+    <SubTexture name="game_objectives_full" x="2" y="2" width="217" height="281"/>
+    <SubTexture name="game_objectives_shuttle" x="2" y="285" width="210" height="296"/>
+</TextureAtlas>

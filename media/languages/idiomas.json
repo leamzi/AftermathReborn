@@ -1,0 +1,214 @@
+{
+  "Español": {
+    "Screens": {
+	  "Welcome": {
+        "start": "Haz Click para empezar"
+      },
+      "Tutorial": {
+        "Principal": {
+          "title": "BIENVENIDO AL TUTORIAL",
+          "pag1": "Bienvenido, mi nombre es PREDICTVIA soy tu Agente Inteligente y te guiaré en la sala de pruebas y de ahora en adelante.",
+          "pag2": "Para moverte haz click en la dirección que quieres ir. Mantén presionado en esa dirección para seguir avanzando."
+        },
+        "Cristales": {
+          "title": "DESTRUIR CRISTALES",
+          "pag1": "Los CRISTALES radioactivos pueden destruirte. Tu VEHICULO se protege de ellos, pero el ESCUDO DE PLASMA consume FUEL rápidamente.",
+          "pag2": "Haz click en el VEHICULO para cargar el disparo y arrastra la mira hacia lo vas a destruir. Cada disparo consume CRYO."
+        },
+        "Pickups": {
+          "title": "RESCATAR COSAS",
+          "pag1": "Hay muchas COSAS en la superficie que puedes RESCATAR. Conseguir COSAS y traerlas de vuelta a la base es tu Misión.",
+          "pag2": "Vuela sobre ellas para recogerlas AUTOMATICAMENTE.",
+          "pag3": "Puedo darte información sobre ellas si les haces doble click y seleccionas el ? del menu."
+        },
+        "PickupsDestroy": {
+          "title": "DESTRUIR COSAS",
+          "pag1": "Dispara a las COSAS que ODIAS para DESTRUIRLAS y eliminarlas del planeta.",
+          "pag2": "RESCATAR y/o DESTRUIR COSAS es importante. APRENDO sobre tus acciones y te ayudaré a descubrir NUEVAS COSAS y/o MISIONES."
+        },
+        "Explosives": {
+          "title": "EXPLOSIVOS",
+          "pag1": "No todo debe ser rescatado. Estos EXPLOSIVOS pueden destruirte, debes tener cuidado con ellos.",
+          "pag2": "Tu GANCHO es automático, es una pena no poder programarlo para que no los recoja. En el Laboratorio perderás, recoge estos EXPLOSIVOS de prueba."
+        },
+        "Fuel": {
+          "title": "FUEL",
+          "pag1": "Estos contenedores recargan FUEL",
+          "pag2": "Sobrevuela una recarga de FUEL para recogerla"
+        },
+        "Cryogel": {
+          "title": "CRYO",
+          "pag1": "Estos contenedores recargan tu CRYO",
+          "pag2": "Sobrevuela una recarga de CRYO para recogerla."
+        },
+        "Full": {
+          "title": "INVENTARIO",
+          "pag1": "4 objetos es el límite de tu inventario. Podrás soltar objetos que ya se encuentran en tu INVENTARIO si consigues otro mas importante y quieres reemplazarlo.",
+          "pag2": "Accede a tu CARGO con el botón a tu izquierda. Para descartar un objeto solo has click sobre la imagen del objeto."
+        },
+        "FuelEmpty": {
+          "title": "SIN GASOLINA",
+          "pag1": "Debes estar atento del medidor de FUEL, si llega a 0 tu VEHICULO dejará de moverse, se caerá y destruirá",
+          "pag2": "Como estamos en tutorial no puedes fallar en esta misión, pero debes tener cuidado del FUEL agarrando las recargas que encontrás."
+        },
+        "Finish": {
+          "title": "FIN TUTORIAL",
+          "pag1": "Para SALIR de una misión no puede haber mas COSAS que RESCATAR o DESTRUIR en el MAPA.",
+          "pag2": "Puedes SALIR de una misión REGRESANDO a la ESCOTILLA y luego regresar hasta completarla."
+        }
+      },
+      "GamePlay": {
+        "Explode": "MISION FALLIDA \nDesea Reiniciar la Mision?",
+        "Finish": {
+          "pag1": "MISION COMPLETADA",
+          "pag2": "Objetos Rescatados:",
+          "pag3": "Objetos Destruidos:",
+          "pag4": "Cristales Destruidos:",
+		  "pag5": "¿Quieres registrar esto? \n¿O vas a intentarlo de nuevo?",
+		  "pag6": "Level "
+        },
+        "OpenHatch": "¿Deseas salir de la misión y rescatar estos OBJETOS?",
+        "Music": "Estas Escuchando: Road Worn \nWritten and Performed by Fernando Curiel Jr.",
+        "lowCryo": "Necesitas recargar CRYO para volver a disparar. Encuentra un contenedor de recarga.",
+        "OpenMission": {
+          "pag1": "Este es el MUNDO. Elige una misión y encontrarás OBJETOS en ellas. Te haré SUGERENCIAS y te ayudaré a encontrar OBJETOS aquí.",
+          "pag2": "Rescata OBJETOS para poder APRENDER de ti. Puedo ayudarte a conseguir mas OBJETOS que quieras rescatar en este mundo. Todo depende de lo que me enseñes sobre tí."
+        },
+        "RescueObject": {
+          "pag1": "Revisa tu SALA DE TROFEOS. Ahí tengo el registro de tus OBJETOS. Rescatar y destruir OBJETOS me permite conseguir nuevas misiones para ti."
+        }
+      },
+      "TrophyRoom": {
+        "FirtsTime": {
+          "pag1": "Aquí puedes ver tus TROFEOS. Todos tus RESCATES afectan las misiones futuras. También puedes decirme que tanto quieres lo que tus TROFEOS representan.",
+          "pag2": "Selecciona un TROFEO haciéndole click y verás información sobre él y podrás votar por él. Votar es importante porque aprendo mas sobre ti y me ayuda a conseguirte mas misiones."
+        },
+        "ObjectsNoVoted": {
+          "pag1": "Veo que tienes COSAS NUEVAS... pero no se que tanto te gustan, vota por ellas.",
+          "confirm": "Estás seguro que quieres registrar esto en mi memoria para el futuro?"
+        },
+        "DescriptionButtons": "Que opinas acerca de esto?"
+      },
+      "Megamap": {
+        "dialogOp": {
+          "title": "Options",
+          "volume": "VOLUME"
+        },
+		"megatileUnlock": {
+		  "pag1": "FELICIDADES, haz liberado nuevas missiones",
+		  "pag2": "Continua completando misiones para desbloquear nuevas"
+		},
+		"megamapCompleted": {
+			"pag1": "GENIAL!",
+			"pag2": "Has terminado el juego, esto es lo que tenemos para ti hasta ahora. Mantente atento ya tendremos mas misiones y cosas que rescatar para la colonia."
+		}
+      }
+    }
+  },
+  "Ingles": {
+    "Screens": {
+	  "Welcome": {
+        "start": "Press Click to Start"
+      },
+      "Tutorial": {
+        "Principal": {
+          "title": "WELCOME TO THE TUTORIAL",
+          "pag1": "Welcome, my name is PREDICTVIA the SMART AGENT asigned to you, I will guide you in this test room and from now on.",
+          "pag2": "To move around just click in the direction you want to go. Hold down the click to keep on moving."
+        },
+        "Cristales": {
+          "title": "DESTROY THE CRYSTALS",
+          "pag1": "The radioactive CRYSTALS can destroy you. Your Vehicle can protect from the radiation, but the PLASMA SHIELD consumes FUEL quickly.",
+          "pag2": "Destroy the CRYSTAL by clicking on your VEHICLE to spawn the RETICLE, drag towards CRYSTAL and release to SHOOT. Shooting consumes CRYO."
+        },
+        "Pickups": {
+          "title": "RESCUE STUFF",
+          "pag1": "There´s a lot of STUFF you'll want to RESCUE in the surface. Finding STUFF and bringing it back to base is you MISSION.",
+          "pag2": "Fly over STUFF to rescue it AUTOMATICALLY",
+          "pag3": "I can give you information about STUFF you encounter if you DOUBLE CLICK and select the ? from the Menu."
+        },
+        "PickupsDestroy": {
+          "title": "DESTROY STUFF",
+          "pag1": "Destroy STUFF you HATE and eliminate it from the planet.",
+          "pag2": "RESCUING and DESTROYING STUFF is important. I can LEARN from your actions and help you find NEW STUFF and MISSIONS based on my knowledge."
+        },
+        "Explosives": {
+          "title": "EXPLOSIVES",
+          "pag1": "Not everything must be RESCUED. These EXPLOSIVES can destroy you, the MOTHERLANDERS have places them around so be careful.",
+          "pag2": "Your Hook is automatic, it's a shame we can't program the hook not to pick them up. But go ahead and try it, in the Test Room you won't fail"
+        },
+        "Fuel": {
+          "title": "FUEL",
+          "pag1": "These containers refill your FUEL.",
+          "pag2": "Fly over the FUEL container to pick it up."
+        },
+        "Cryogel": {
+          "title": "CRYO",
+          "pag1": "These containers refill your CRYO.",
+          "pag2": "Fly over the CRYO container to pick it up."
+        },
+        "Full": {
+          "title": "INVENTORY",
+          "pag1": "CARGO is limited to 4 SLOTS. You can release STUFF you've RESCUED to replace it.",
+          "pag2": "Access the CARGO menu by clicking on the button on your left. Click on the IMAGES to relase CARGO."
+        },
+        "FuelEmpty": {
+          "title": "OUT OF GAS",
+          "pag1": "Look out for your FUEL gauge, when it reaches 0 your VEHICLE will stop moving and EXPLODE",
+          "pag2": "In this tutorial you cannot fail, but just be careful and pickup FUEL containers whenever you need."
+        },
+        "Finish": {
+          "title": "TUTORIAL END",
+          "pag1": "To exit a mission autimatically you MUST complete all objectives, FINDING ALL THE STUFF AND ELIMINATING ALL CRYSTALS.",
+          "pag2": "You can return to the HATCH anytime and then return to the mission so you can complete it."
+        }
+      },
+      "GamePlay": {
+        "Explode": "MISSION FAILED \nDo you want to restart the Mission?",
+        "Finish": {
+          "pag1": "MISION COMPLETE",
+          "pag2": "Objects Rescued:",
+          "pag3": "Objects Destroyed:",
+          "pag4": "Crystals Destroyed:",
+		  "pag5": "Should I record this?\n Or will you try again?",
+		  "pag6": "Nivel "
+        },
+        "OpenHatch": "Will you EXIT RESCUING THIS STUFF?",
+        "Music": "You're listening to: ROAD WORN \nWritten and performed by: Fernando Curiel Jr.",
+        "lowCryo": "You need to reload CRYO in order to SHOOT. Find a container and refill.",
+        "OpenMission": {
+          "pag1": "This is the World Map. Rescue STUFF and I will LEARN from you. Data collected on missions will help me LOCATE STUFF.",
+          "pag2": "You will have the opportunity to RESCUE what you LOVE and LEAVE BEHIND or destroy what you HATE."
+        },
+        "RescueObject": {
+          "pag1": "Check out the TROPHY ROOM. There is a LOG of your STUFF. RESCUING AND DESTROYING STUFF will determine you new MISSIONS."
+        }
+      },
+      "TrophyRoom": {
+        "FirtsTime": {
+          "pag1": "You can check out your TROPHIES here. Whatever you DESTROY or RESCUE will affect the following MISSIONS. You may also VOTE for your TROPHIES. Ratings determine how important STUFF is for you!",
+          "pag2": "Select a trophy by clicking on it and look at its description and you will be able to vote for it."
+        },
+        "ObjectsNoVoted": {
+          "pag1": "I can see you've found new STUFF... I don't know how much you like all this. You should VOTE for your findings.",
+          "confirm": "Are you sure you want to register this in my records for the future?"
+        },
+        "DescriptionButtons": "What do you think about this?"
+      },
+	  "Megamap": {
+        "dialogOp": {
+          "title": "Options",
+          "volume": "VOLUME"
+        },
+		"megatileUnlock": {
+		  "pag1": "CONGRATULATIONS, you have unlocked new missions",
+		  "pag2": "Keep completing missions to obtain new ones"
+		},
+		"megamapCompleted": {
+			"pag1": "AWESOME!",
+			"pag2": "You beat the whole game, this is what we have for you until now. Stay tuned for more missions and new stuff to rescue for the colony"
+		}
+      }
+    }
+  }
+}
