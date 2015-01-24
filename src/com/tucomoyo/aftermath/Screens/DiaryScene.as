@@ -300,9 +300,12 @@ package com.tucomoyo.aftermath.Screens
 				exitBtn.addEventListener(starling.events.Event.TRIGGERED, exitComic);
 				comicSprite.addChild(exitBtn);
 			} else {
-				textQuad.visible = false;
-				textQuad = null;
-				nextBtn.visible = true;
+				if (textQuad != null) 
+				{
+					textQuad.visible = false;
+					textQuad = null;
+					nextBtn.visible = true;
+				}
 			}
 			
 		}

@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'12/6/2014'</value>
+      <value>'12/9/2014'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -32,19 +32,19 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\Aftermath\src</path-element>
+      <path-element>C:\Users\Leamzi\Documents\AftermathReborn\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\Aftermath\analytics.swc</path-element>
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\Aftermath\nape.swc</path-element>
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\Aftermath\Starling-Extension-Graphics.swc</path-element>
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\Aftermath\starling.swc</path-element>
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\Aftermath\feathers.swc</path-element>
+      <path-element>C:\Users\Leamzi\Documents\AftermathReborn\analytics.swc</path-element>
+      <path-element>C:\Users\Leamzi\Documents\AftermathReborn\nape.swc</path-element>
+      <path-element>C:\Users\Leamzi\Documents\AftermathReborn\Starling-Extension-Graphics.swc</path-element>
+      <path-element>C:\Users\Leamzi\Documents\AftermathReborn\starling.swc</path-element>
+      <path-element>C:\Users\Leamzi\Documents\AftermathReborn\feathers.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\Aftermath\src\com\tucomoyo\aftermath\Main.as</path-element>
+    <path-element>C:\Users\Leamzi\Documents\AftermathReborn\src\com\tucomoyo\aftermath\Main.as</path-element>
   </file-specs>
   <default-background-color>#808080</default-background-color>
   <default-frame-rate>32</default-frame-rate>
