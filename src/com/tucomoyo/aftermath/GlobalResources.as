@@ -102,7 +102,7 @@ package com.tucomoyo.aftermath
 		
 		public function setVars():void {
 			trace("GA = " + GoogleAnalitics);
-			if (user_id == "-1") {
+			//if (user_id == "-1") {
 				
 				//user_id = "3624"; //Isma
 				user_id = "3621"; //Pablo
@@ -1190,12 +1190,12 @@ package com.tucomoyo.aftermath
 				profileData.vehicleData.bodiesBought = [0,1];
 				//pref_url = "https://s3.amazonaws.com/tucomoyo-games/aftermath/8k1103/media/";
 					
-			}else {
-				
-				this.myDomain = SecurityDomain.currentDomain;
-				pref_url = "https://s3.amazonaws.com/tucomoyo-games/aftermath/"+game_version+"/media/";
-				//_flag = true;
-			}
+			//}else {
+				//
+				//this.myDomain = SecurityDomain.currentDomain;
+				//pref_url = "https://s3.amazonaws.com/tucomoyo-games/aftermath/"+game_version+"/media/";
+				////_flag = true;
+			//}
 			
 			//this.myDomain = SecurityDomain.currentDomain;
 			//game_version = "4a9482";

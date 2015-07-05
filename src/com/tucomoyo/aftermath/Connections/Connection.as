@@ -122,10 +122,12 @@ package com.tucomoyo.aftermath.Connections
 		}
 		
 		public function getFacebookInfo(_facebookId:String):void {
-			var url:String = "https://graph.facebook.com/"+_facebookId;
-			var peticion:URLRequest = new URLRequest(url);
-			loader.addEventListener(Event.COMPLETE, connectionEvent);
-			loader.load(peticion);
+			//var url:String = "https://graph.facebook.com/"+_facebookId;
+			//var peticion:URLRequest = new URLRequest(url);
+			//loader.addEventListener(Event.COMPLETE, connectionEvent);
+			//loader.load(peticion);
+			
+			testJsonUserInfo();
 		}
 		
 		public function getObjects(_objetos:Array):void
@@ -546,6 +548,12 @@ package com.tucomoyo.aftermath.Connections
 			
 			this.dispatchEvent(new GameEvents(GameEvents.REQUEST_RECIVED,json,true));
 			
+		}
+		
+		public function testJsonUserInfo():void {
+			
+			var json:Object = JSON.parse("{\"id\": \"12345678\",\"birthday\": \"1/1/1950\",\"first_name\": \"Chris\",\"gender\": \"male\",\"last_name\": \"Colm\",\"link\": \"http://www.facebook.com/12345678\",\"location\": {\"id\": \"110843418940484\",\"name\": \"Seattle, Washington\"},\"locale\": \"en_US\",\"name\": \"Chris Colm\",\"timezone\": -8,\"updated_time\": \"2010-01-01T16:40:43+0000\",\"verified\": true}");
+			this.dispatchEvent(new GameEvents(GameEvents.REQUEST_RECIVED,json,true));
 		}
 		
 		public function errorHandler(errorEvent:IOErrorEvent):void{ 
