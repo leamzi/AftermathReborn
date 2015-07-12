@@ -1,0 +1,20 @@
+{
+  "comicList": [
+    {
+	  "available": false,
+      "name": "Intro",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium urna eu adipiscing consequat. Suspendisse potenti. Cras tellus leo, tempus in magna ut, dapibus feugiat ligula. Fusce posuere, diam quis vulputate condimentum, enim libero semper magna, in vehicula sem nulla nec velit. Aliquam gravida tortor in augue ullamcorper, quis porta turpis dignissim. Duis pretium libero id odio accumsan iaculis id ac dui. Donec sit amet luctus augue, eget molestie odio. Nullam pulvinar eleifend magna eu cursus. Sed ut sodales nibh. Aliquam fermentum, neque rhoncus tempus aliquet, nisl erat cursus justo, sit amet suscipit ipsum ipsum at est. Morbi a pretium.",
+      "numImages": 4,
+	  "imageUrl": "http://comiccoverage.typepad.com/photos/uncategorized/2007/03/15/spidey_treasury.jpg",
+	  "new": "0"
+    },
+	{
+	  "available": false,
+      "name": "Megamap_Movies",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium urna eu adipiscing consequat. Suspendisse potenti. Cras tellus leo, tempus in magna ut, dapibus feugiat ligula. Fusce posuere, diam quis vulputate condimentum, enim libero semper magna, in vehicula sem nulla nec velit. Aliquam gravida tortor in augue ullamcorper, quis porta turpis dignissim. Duis pretium libero id odio accumsan iaculis id ac dui. Donec sit amet luctus augue, eget molestie odio. Nullam pulvinar eleifend magna eu cursus. Sed ut sodales nibh. Aliquam fermentum, neque rhoncus tempus aliquet, nisl erat cursus justo, sit amet suscipit ipsum ipsum at est. Morbi a pretium.",
+      "numImages": 4,
+	  "imageUrl": "http://comiccoverage.typepad.com/photos/uncategorized/2007/03/15/spidey_treasury.jpg",
+	  "new": "0"
+    }
+  ]
+}
