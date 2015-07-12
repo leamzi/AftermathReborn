@@ -31,6 +31,9 @@ package com.tucomoyo.aftermath.Connections
 		private var actionTable:Dictionary;
 		public var resources:GlobalResources;
 		
+		private var URL_Request_Api:String = "http://aftermath.fourpillargames.com/api/";
+		private var URL_Request_Tucomoyo:String = "http://tucomoyo-api.ing3nia.com/v1/";
+		
 		public function Connection() 
 		{
 			super();
@@ -132,7 +135,8 @@ package com.tucomoyo.aftermath.Connections
 		
 		public function getObjects(_objetos:Array):void
 		{
-			var url:String = "https://api.tucomoyo.com/v1/object?object_id=";
+			//var url:String = "http://tucomoyo-api.ing3nia.com/v1/object?object_id=";
+			var url:String = URL_Request_Tucomoyo+"object?object_id=";
 			var peticion:URLRequest;
 			var objetos:Array = new Array();
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
@@ -149,7 +153,8 @@ package com.tucomoyo.aftermath.Connections
 		}
 		
 		public function get_missions_info(_user:String):void {
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/missionlist?user_id="+_user+"&t="+ new Date().time;
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/missionlist?user_id="+_user+"&t="+ new Date().time;
+			var url:String = URL_Request_Api +"game/missionlist?user_id="+_user+"&t="+ new Date().time;
 			var peticion:URLRequest;
 			
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
@@ -170,7 +175,8 @@ package com.tucomoyo.aftermath.Connections
 		public function get_megamap(_user:int):void
 		{
 			trace("Get Megamap User: " + _user);
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/missionlist2?user_id="+_user+"&t="+ new Date().time;
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/missionlist2?user_id="+_user+"&t="+ new Date().time;
+			var url:String = URL_Request_Api +"game/missionlist2?user_id="+_user+"&t="+ new Date().time;
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			var peticion:URLRequest = new URLRequest(url);
 			loader.load(peticion);
@@ -179,7 +185,8 @@ package com.tucomoyo.aftermath.Connections
 		
 		public function get_save_world(_user:int):void
 		{
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery?user_id="+ _user+"&method=get_trophies&t="+ new Date().time;
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery?user_id="+ _user+"&method=get_trophies&t="+ new Date().time;
+			var url:String = URL_Request_Api +"game/discovery?user_id="+ _user+"&method=get_trophies&t="+ new Date().time;
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			var peticion:URLRequest = new URLRequest(url);
 			loader.load(peticion);
@@ -188,7 +195,8 @@ package com.tucomoyo.aftermath.Connections
 		
 		public function get_trophy_junk_info(_userId:int):void{
 
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery?user_id="+_userId+"&method=get_trophies&t="+ new Date().time;
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery?user_id="+_userId+"&method=get_trophies&t="+ new Date().time;
+			var url:String = URL_Request_Api +"game/discovery?user_id="+_userId+"&method=get_trophies&t="+ new Date().time;
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			var peticion:URLRequest = new URLRequest(url);
 			loader.load(peticion);
@@ -196,7 +204,8 @@ package com.tucomoyo.aftermath.Connections
 		
 		public function get_save_state(_user:int, _mission:int):void{
 
-			var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/getmission?user_id="+ _user+"&mission_id="+ _mission+"&t="+ new Date().time;
+			//var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/getmission?user_id="+ _user+"&mission_id="+ _mission+"&t="+ new Date().time;
+			var url:String = URL_Request_Api +"game/getmission?user_id="+ _user+"&mission_id="+ _mission+"&t="+ new Date().time;
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			var peticion:URLRequest = new URLRequest(url);
 			loader.load(peticion);
@@ -246,7 +255,8 @@ package com.tucomoyo.aftermath.Connections
 			trace("save_trophies_mission - Objects Types: "+_types);
 			
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"/game/discovery";
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
@@ -269,7 +279,8 @@ package com.tucomoyo.aftermath.Connections
 		{
 			//trace("User id: " + _user + ", Trophie Vote Id: " + _trophyVoteId + ", Vote: " + _vote+ ", Type: "+_type+ ", Scene Id: "+_sceneId);
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"game/discovery";
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
@@ -290,7 +301,8 @@ package com.tucomoyo.aftermath.Connections
 		public function modifyTrophyroomVote(_user:int, _trophyVoteId:int, _vote:int):void
 		{
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"game/discovery";
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
@@ -309,7 +321,8 @@ package com.tucomoyo.aftermath.Connections
 		public function modifyTrophyroomType(_user:int, _trophyVoteId:int, _type:String):void
 		{
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"game/discovery";
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
@@ -330,7 +343,8 @@ package com.tucomoyo.aftermath.Connections
 			trace("User Id: " + _user + ", missionId: " + _mission);
 			
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/savemission";
+			//var url:String = "http://games-api.tucomoyo.com/aftermath/api/game/savemission";
+			var url:String = URL_Request_Api +"game/savemission";
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
@@ -349,7 +363,8 @@ package com.tucomoyo.aftermath.Connections
 		public function save_tuto(_user:int):void {
 			
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"game/discovery";
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
@@ -381,7 +396,8 @@ package com.tucomoyo.aftermath.Connections
 			public function sendMissionScore(_user:int, _id:int, _score:int, _missionID:int = 0):void {
 			
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"game/discovery";
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
 			peticion.method = URLRequestMethod.GET;
@@ -398,7 +414,8 @@ package com.tucomoyo.aftermath.Connections
 		public function sendMissionComplete(_user:int, _id:int, _score:int, _missionID:int = 0):void {
 			trace("Mission Complete: "+_id);
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"game/discovery";
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
 			peticion.method = URLRequestMethod.GET;
@@ -420,7 +437,8 @@ package com.tucomoyo.aftermath.Connections
 		{
 			trace("Unlock Megatile/ User: " + _user + " megatile Id: " + _megatile_id +"--------------------------------------------" );
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/unlockmegatile";
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/unlockmegatile";
+			var url:String = URL_Request_Api +"game/unlockmegatile";
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
 			peticion.method = URLRequestMethod.GET;
@@ -434,7 +452,8 @@ package com.tucomoyo.aftermath.Connections
 		
 		public function cleanMission(_user:int, _mission_id:int):void {
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"game/discovery";
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
 			peticion.method = URLRequestMethod.GET;
@@ -448,7 +467,8 @@ package com.tucomoyo.aftermath.Connections
 		
 		public function getVehicleStats(userId:String, vehicleId:String="1"):void {
 			
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/getvehicleattribute?user_id="+userId+"&vehicle_id="+vehicleId+"&vehicle_attribute=all&t="+ new Date().time;
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/getvehicleattribute?user_id="+userId+"&vehicle_id="+vehicleId+"&vehicle_attribute=all&t="+ new Date().time;
+			var url:String = URL_Request_Api +"game/getvehicleattribute?user_id="+userId+"&vehicle_id="+vehicleId+"&vehicle_attribute=all&t="+ new Date().time;
 			loader.addEventListener(Event.COMPLETE, connectionEvent);
 			var peticion:URLRequest = new URLRequest(url);
 			loader.load(peticion);
@@ -458,7 +478,8 @@ package com.tucomoyo.aftermath.Connections
 		public function setVehicleStat(userId:String, vehicleAttribute:String, value:String, vehicleId:String = "1"):void {
 		
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/setvehicleattribute";
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/setvehicleattribute";
+			var url:String = URL_Request_Api +"game/setvehicleattribute";
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
 			peticion.method = URLRequestMethod.GET;
@@ -475,7 +496,8 @@ package com.tucomoyo.aftermath.Connections
 		public function resetMissions(_user:int):void {
 			//trace("Missions Reseted");
 			var url_var:URLVariables = new URLVariables();
-			var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			//var url:String = "https://games-api.tucomoyo.com/aftermath/api/game/discovery";
+			var url:String = URL_Request_Api +"game/discovery";
 			loader.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			var peticion:URLRequest = new URLRequest(url);
 			peticion.method = URLRequestMethod.GET;
