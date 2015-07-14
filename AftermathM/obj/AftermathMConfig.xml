@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'7/12/2015'</value>
+      <value>'7/14/2015'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -32,18 +32,18 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\AftermathM\src</path-element>
+      <path-element>C:\Users\BAT\Documents\GitHub\AftermathReborn\AftermathM\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\AftermathM\starling.swc</path-element>
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\AftermathM\analytics.swc</path-element>
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\AftermathM\Starling-Extension-Graphics.swc</path-element>
-      <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\AftermathM\nape.swc</path-element>
+      <path-element>C:\Users\BAT\Documents\GitHub\AftermathReborn\AftermathM\starling.swc</path-element>
+      <path-element>C:\Users\BAT\Documents\GitHub\AftermathReborn\AftermathM\analytics.swc</path-element>
+      <path-element>C:\Users\BAT\Documents\GitHub\AftermathReborn\AftermathM\Starling-Extension-Graphics.swc</path-element>
+      <path-element>C:\Users\BAT\Documents\GitHub\AftermathReborn\AftermathM\nape.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Leamzi\Documents\GitHub\TCY-Chopper\AftermathM\src\com\tucomoyo\aftermath\Main.as</path-element>
+    <path-element>C:\Users\BAT\Documents\GitHub\AftermathReborn\AftermathM\src\com\tucomoyo\aftermath\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>32</default-frame-rate>
