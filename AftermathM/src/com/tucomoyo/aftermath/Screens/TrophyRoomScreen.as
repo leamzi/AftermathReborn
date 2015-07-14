@@ -3,6 +3,7 @@ package com.tucomoyo.aftermath.Screens
 	import com.tucomoyo.aftermath.Clases.Dialogs;
 	import com.tucomoyo.aftermath.Clases.objectsCounterMeter;
 	import com.tucomoyo.aftermath.Clases.Trofeos;
+	import com.tucomoyo.aftermath.Clases.VehicleEditor;
 	import com.tucomoyo.aftermath.Connections.Connection;
 	import com.tucomoyo.aftermath.Engine.GameEvents;
 	import com.tucomoyo.aftermath.Engine.Scene;
@@ -59,6 +60,8 @@ package com.tucomoyo.aftermath.Screens
 		
 		private var megatile_id:int = 0;
 		
+		private var trophyBackground:Image;
+		private var junkBackground:Image;
 		
 		//Embed my world background
 		
@@ -89,6 +92,7 @@ package com.tucomoyo.aftermath.Screens
 			
 			texturesScene.addTexture("Botones", "Buttons");
 			texturesScene.addTexture("Gui", "Buttons");
+			texturesScene.addTexture("vehicleEditor", "Buttons");
 			texturesScene.addTexture("worldObjects", "World");
 			texturesScene.addTexture("screens", "Backgrounds");
 			texturesScene.addEventListener(GameEvents.TEXTURE_LOADED, onTextureComplete);
@@ -259,29 +263,29 @@ package com.tucomoyo.aftermath.Screens
 		
 		public function drawTrophyRoom():void {
 			
-			soundsScene.getSound("trophyRoomBGM").play(globalResources.volume);
+			//soundsScene.getSound("trophyRoomBGM").play(globalResources.volume);
 			
 			var iniX:int = 360;
 			var iniY:int = 200;
 			var angle:Number = Math.PI * 0.25;
 			
-			var labBackground:Image = new Image(texturesScene.getAtlas("screens").getTexture("labBackground"));
+			//var labBackground:Image = new Image(texturesScene.getAtlas("screens").getTexture("labBackground"));
 			//labBackground.alpha = 0.98;
-			labSprite.addChild(labBackground);
+			labSprite.addChild(new VehicleEditor(globalResources,texturesScene,soundsScene,connect));
 			
-			var trophyBackground:Image = new Image(Texture.fromBitmap(new backgroundTrophyRoom()));
+			trophyBackground = new Image(Texture.fromBitmap(new backgroundTrophyRoom()));
 			trophyBackground.pivotX = trophyBackground.width * 0.5 -380;
 			trophyBackground.pivotY = trophyBackground.height * 0.5 -200;
 			trophySprite.addChild(trophyBackground);
 			
-			var junkBackground:Image = new Image(Texture.fromBitmap(new backgroundJunkyard()));
+			junkBackground = new Image(Texture.fromBitmap(new backgroundJunkyard()));
 			junkBackground.pivotX = junkBackground.width * 0.5 -380;
 			junkBackground.pivotY = junkBackground.height * 0.5 -200;
 			junkyardSprite.addChild(junkBackground);
 			
 			var close:Button = new Button(texturesScene.getAtlas("Botones").getTexture("btnBack"));
-			close.x = 650;
-			close.y = 10;
+			close.x = 30;
+			close.y = 60;
 			close.addEventListener(Event.TRIGGERED, returnMissionScreen);
 			labSprite.addChild(close);
 			
@@ -323,15 +327,15 @@ package com.tucomoyo.aftermath.Screens
 			hudSprite.addChild(trophyMeter);
 			
 			var junkyardBtn:Button = new Button(texturesScene.getAtlas("Botones").getTexture("junkButton"));
-			junkyardBtn.x = 20;
-			junkyardBtn.y = 330;
+			junkyardBtn.x = 680;
+			junkyardBtn.y = 90;
 			junkyardBtn.addEventListener(Event.TRIGGERED, onJunkyardVisible);
 			tempData.push(junkyardBtn);
 			labSprite.addChild(junkyardBtn);
 			
 			var trophyBtn:Button = new Button(texturesScene.getAtlas("Botones").getTexture("trophyButton"));
 			trophyBtn.x = 680;
-			trophyBtn.y = 330;
+			trophyBtn.y = 10;
 			trophyBtn.addEventListener(Event.TRIGGERED, onTrophiesVisible);
 			tempData.push(trophyBtn);
 			labSprite.addChild(trophyBtn);
@@ -342,12 +346,12 @@ package com.tucomoyo.aftermath.Screens
 			labBtn.addEventListener(Event.TRIGGERED, onLabVisible);
 			tempData.push(labBtn);
 			hudSprite.addChild(labBtn);
-			
+			/*
 			var guiPredictvia:Image = new Image(texturesScene.getAtlas("Gui").getTexture("guiMeterBar"));
 			guiPredictvia.x = -24;
 			guiPredictvia.y = 262;
 			hudSprite.addChild(guiPredictvia);
-			
+			*/
 			trophySprite.visible = false;
 			junkyardSprite.visible = false;
 			
@@ -357,12 +361,12 @@ package com.tucomoyo.aftermath.Screens
 			addChild(labSprite);
 			
 			addChild(dialogSprite);
-			
+			/*
 			var welcomeDialog:Dialogs = new Dialogs(globalResources, texturesScene, soundsScene, 90, 0);
 			welcomeDialog.multiDialog(2, { pauseId:1 } );
 			tempData.push(welcomeDialog);
 			labSprite.addChild(welcomeDialog);
-			
+			*/
 			globalResources.deactivateSplash();
 			globalResources.trackEvent("Screen View", "user: " + globalResources.user_id, "Trophy Screen");
 			
@@ -566,18 +570,36 @@ package com.tucomoyo.aftermath.Screens
 		}
 		
 		public function returnMissionScreen():void {
+			
+			connect.setVehicleStat(globalResources.user_id, "body", globalResources.profileData.vehicleData.body as String);
+			connect.setVehicleStat(globalResources.user_id, "cryogel", globalResources.profileData.vehicleData.cryogel as String);
+			connect.setVehicleStat(globalResources.user_id, "fuel", globalResources.profileData.vehicleData.fuel as String);
+			connect.setVehicleStat(globalResources.user_id, "velocity", globalResources.profileData.vehicleData.velocityValue as String);
+			connect.setVehicleStat(globalResources.user_id, "bodiesBought", (globalResources.profileData.vehicleData.bodiesBought as Array).join(","));
+			
 			this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN,{type: "missionScreen", megatile_id: megatile_id}, true));
 		}
 		
 		override public function dispose():void 
 		{
+			this.removeEventListeners();
+			
 			connect = null;
 			
+			trophySprite.dispose();
 			trophySprite = null;
+			labSprite.dispose();
 			labSprite = null;
+			dialogSprite.dispose();
 			dialogSprite = null;
+			junkyardSprite.dispose();
 			junkyardSprite = null;
+			hudSprite.dispose();
 			hudSprite = null;
+			junkBackground.dispose();
+			junkBackground = null;
+			trophyBackground.dispose();
+			trophyBackground = null;
 			
 			for (var i:int = 0; i < trophiesAndJunk.length; ++i) {
 				

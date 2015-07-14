@@ -8,7 +8,9 @@ package com.tucomoyo.aftermath.Clases
 	import flash.events.TimerEvent;
 	import flash.geom.Point;
 	import flash.utils.Timer;
+	import starling.core.Starling;
 	import starling.display.Image;
+	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	
@@ -22,6 +24,7 @@ package com.tucomoyo.aftermath.Clases
 		public static const PATROL:String = "patrolMode";
 		public static const DASH:String = "dashMode";
 		public static const REST:String = "restMode";
+		public static const TELEPORT:String = "teleportMode";
 		
 		public var directionOrto:Point;
 		private var amplitud:Number;
@@ -35,7 +38,8 @@ package com.tucomoyo.aftermath.Clases
 		public var attackRange:int;
 		public var objective:Sprite;
 		public var mode:String = PATROL;
-		public var chaseSignal:Image;
+		public var chaseSignal:MovieClip;
+		public var vulnerable:MovieClip;
 		public var checkRest:int;
 		public var checkDash:int;
 		public var limitShoot:int;
@@ -67,13 +71,34 @@ package com.tucomoyo.aftermath.Clases
 			checkDash = objectData.checkDash;
 			checkRest = objectData.checkRest;
 			
-			chaseSignal = new Image(texturesScene.getAtlas(objectData.animations.atlas).getTexture("chaseSignal"));
+			chaseSignal = new MovieClip(texturesScene.getAtlas(objectData.animations.atlas).getTextures("alert"),5);
 			chaseSignal.y = -50;
 			chaseSignal.visible = false;
+			Starling.juggler.add(chaseSignal);
 			npcFront.addChild(chaseSignal);
+			
+			vulnerable = new MovieClip(texturesScene.getAtlas(objectData.animations.atlas).getTextures("vul"),5);
+			vulnerable.y = -50;
+			vulnerable.x = -50;
+			vulnerable.visible = false;
+			Starling.juggler.add(vulnerable);
+			npcFront.addChild(vulnerable);
 			
 			amplitud = objectData.amplitude;
 			waveLenght = (Math.PI * 2.0) / objectData.waveLength;
+			
+			
+			var animation:MovieClip = new MovieClip(texturesScene.getAtlas(objectData.animations.atlas).getTextures("teleport_"),6);
+			animation.pivotX = Math.ceil(animation.width * 0.5);
+			animation.pivotY = Math.ceil(animation.height * 0.5);
+				
+			if (animations["teleport"] == undefined) {
+				animations["teleport"] = animation;
+				Starling.juggler.add(animations["teleport"]);
+				indexName.push("teleport");
+			}
+			
+			animation =  null;
 			
 			tymer = new Timer(objectData.timeDecision*1000);
 			tymer.start();
@@ -100,16 +125,14 @@ package com.tucomoyo.aftermath.Clases
 			
 			
 			if ((mode == DASH) &&  distanceObjandMe < 50 && !(objective as Chopper).immunity) {
-				(objective as Chopper).fuel -= damage;
-				(objective as Chopper).shield.visibleOn();
-				(objective as Chopper).setImmunity();
+				(objective as Chopper).hitVehicle(damage);
 			}
 			
-			if (Point.distance(new Point(this.x, this.y), endPoint) < 50) {
-				_x = initPoint.x;
-				_y = initPoint.y;
+			if (mode != TELEPORT && Point.distance(new Point(this.x, this.y), endPoint) < 50) {
 				
-				distanciaRecorrida = 0;
+				
+				teleporting();
+				
 			}
 			/*
 			if ((mode == PATROL) &&  distanceObjandMe < this.detectRange) {
@@ -193,7 +216,50 @@ package com.tucomoyo.aftermath.Clases
 			this.y = ((_y - initPoint.y) * cosA + (_x - initPoint.x) * sinA) + initPoint.y;
 			
 			*/
-			changeDirection();
+			if(mode != TELEPORT)changeDirection();
+		}
+		
+		public function teleporting():void {
+			
+			mode = TELEPORT;
+			
+			chaseSignal.visible = false;
+			countDashState = 0;
+			velocity = 0;
+			countRestState = 0;
+			npcSprite.removeChildAt(0);
+			
+			(animations["teleport"] as MovieClip).currentFrame = 0;
+			(animations["teleport"] as MovieClip).loop = false;
+			(animations["teleport"] as MovieClip).addEventListener(Event.COMPLETE,onTeleport);
+			npcSprite.addChild(animations["teleport"]);
+			
+		}
+		
+		public function onTeleport(e:Event):void {
+			
+			_x = initPoint.x;
+			_y = initPoint.y;
+			distanciaRecorrida = 0;
+			
+			(animations["teleport"] as MovieClip).removeEventListener(Event.COMPLETE,onTeleport);
+			
+			npcSprite.removeChildAt(0);
+			(animations["enemigoD_spawn_"] as MovieClip).currentFrame = 0;
+			(animations["enemigoD_spawn_"] as MovieClip).loop = false;
+			(animations["enemigoD_spawn_"] as MovieClip).addEventListener(Event.COMPLETE,onBorn);
+			npcSprite.addChild(animations["enemigoD_spawn_"]);
+			
+		}
+		
+		public function onBorn(e:Event):void {
+			
+			mode = PATROL;
+			(animations["enemigoD_spawn_"] as MovieClip).removeEventListener(Event.COMPLETE, onBorn);
+			npcSprite.removeChildAt(0);
+			npcSprite.addChild(animations[indexName[0]]);
+			velocity = objectData.velocity;
+			
 		}
 		
 		private function onTime(e:TimerEvent):void 
@@ -210,6 +276,7 @@ package com.tucomoyo.aftermath.Clases
 					if (++countDashState == checkDash) {
 							
 							chaseSignal.visible = false;
+							vulnerable.visible = true;
 							mode = REST
 							velocity = 0;
 							countRestState = 0;
@@ -220,7 +287,8 @@ package com.tucomoyo.aftermath.Clases
 					
 					if (++countRestState == checkRest) {
 							
-							mode = PATROL
+							mode = PATROL;
+							vulnerable.visible = false;
 							velocity = objectData.velocity;
 					}
 					
@@ -272,9 +340,14 @@ package com.tucomoyo.aftermath.Clases
 			directionOrto = null;
 			tymer.stop();
 			tymer = null;
-			objective = null; 
+			objective = null;
+			Starling.juggler.remove(chaseSignal);
 			chaseSignal.dispose();
 			chaseSignal = null;
+			
+			Starling.juggler.remove(vulnerable);
+			vulnerable.dispose();
+			vulnerable = null;
 
 			super.dispose();
 		}

@@ -134,7 +134,7 @@ package com.tucomoyo.aftermath.Clases
 				tween = new Tween(fillQuad, 1.9);
 				tween.animate("scaleY", num);
 			}
-			if (zone == "Complete") tween.onComplete = (this.parent as Dialogs).retryOrSave;
+			if (zone == "Complete") tween.onComplete = (this.parent as Dialogs).scoreTweenAnimation;
 			Starling.juggler.add(tween);
 		}
 		

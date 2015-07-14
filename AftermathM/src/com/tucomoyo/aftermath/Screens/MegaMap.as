@@ -1,7 +1,9 @@
 package com.tucomoyo.aftermath.Screens 
 {
 	import com.tucomoyo.aftermath.Clases.Dialogs;
+	import com.tucomoyo.aftermath.Clases.FacebookFriendList;
 	import com.tucomoyo.aftermath.Clases.MegaMapButton;
+	import com.tucomoyo.aftermath.Clases.MegamapManager;
 	import com.tucomoyo.aftermath.Clases.Megatile;
 	import com.tucomoyo.aftermath.Clases.MissionTargets;
 	import com.tucomoyo.aftermath.Connections.Connection;
@@ -13,6 +15,7 @@ package com.tucomoyo.aftermath.Screens
 	import com.tucomoyo.aftermath.GlobalResources;
 	import flash.geom.Point;
 	import starling.animation.Juggler;
+	import starling.animation.Transitions;
 	import starling.animation.Tween;
 	import starling.core.Starling;
 	import starling.display.Button;
@@ -32,27 +35,24 @@ package com.tucomoyo.aftermath.Screens
 	public class MegaMap extends Scene 
 	{
 		public static const ButtonsAssets:String = "Botones";
-		public static const TutorialAssets:String = "Game_objectives";
 		public static const ScreenAssets:String = "screens";
-		public static const MissionAssets:String = "fondoMission";
 		
 		public var connect:Connection;
 		
 		public var textShowned:Boolean;
 		public var comicBtnClick:Boolean;
 		public var optionBtnClick:Boolean;
+		public var swipeOpen:Boolean = false;
 		
 		public var targetDialogs:Sprite = new Sprite();
 		private var megaMapSprite:Sprite = new Sprite();
 		private var dialogSprite:Sprite = new Sprite();
 		
-		public var targetsMissionInfo:Vector.<Object> = new Vector.<Object>;
-		private var currentDialog:MissionTargets;
-		
 		private var megaMapName:String;
 		private var megaMapId:int;
 		private var megaMapWidth:int;
 		private var megaMapHeight:int;
+		private var LastMegaMapId:int;
 		private var megaTiles:Array = new Array();
 		
 		
@@ -60,21 +60,33 @@ package com.tucomoyo.aftermath.Screens
 		private var missionsCompleted:int = 0;
 		
 		private var direction:Array;
-		private var buttonsVec:Vector.<MegaMapButton> = new Vector.<MegaMapButton>;
+		
 		
 		private var upBtn:MegaMapButton;
 		private var rightBtn:MegaMapButton;
 		private var downBtn:MegaMapButton;
 		private var leftBtn:MegaMapButton;
 		
-		private var comicsList:Vector.<Object> = new Vector.<Object>;
+		private var megamapManager:MegamapManager;
 		
-		private var comicListDialog:Dialogs;
-		private var optionDialog:Dialogs;
-		private var megaMapDialog:Dialogs;
-		private var dialogQuad:Quad = new Quad(760, 400, 0x000000);
+		private var comicsList:Vector.<Object> = new Vector.<Object>;
+		private var megamapsList:Vector.<Object> = new Vector.<Object>;
+		private var buttonsVec:Vector.<MegaMapButton> = new Vector.<MegaMapButton>;
+		public var targetsMissionInfo:Vector.<Object> = new Vector.<Object>;
+		public var megaTilesVec:Vector.<Megatile> = new Vector.<Megatile>;
+		
+		public var comicListDialog:Dialogs;
+		public var optionDialog:Dialogs;
+		public var megaMapDialog:Dialogs;
+		public var congratzDialog:Dialogs;
+		public var slideMenu:Dialogs;
+		public var dialogQuad:Quad = new Quad(760, 400, 0x000000);
 		
 		private var megaMapTexts:Object = new Object();;
+		
+		private var tween:Tween;
+		private var tween2:Tween;
+		private var dialogSwipeTween:Tween;
 		
 		public function MegaMap(_globalResources:GlobalResources, _params:int = 0 ) 
 		{
@@ -100,14 +112,63 @@ package com.tucomoyo.aftermath.Screens
 			soundsScene.addSound("Gui_Button_denied", 0);
 			soundsScene.addSound("Fanfare", 0);
 			
-			texturesScene.addEventListener(GameEvents.TEXTURE_LOADED, loadMissionInfo);
+			texturesScene.addEventListener(GameEvents.TEXTURE_LOADED, loadUserInfo);
 			texturesScene.loadTextureAtlas();
+		}
+		
+		public function loadUserInfo():void {
+			connect.addEventListener(GameEvents.REQUEST_RECIVED, onUserInfoRecived);
+			//connect.loadUserLastMegamap(parseInt(globalResources.user_id), lastMegamapId);
+			connect.loadLocalJson(globalResources.pref_url, "userMegamapsInfo");
+		}
+		
+		private function onUserInfoRecived(e:GameEvents = null):void
+		{
+			connect.removeEventListener(GameEvents.REQUEST_RECIVED, onUserInfoRecived);
+			
+			var json:Object = e.params;
+			var tempObj:Object;
+			var i:int = 0;
+			var j:int = 0;
+			
+			LastMegaMapId = json.lastMegamapId;
+			
+			while (json.megamapList[i] != undefined) {
+				
+				tempObj = new Object();
+				tempObj.available = json.megamapList[i].available;
+				tempObj.name = json.megamapList[i].name;
+				tempObj.posX = json.megamapList[i].posX;
+				tempObj.posY = json.megamapList[i].posY;
+				tempObj.description = json.megamapList[i].description;
+				tempObj.id = json.megamapList[i].id;
+				
+				megamapsList.push(tempObj);
+				tempObj = null;
+				
+				i++;
+			}
+			
+			while (json.comicList[j] != undefined) {
+				
+				tempObj = new Object();
+				tempObj.name = json.comicList[j].name;
+				tempObj.description = json.comicList[j].description;
+				tempObj.numImages = json.comicList[j].numImages;
+				tempObj.imageUrl = json.comicList[j].imageUrl;
+				
+				comicsList.push(tempObj);
+				tempObj = null;
+				
+				j++;
+			}
+			
+			loadMissionInfo();
 		}
 		
 		public function loadMissionInfo():void {
 			connect.addEventListener(GameEvents.REQUEST_RECIVED, onRequestRecived);
 			connect.get_megamap(parseInt(globalResources.user_id));
-			//connect.get_src_mission(globalResources.pref_url+"megaMapList.json");
 		}
 		
 		private function onRequestRecived(e:GameEvents = null):void
@@ -153,11 +214,13 @@ package com.tucomoyo.aftermath.Screens
 							if (globalResources.idioma == "Ingles")tileInfo.missionDescription = json[i].megatile_list[k].mission_list[j].description_eng;
 							tileInfo.mission_id = json[i].megatile_list[k].mission_list[j].mission_id;
 							tileInfo.source = json[i].megatile_list[k].mission_list[j].source;
+							tileInfo.extras = json[i].megatile_list[k].mission_list[j].extras;
 							tileInfo.megatile_id = json[i].megatile_list[k].mission_list[j].megatile_id;
 							tileInfo.missionCompleted = Boolean(json[i].megatile_list[k].mission_list[j].finished);
 							tileInfo.targetPosition = new Point(json[i].megatile_list[k].mission_list[j].targetPositionX, json[i].megatile_list[k].mission_list[j].targetPositionY);
 							tileInfo.id = json[i].megatile_list[k].mission_list[j].id;
 							tileInfo.name = json[i].megatile_list[k].mission_list[j].name;
+							tileInfo.mission_score = (json[i].megatile_list[k].mission_list[j].mission_score == null)?0:json[i].megatile_list[k].mission_list[j].mission_score;
 							
 							array.push(tileInfo);
 							
@@ -180,7 +243,8 @@ package com.tucomoyo.aftermath.Screens
 			}
 			
 			direction = new Array([1, 0, megaMapWidth], [0, 1, 1], [-1, 0, -megaMapWidth], [ 0, -1, -1]);
-			loadComicList();
+			//loadComicList();
+			drawMissionScreens();
 		}
 		
 		public function loadComicList():void {
@@ -234,6 +298,7 @@ package com.tucomoyo.aftermath.Screens
 				megatile.x = (i % megaMapWidth) * 760;
 				megatile.y = -( int (i / megaMapWidth) * 400);
 				megaMapSprite.addChild(megatile);
+				megaTilesVec.push(megatile);
 				megaTileObject = null;
 				
 				for (var j:int = 0; j < (megaTiles[i].megaTileTargets as Array).length; j++) 
@@ -269,24 +334,11 @@ package com.tucomoyo.aftermath.Screens
 			this.addChild(userImage);
 			userImage = null;
 			
-			var labRoomBtn:Button = new Button(texturesScene.getAtlas(ButtonsAssets).getTexture("labButton"));
-			tempData.push(labRoomBtn);
-			labRoomBtn.x = 690;
-			labRoomBtn.y = 330;
-			labRoomBtn.addEventListener(Event.TRIGGERED, onTrophyRoom);
-			this.addChild(labRoomBtn);
-			
-			var comicBtn:Button = new Button(texturesScene.getAtlas(ButtonsAssets).getTexture("comicButton"));
-			comicBtn.x = 690;
-			comicBtn.y = 270;
-			comicBtn.addEventListener(Event.TRIGGERED, onIntroComic);
-			this.addChild(comicBtn);
-			
-			var optionBtn:Button = new Button(texturesScene.getAtlas(ButtonsAssets).getTexture("configBtn"));
-			optionBtn.x = 620;
-			optionBtn.y = 350;
-			optionBtn.addEventListener(Event.TRIGGERED, onOptionBtn);
-			this.addChild(optionBtn);
+			var megamapBtn:Button = new Button(texturesScene.getAtlas(ButtonsAssets).getTexture("configBtn"));
+			megamapBtn.x = 690;
+			megamapBtn.y = 210;
+			megamapBtn.addEventListener(Event.TRIGGERED, onMegamapBtn);
+		//	this.addChild(megamapBtn);
 			
 			upBtn = new MegaMapButton("UP",texturesScene.getAtlas(ButtonsAssets).getTexture("guiArrow"));
 			upBtn.alignPivot();
@@ -325,21 +377,33 @@ package com.tucomoyo.aftermath.Screens
 			this.addChild(leftBtn);
 			buttonsVec.push(leftBtn);
 			
+			//slideMenu = new Dialogs(globalResources, texturesScene, soundsScene, (megaMapSprite.x + 724), (megaMapSprite.y + 240));
+			slideMenu = new Dialogs(globalResources, texturesScene, soundsScene, 730,240);
+			slideMenu.megamapDeployableMenu();
+			slideMenu.useHandCursor = true;
+			slideMenu.addEventListener(TouchEvent.TOUCH, swipeAnimation);
+			this.addChild(slideMenu);
+			
+			var friendList:FacebookFriendList = new FacebookFriendList(globalResources, texturesScene, connect);
+			friendList.x = 10;
+			friendList.y = 10;
+			addChild(friendList);
 			
 			showButtons();
 			
 			createComicList();
 			//createMegaMapDialog();
+			createMegamapSelection();
 			createOptionDialog();
 			addChild(dialogSprite);
 			
 			trace("Missions completed: " + missionsCompleted);
-			if(currentMegaTile != (megaTiles.length-1))checkUnlockedMissions();
-			//megaTiles[1].megaTileUnlocked = true;
+			checkUnlockedMissions();
 			
-			//globalResources.deactivateSplash();
 			globalResources.trackPageview("/MegaMap Screen");
 			globalResources.trackEvent("Screen View", "user: " + globalResources.user_id, "Mission Screen");
+			
+			//completeMegamapDialog();
 		}
 		
 		public function showButtons():void {
@@ -356,7 +420,7 @@ package com.tucomoyo.aftermath.Screens
 				if ((i+direction[k][0]) > -1 && (i+direction[k][0]) < megaMapWidth && (j+direction[k][1]) > -1 && (j+direction[k][1]) < megaMapHeight && megaTiles[nextDirect].megaTileUnlocked) {
 					//trace(megaTiles[nextDirect].megaTileUnlocked, nextDirect);
 					buttonsVec[k].visible = true;
-				}else {
+				} else {
 					buttonsVec[k].visible = false;
 				}
 			}
@@ -379,7 +443,12 @@ package com.tucomoyo.aftermath.Screens
 			button = (e.currentTarget as MegaMapButton);
 			//trace("moved " + button.type);
 			
-			var tween:Tween;
+			if (tween != null) 
+			{
+				Starling.juggler.remove(tween);
+				tween = null;
+			}
+			
 			tween = new Tween(megaMapSprite, 0.20);
 			
 				switch (button.type) 
@@ -401,7 +470,7 @@ package com.tucomoyo.aftermath.Screens
 						tween.moveTo(megaMapSprite.x+760,megaMapSprite.y);
 					break;
 				}
-			trace("currentMegaTile: "+ currentMegaTile);
+			//trace("currentMegaTile: "+ currentMegaTile);
 			Starling.juggler.add(tween);
 			tween.onComplete = showButtons;
 		}
@@ -431,6 +500,42 @@ package com.tucomoyo.aftermath.Screens
 			dialogSprite.addChild(comicListDialog);
 		}
 		
+		public function createOptionDialog():void {
+			optionDialog = new Dialogs(globalResources, texturesScene, soundsScene, 105, 84);
+			optionDialog.createOptionScreen();
+			optionDialog.visible = false;
+			dialogSprite.addChild(optionDialog);
+		}
+		
+		public function onTrophyRoom():void {
+			globalResources.trackEvent("Button-Triggered", "user: " + globalResources.user_id, "Mission Screen: Trophy Button");
+			this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN, {type:"myTrophyRoomScreen", megatile_id: megaTiles[currentMegaTile].megaTileId}));
+		}
+		
+		public function onOptionBtn():void {
+			soundsScene.getSound("Gui_Button_click").play(globalResources.volume);
+			optionDialog.visible = true;
+			optionBtnClick = true;
+			dialogQuad.visible = true;
+			
+		}
+		
+		public function onComicBtn():void {
+			soundsScene.getSound("Gui_Button_click").play(globalResources.volume);
+			comicListDialog.visible = true;
+			comicListDialog.megatile_id = megaTiles[currentMegaTile].megaTileId;
+			comicBtnClick = true;
+			dialogQuad.visible = true;
+			
+		}
+		
+		public function createMegamapSelection():void {
+			
+			megamapManager = new MegamapManager(globalResources, texturesScene, soundsScene, megamapsList);
+			megamapManager.visible = false;
+			dialogSprite.addChild(megamapManager);
+		}
+		
 		public function createMegaMapDialog():void {
 			//if (!textShowned) 
 			//{	
@@ -440,33 +545,9 @@ package com.tucomoyo.aftermath.Screens
 			//}
 		}
 		
-		public function onTrophyRoom(e:Event):void {
-			globalResources.trackEvent("Button-Triggered", "user: " + globalResources.user_id, "Mission Screen: Trophy Button");
-			this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN, {type:"myTrophyRoomScreen", megatile_id: megaTiles[currentMegaTile].megaTileId}));
-		}
-		
-		public function createOptionDialog():void {
-			optionDialog = new Dialogs(globalResources, texturesScene, soundsScene, 105, 84);
-			optionDialog.createOptionScreen();
-			optionDialog.visible = false;
-			dialogSprite.addChild(optionDialog);
-		}
-		
-		public function onOptionBtn(e:Event):void {
+		public function onMegamapBtn(e:Event):void {
 			soundsScene.getSound("Gui_Button_click").play(globalResources.volume);
-			optionDialog.visible = true;
-			optionBtnClick = true;
-			dialogQuad.visible = true;
-			
-		}
-		
-		public function onIntroComic(e:Event):void {
-			soundsScene.getSound("Gui_Button_click").play(globalResources.volume);
-			comicListDialog.visible = true;
-			comicListDialog.megatile_id = megaTiles[currentMegaTile].megaTileId;
-			comicBtnClick = true;
-			dialogQuad.visible = true;
-			
+			megamapManager.visible = true;
 		}
 		
 		public function dialogsOff(e:TouchEvent):void {
@@ -476,33 +557,40 @@ package com.tucomoyo.aftermath.Screens
 			{
 				return;
 			}
+			
 			if (touch.phase == TouchPhase.BEGAN) 
 			{
 				comicListDialog.visible = false;
 				optionDialog.visible = false;
 				dialogQuad.visible = false;
+				if (congratzDialog != null) congratzDialog.visible = false;
 			}
 		}
 		
 		public function checkUnlockedMissions():void
 		{
-			trace("check unlock mission");
+			//trace("check unlock mission");
 			var numMission:int;
+			
+			if (missionsCompleted == 12) 
+			{
+				completeMegamapDialog();
+				return;
+			}
 			
 			for (var i:int = 0; i < currentMegaTile+1; i++) 
 			{
 				numMission = numMission + megaTiles[i].megaTileTargets.length;
 			}
 			
+			
 			if (missionsCompleted == numMission && !megaTiles[currentMegaTile+1].megaTileUnlocked)
 			{
-				trace("can unlock next tile");
-				unlockMegatile(currentMegaTile+1);
+				unlockMegatiles(currentMegaTile+1);
 			}
-			//unlockMegatile(currentMegaTile+1);
 		}
 		
-		public function unlockMegatile(_megatileid:int):void
+		public function unlockMegatiles(_megatileid:int):void
 		{
 			trace("Unlock megatile: " + _megatileid);
 			
@@ -516,11 +604,36 @@ package com.tucomoyo.aftermath.Screens
 			connect.unlockMegatile(parseInt(globalResources.user_id), megaTiles[_megatileid].megaTileId);
 		}
 		
+		public function completeMegamapDialog():void
+		{
+			trace("Megatile Completed");
+			
+			soundsScene.getSound("Fanfare").play(globalResources.volume);
+			congratzDialog = new Dialogs(globalResources, texturesScene, soundsScene);
+			congratzDialog.megamapEndedDialog();
+			dialogSprite.addChild(congratzDialog);
+			
+			//globalResources.trackEvent("Completed Megamap", "user: " + globalResources.user_id, "Megamap " + megaMapName);
+		}
+		
+		public function updateLastMegamap(_megamapId:int):void
+		{
+			connect.changeCurrentMegamap(parseInt(globalResources.user_id), _megamapId);
+			
+			this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN, {type:"missionScreen", megatile_id:0}));
+		}
+		
 		public function animateToTileUnlock(e:Event):void {
 			
 			trace("Me llego new megatile");
 			dialogQuad.visible = false;
-			var tween2:Tween;
+			
+			if (tween2 != null) 
+			{
+				Starling.juggler.remove(tween2);
+				tween2 = null;
+			}
+			
 			tween2 = new Tween(megaMapSprite, 0.20);
 			if (currentMegaTile % megaMapWidth == 1)
 			{
@@ -536,12 +649,54 @@ package com.tucomoyo.aftermath.Screens
 			tween2.onComplete = showButtons;
 		}
 		
+		public function swipeAnimation(e:TouchEvent):void 
+		{
+			var touch:Touch = e.getTouch(this);
+			
+			if (touch == null) 
+			{
+				return;
+			}
+			
+			if (touch.phase == TouchPhase.BEGAN) 
+			{
+				if (!swipeOpen) 
+				{
+					dialogSwipeTween = new Tween(slideMenu, 0.3, Transitions.EASE_IN_OUT_BACK);
+					dialogSwipeTween.moveTo(583,240);
+					Starling.juggler.add(dialogSwipeTween);
+					swipeOpen = true;
+				} else {
+					dialogSwipeTween = new Tween(slideMenu, 0.3, Transitions.EASE_IN_OUT_BACK);
+					dialogSwipeTween.moveTo(730,240);
+					Starling.juggler.add(dialogSwipeTween);
+					swipeOpen = false;
+				}
+			}
+		}
+		
 		override public function dispose():void 
 		{
+			this.removeEventListeners();
+			
 			connect = null;
 			targetDialogs = null;
 			megaMapSprite = null;
 			dialogSprite = null;
+			
+			Starling.juggler.remove(tween);
+			tween = null;
+			
+			Starling.juggler.remove(tween2);
+			tween2 = null;
+			
+			for (var a:int = 0; a < megaTilesVec.length; ++a ) {
+				
+				megaTilesVec[a].dispose();
+				megaTilesVec[a] = null
+				
+			}
+			megaTilesVec.splice(0, megaTilesVec.length);
 			
 			for (var i:int = 0; i < targetsMissionInfo.length; ++i ) {
 				
@@ -564,6 +719,12 @@ package com.tucomoyo.aftermath.Screens
 			}
 			megaTiles.splice(0, megaTiles.length);
 			
+			for (var l:int = 0; l < comicsList.length; ++l ) {
+				
+				comicsList[l] = null
+				
+			}
+			comicsList.splice(0, comicsList.length);
 			
 			super.dispose();
 		}

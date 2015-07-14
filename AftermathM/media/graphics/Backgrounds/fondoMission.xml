@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:2dadb068f53406c5708d14dde46443a3$ -->
+<TextureAtlas imagePath="fondoMission.png">
+    <SubTexture name="completed" x="764" y="109" width="160" height="103" frameX="-4" frameY="-3" frameWidth="168" frameHeight="113"/>
+    <SubTexture name="forbidden" x="956" y="2" width="20" height="20"/>
+    <SubTexture name="mission_db" x="2" y="404" width="499" height="126"/>
+    <SubTexture name="mission_dt" x="764" y="2" width="190" height="105" frameX="-570" frameY="0" frameWidth="760" frameHeight="105"/>
+    <SubTexture name="mission_grid" x="2" y="2" width="760" height="400"/>
+</TextureAtlas>

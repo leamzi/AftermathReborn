@@ -34,6 +34,12 @@ package com.tucomoyo.aftermath.Engine
 			bodiesScene = new BodyManager();
 		}
 		
+		public function log(texto:String):void {
+			
+			globalResources.log(texto);
+			
+		}
+		
 		override public function dispose():void {
 			
 			this.removeEventListeners();
@@ -62,6 +68,8 @@ package com.tucomoyo.aftermath.Engine
 			
 			tempData.splice(0, tempData.length);
 			tempData = null;
+			
+			System.gc();
 			super.dispose();
 			
 		}

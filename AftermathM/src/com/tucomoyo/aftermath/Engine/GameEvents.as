@@ -26,6 +26,7 @@ package com.tucomoyo.aftermath.Engine
 		public static const EXIT_TUTORIAL:String = "exitTutorial";
 		public static const STATE_ALERT:String = "stateAlert";
 		public static const TILE_UNLOCK:String = "tile_unlock";
+		public static const ADD_BISHCOINS:String = "add_bishcoins";
 		
 		public function GameEvents(type:String, _params:Object=null, bubbles:Boolean=true) 
 		{

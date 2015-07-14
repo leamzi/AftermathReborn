@@ -66,6 +66,9 @@ package com.tucomoyo.aftermath.Clases
 		public var hatchDoor:MovieClip;
 		public var hatchDoorClose:MovieClip;
 		public var letterType:String;
+		public var numShot:int = 0;
+		public var score:Number = 0;
+		public var shadow:Image;
 		
 		private var nearToVehicle:Boolean = false;
 		public  var isFinalObject:Boolean = false;
@@ -97,7 +100,7 @@ package com.tucomoyo.aftermath.Clases
 			switch(objectData.layerName){
 				case "Toxicwaste":
 					type = 0;
-			
+					score = 50;
 					img= new Image (texturesScene.getAtlas(WorldAssetes).getTexture(objectData.objectName));
 					img.pivotX=Math.ceil(img.width*0.5);
 					img.pivotY=img.height-16;
@@ -111,7 +114,7 @@ package com.tucomoyo.aftermath.Clases
 					type = 1;
 					isPickable = true;
 					//expandSound = new sound (resources.pref_url, "sounds/menu-expand.mp3",0,0,1);
-					
+					score = 250;
 					Odialog = new Dialogs(globalResources, texturesScene, soundsScene, -25, -10);
 					Odialog.linesDialog(objectData.objectInfo.name,1);
 					Odialog.x -= ((Odialog.width * 0.5) - 25);
@@ -122,10 +125,20 @@ package com.tucomoyo.aftermath.Clases
 					objectInfoDialog = new Dialogs(globalResources, texturesScene, soundsScene,180,255);
 					objectInfoDialog.alertDialog("infoObject", this);
 					
+					shadow = new Image (texturesScene.getAtlas("chopper").getTexture("shadow"));
+					shadow.pivotX = Math.ceil(shadow.width * 0.5);
+					shadow.pivotY = Math.ceil(shadow.height * 0.5);
+					shadow.y = 10;
+					addChild(shadow);
+					
 					objImg = new ObjetoAsset(objectData.objectInfo.object_id,texturesScene, globalResources.loaderContext);
 					objImg.pivotY = 27;
 					objImg.filter = hoverFilter;
 					objImg.useHandCursor = true;
+					if (objectData.ghostAlpha) {
+						objImg.alpha = 0.30;
+						shadow.alpha = 0.30;
+					}
 					addChild(objImg);
 					objImg.addEventListener(TouchEvent.TOUCH, onObjectClick);
 					
@@ -139,11 +152,11 @@ package com.tucomoyo.aftermath.Clases
 					type = 12;
 					isPickable = false;
 					//expandSound = new sound (resources.pref_url, "sounds/menu-expand.mp3",0,0,1);
-					
+					score = 50;
 					Odialog = new Dialogs(globalResources, texturesScene, soundsScene, -25, -10);
 					Odialog.linesDialog(objectData.objectInfo.name,1);
 					Odialog.x-=((Odialog.width*0.5)-25);
-					Odialog.y-=100;
+					Odialog.y -= 100;
 					Odialog.visible=false;
 					addChild(Odialog);
 					
@@ -155,6 +168,7 @@ package com.tucomoyo.aftermath.Clases
 					objImg.useHandCursor = true;
 					objImg.pivotY = 27;
 					objImg.animation = false;
+					if (objectData.ghostAlpha) objImg.alpha = 0.30;
 					addChild(objImg);
 					
 					img = new Image (texturesScene.getAtlas(WorldAssetes).getTexture("Crystals_Pickup"));
@@ -200,6 +214,13 @@ package com.tucomoyo.aftermath.Clases
 					if (objectData.objectName == "Cgel") type = 3;
 					if (objectData.objectName == "Fuel") type = 4;
 					isPickable = true;
+					
+					shadow = new Image (texturesScene.getAtlas("chopper").getTexture("shadow"));
+					shadow.pivotX = Math.ceil(shadow.width * 0.5);
+					shadow.pivotY = Math.ceil(shadow.height * 0.5);
+					shadow.y = 10;
+					addChild(shadow);
+					
 					img = new Image (texturesScene.getAtlas(WorldAssetes).getTexture(objectData.objectName));
 					img.pivotX=Math.ceil(img.width/2);
 					img.pivotY = img.height - tileMitad;
@@ -345,6 +366,20 @@ package com.tucomoyo.aftermath.Clases
 					type = 25;
 					collisionArea = new Point(50,25);
 					break;
+					
+				case "bishcoins":
+					isPickable = true;
+					
+					img = new Image (texturesScene.getAtlas(WorldAssetes).getTexture(objectData.objectName));
+					img.pivotX=Math.ceil(img.width/2);
+					img.pivotY = img.height - tileMitad;
+					img.filter = hoverFilter;
+					img.useHandCursor = true;
+					addChild(img);
+					img.addEventListener(TouchEvent.TOUCH, onObjectClick);
+					
+					collisionArea = new Point(50,25);
+					break;
 			}
 			
 			this.visible = false;
@@ -356,7 +391,8 @@ package com.tucomoyo.aftermath.Clases
 			removeChild(img);
 			isPickable = true;
 			type = 1;
-			
+			score = 250;
+			numShot = 0;
 		}
 		
 		public function onObjectClick(e:TouchEvent):void {
@@ -533,6 +569,12 @@ package com.tucomoyo.aftermath.Clases
 			CMFilter.adjustBrightness(bright);
 		}
 		
+		public function scoreReturn():Number {
+			
+			return (numShot > 0)? Number(score / Number(numShot)) : score;
+			
+		}
+		
 		override public function dispose():void {
 			
 			this.removeChildren();
@@ -568,6 +610,11 @@ package com.tucomoyo.aftermath.Clases
 			if (dialog != null) {
 				dialog.dispose();
 				dialog = null;
+			}
+			
+			if (shadow != null) {
+				shadow.dispose();
+				shadow = null;
 			}
 			
 			objectData = null;

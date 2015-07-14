@@ -220,8 +220,7 @@ package com.tucomoyo.aftermath.Clases
 		public function createMiniMap():void {
 			
 			miniWorldMap = new MiniMap(tilemap.width, tilemap.height,texturesScene);
-			miniWorldMap.escaleX = globalResources.scaleX;
-			miniWorldMap.escaleY = globalResources.scaleY;
+			
 		}
 		
 		public function set_missionStart():void {
@@ -272,7 +271,7 @@ package com.tucomoyo.aftermath.Clases
 			var gridPos:Point = new Point();
 			var distance:int = 2;
 			var iter:int = 0;
-			trace(choppPos)
+			
 			while(!flag){
 			
 				var aleat:int = Math.random() * 4;
@@ -290,6 +289,7 @@ package com.tucomoyo.aftermath.Clases
 							var tween_01:Tween=new Tween(objDrop,2,"easeIn");
 							tween_01.animate("x",tilemap.pointTilePos(gridPos.x, gridPos.y).x);
 							starling.core.Starling.juggler.add(tween_01);
+							
 							
 							
 							flag = true;
@@ -395,6 +395,10 @@ package com.tucomoyo.aftermath.Clases
 					}
 					
 					break;
+					
+				default:
+						return;
+					break;
 			}
 			
 		
@@ -416,6 +420,18 @@ package com.tucomoyo.aftermath.Clases
 							tween_01.animate("x",tilemap.pointTilePos(gridPos.x, gridPos.y).x);
 							starling.core.Starling.juggler.add(tween_01);
 							
+							objDrop.shadow.y = 125;
+							objDrop.shadow.scaleX = 1.5;
+							objDrop.shadow.scaleY = 1.5;
+							objDrop.shadow.alpha = 0.5;
+							var tween_02:Tween=new Tween(objDrop.shadow,2,"easeOutBounce");
+							tween_02.animate("y", 10);
+							tween_02.animate("scaleX", 1);
+							tween_02.animate("scaleY", 1);
+							tween_02.fadeTo(1);
+							starling.core.Starling.juggler.add(tween_02);
+							
+							
 							flag = true;
 						}
 						break;
@@ -429,6 +445,18 @@ package com.tucomoyo.aftermath.Clases
 							var tween_101:Tween=new Tween(objDrop,2,"easeIn");
 							tween_101.animate("x",tilemap.pointTilePos(gridPos.x, gridPos.y).x);
 							starling.core.Starling.juggler.add(tween_101);
+							
+							objDrop.shadow.y = 125;
+							objDrop.shadow.scaleX = 1.5;
+							objDrop.shadow.scaleY = 1.5;
+							objDrop.shadow.alpha = 0.5;
+							var tween_102:Tween=new Tween(objDrop.shadow,2,"easeOutBounce");
+							tween_102.animate("y", 10);
+							tween_102.animate("scaleX", 1);
+							tween_102.animate("scaleY", 1);
+							tween_102.fadeTo(1);
+							starling.core.Starling.juggler.add(tween_102);
+							
 							
 							flag = true;
 						}
@@ -444,6 +472,18 @@ package com.tucomoyo.aftermath.Clases
 							tween_201.animate("x",tilemap.pointTilePos(gridPos.x, gridPos.y).x);
 							starling.core.Starling.juggler.add(tween_201);
 							
+							objDrop.shadow.y = 125;
+							objDrop.shadow.scaleX = 1.5;
+							objDrop.shadow.scaleY = 1.5;
+							objDrop.shadow.alpha = 0.5;
+							var tween_202:Tween=new Tween(objDrop.shadow,2,"easeOutBounce");
+							tween_202.animate("y", 10);
+							tween_202.animate("scaleX", 1);
+							tween_202.animate("scaleY", 1);
+							tween_202.fadeTo(1);
+							starling.core.Starling.juggler.add(tween_202);
+							
+							
 							flag = true;
 						}
 						break;
@@ -457,6 +497,17 @@ package com.tucomoyo.aftermath.Clases
 							var tween_301:Tween=new Tween(objDrop,2,"easeIn");
 							tween_301.animate("x",tilemap.pointTilePos(gridPos.x, gridPos.y).x);
 							starling.core.Starling.juggler.add(tween_301);
+							
+							objDrop.shadow.y = 125;
+							objDrop.shadow.scaleX = 1.5;
+							objDrop.shadow.scaleY = 1.5;
+							objDrop.shadow.alpha = 0.5;
+							var tween_302:Tween=new Tween(objDrop.shadow,2,"easeOutBounce");
+							tween_302.animate("y", 10);
+							tween_302.animate("scaleX", 1);
+							tween_302.animate("scaleY", 1);
+							tween_302.fadeTo(1);
+							starling.core.Starling.juggler.add(tween_302);
 							
 							
 							flag = true;

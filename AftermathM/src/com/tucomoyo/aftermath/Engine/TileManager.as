@@ -190,7 +190,7 @@ package com.tucomoyo.aftermath.Engine
 			
 			//Dibujar layers en el world map
 			llenarLayer(0);
-		//	if (getLayerPos("Debris") != 0) llenarLayer(getLayerPos("Debris"));
+			if (getLayerPos("Debris") != 0) llenarLayer(getLayerPos("Debris"));
 			if (getLayerPos("Buildings") != 0) llenarLayer(getLayerPos("Buildings"));
 			
 			addTileSprite();
@@ -400,7 +400,6 @@ package com.tucomoyo.aftermath.Engine
 				
 				tile.pivotX = tWidth * 0.5;
 				tile.pivotY = tHeight - (tileHeight * 0.5);
-				
 				return (tile);
 			}
 			

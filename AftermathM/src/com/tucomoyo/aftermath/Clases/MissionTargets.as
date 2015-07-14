@@ -66,25 +66,21 @@ package com.tucomoyo.aftermath.Clases
 			targetImage.alignPivot();
 			addChild(targetImage);
 			
-			//var p:Point = globalToLocal(new Point(250, 150));
-			//dialogo = new Dialogs(globalResources, textureScene, soundsScene,p.x,p.y);
 			dialogo = new Dialogs(globalResources, textureScene, soundsScene,52,40);
 			dialogo.createMissionTargetDialog(missionInfo);
 			dialogo.visible = false;
 			//addChild(dialogo);
 			
 			var complete:Image = new Image(textureScene.getAtlas(ButtonsAssets).getTexture("completed"));
-			//complete.pivotX = complete.width * 0.5;
-			//complete.pivotY = complete.height * 0.5;
 			complete.alignPivot();
 			complete.visible = false;
 			tempData.push(complete);
-			complete.visible = false;
 			addChild(complete);
 			
 			if (missionInfo.missionCompleted) {
-				this.touchable = false;
 				complete.visible = true;
+				complete.touchable = false;
+				stage.addEventListener(TouchEvent.TOUCH, onTargetClick);
 			}else{
 			
 				stage.addEventListener(TouchEvent.TOUCH, onTargetClick);
@@ -111,13 +107,18 @@ package com.tucomoyo.aftermath.Clases
 		
 		override public function dispose():void 
 		{
-			for (var i:uint = 0; i < tempData.length;++i) {
-				tempData[i].removeEventListeners();
-				tempData[i].dispose();
-				tempData[i] = null;
+			this.removeEventListeners();
+			
+			if (tempData != null) 
+			{
+				for (var i:uint = 0; i < tempData.length;++i) {
+					tempData[i].removeEventListeners();
+					tempData[i].dispose();
+					tempData[i] = null;
+				}
+				tempData.splice(0, tempData.length);
+				tempData = null;
 			}
-			tempData.splice(0, tempData.length);
-			tempData = null;
 			
 			super.dispose();
 		}

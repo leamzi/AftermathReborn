@@ -6,6 +6,7 @@ package com.tucomoyo.aftermath.Clases
 	import com.tucomoyo.aftermath.Engine.scrollBar;
 	import com.tucomoyo.aftermath.Engine.SoundManager;
 	import com.tucomoyo.aftermath.GlobalResources;
+	import com.tucomoyo.aftermath.Screens.MegaMap;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.system.System;
@@ -63,6 +64,10 @@ package com.tucomoyo.aftermath.Clases
 		private var junkCount:int;
 		private var retryOrSaveCount:int;
 		
+		private var currentScore:int;
+		public var scoreCounter:int = 0;
+		private var scoreText:TextField;
+		
 		private var labScreen:Image;
 		
 		public var megatile_id:int;
@@ -98,10 +103,12 @@ package com.tucomoyo.aftermath.Clases
 		}
 		
 		public function createComicList(_comicInfo:Vector.<Object>):void {
+			
 			var subFrame:Image;
 			var comicImg:ImageLoader;
 			var text:TextField;
 			var playComicBtn:Button;
+			
 			var marcoFondo:Image = new Image (texturesScene.getAtlas("Gui").getTexture("guiFrame01"));
 			addChild(marcoFondo);
 			
@@ -159,6 +166,8 @@ package com.tucomoyo.aftermath.Clases
 			
 			mission = _mission;
 			
+			var extras:Object = (mission.extras != "")?JSON.parse(mission.extras):{picked:"?",total:"?",crystal:100};
+			
 			var marcoFondo:Image = new Image(texturesScene.getAtlas("Gui").getTexture("guiFrame01"));
 			addChild(marcoFondo);
 			
@@ -190,7 +199,7 @@ package com.tucomoyo.aftermath.Clases
 			addChild(missioDescription);
 			
 			var missionImage:ImageLoader = new ImageLoader(mission.missionImage, globalResources.loaderContext,240,180);
-			missionImage.x=148;
+			missionImage.x = 148;
 			missionImage.y = 60;
 			tempData.push(missionImage);
 			addChild(missionImage);
@@ -202,6 +211,55 @@ package com.tucomoyo.aftermath.Clases
 			playMissionBtn.addEventListener(Event.TRIGGERED, MissionBtnClick);
 			tempData.push(playMissionBtn);
 			addChild(playMissionBtn);
+			
+			var hudCristal:Image = new Image (texturesScene.getAtlas(ButtonsAssets).getTexture("hudCrystals"));
+			hudCristal.x = 80;
+			hudCristal.y = 255;
+			tempData.push(hudCristal);
+			addChild(hudCristal);
+			hudCristal = null;
+			
+			var hudTrophies:Image = new Image (texturesScene.getAtlas(ButtonsAssets).getTexture("hudTrophies"));
+			hudTrophies.x = 20;
+			hudTrophies.y = 255;
+			tempData.push(hudTrophies);
+			addChild(hudTrophies);
+			hudTrophies = null;
+			
+			var scoreStar:Image = new Image (texturesScene.getAtlas(ButtonsAssets).getTexture("hub-new"));
+			scoreStar.x = 350;
+			scoreStar.y = 256;
+			tempData.push(scoreStar);
+			addChild(scoreStar);
+			scoreStar = null;
+			
+			var missionTrophies:TextField = new TextField(30,15,extras.picked+"/"+extras.total,globalResources.fontName,14,0xffffff);
+			missionTrophies.hAlign = "left";
+			//missionTrophies.border = true;
+			missionTrophies.vAlign = "top";
+			missionTrophies.x = 32;
+			missionTrophies.y = 286;
+			tempData.push(missionTrophies);
+			addChild(missionTrophies);
+			
+			var missionCrystals:TextField = new TextField(35,15,extras.crystal+"%",globalResources.fontName,14,0xffffff);
+			missionCrystals.hAlign = "left";
+			missionCrystals.vAlign = "top";
+			//missionCrystals.border = true;
+			missionCrystals.x = 92;
+			missionCrystals.y = 286;
+			tempData.push(missionCrystals);
+			addChild(missionCrystals);
+			
+			var missionScore:TextField = new TextField(120,40,_mission.mission_score,globalResources.fontName,36,0xffffff);
+			missionScore.hAlign = "right";
+			missionScore.vAlign = "top";
+			//missionScore.autoScale = true;
+			//missionScore.border = true;
+			missionScore.x = 410;
+			missionScore.y = 265;
+			tempData.push(missionScore);
+			addChild(missionScore);
 			
 			var closeDialogBtn:Button = new Button (texturesScene.getAtlas(ButtonsAssets).getTexture("guiClose"));
 			closeDialogBtn.addEventListener(Event.TRIGGERED, closeBtnClick);
@@ -215,7 +273,7 @@ package com.tucomoyo.aftermath.Clases
 				private function MissionBtnClick():void
 				{
 					soundsScene.getSound("Gui_Button_accept").play(globalResources.volume);
-					globalResources.trackEvent("Button-Triggered", "user: " + globalResources.user_id, "Mission Screen: btn_startmission-"+mission.missionID);
+					globalResources.trackEvent("Button-Triggered", "user: " + globalResources.user_id, "Mission Screen: btn_startmission-" + mission.mission_id);
 					if (mission.missionID == "1") 
 					{
 						trace("mission tutorial");
@@ -223,13 +281,12 @@ package com.tucomoyo.aftermath.Clases
 						
 					}else {
 						trace("mission normal");
-						this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN, { type:"gamePlayScreen", data: { missionId: mission.mission_id, src:mission.source, mission_user_id: mission.id,  megatile_id: mission.megatile_id}}, true));
+						this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN, { type:"gamePlayScreen", data: { missionId: mission.mission_id, src:mission.source, mission_user_id: mission.id,  megatile_id: mission.megatile_id, missionCompleted: mission.missionCompleted, vehicleData:mission.vehicleData}}, true));
 					}
 				}
 				private function closeBtnClick():void
 				{
 					soundsScene.getSound("Gui_Button_denied").play(globalResources.volume);
-					//missionSelectedStop();
 					this.visible = false;
 				}
 				
@@ -799,11 +856,9 @@ package com.tucomoyo.aftermath.Clases
 			if (touch == null){
 				return;
 			}
-			
-			if (touch.phase == TouchPhase.BEGAN) {
-				
+			if (touch.phase == TouchPhase.HOVER){
 				var pos:Point = this.globalToLocal(new Point(touch.globalX, touch.globalY));
-				trace(pos);
+				
 				if(objectDialog.length <1)return;
 				(objectDialog[0] as ContextualMenu).DownState.visible = false;
 				(objectDialog[1] as ContextualMenu).DownState.visible = false;
@@ -830,7 +885,8 @@ package com.tucomoyo.aftermath.Clases
 					(objectDialog[4] as ContextualMenu).DownState.visible = true;
 					direction=5;
 				}
-				
+			}
+			if (touch.phase == TouchPhase.BEGAN) {
 				switch (direction) {
 					case 1:
 						this.dispatchEvent(new GameEvents(GameEvents.GAME_STATE,{type:"gameResume", resumeId:3},true));
@@ -1383,6 +1439,9 @@ package com.tucomoyo.aftermath.Clases
 			
 			mission = _missionData.missionData;
 			missionData = _missionData;
+			currentScore = missionData.score;
+			
+			trace("Score: " + currentScore);
 			
 			trophiesCount = (missionData.pickupsId as Array).length; 
 			junkCount = (missionData.destroyPickupsId as Array).length; 
@@ -1392,20 +1451,21 @@ package com.tucomoyo.aftermath.Clases
 			
 			var fondoComplete:Image = new Image(texturesScene.getAtlas("Gui").getTexture("guiFrame01"));
 			fondoComplete.scaleX = 1.20;
+			fondoComplete.scaleY = 1.22;
 			tempData.push(fondoComplete);
 			addChild(fondoComplete);
 			fondoComplete = null;
 			
 			var completeFondo:Image = new Image(texturesScene.getAtlas("Gui").getTexture("guiMissionComplete"));
 			completeFondo.x = 9;
-			completeFondo.y = 30;
+			completeFondo.y = 51;
 			tempData.push(completeFondo);
 			addChild(completeFondo);
 			completeFondo = null;
 			
 			var title:TextField = new TextField(530, 40, "", globalResources.fontName, 32, 0xFFFFFF);
 			title.x = 0;
-			title.y = 5;
+			title.y = 10;
 			title.hAlign = "center";
 			title.vAlign = "center";
 			title.text = globalResources.textos[globalResources.idioma].Screens.GamePlay.Finish.pag1;
@@ -1417,7 +1477,7 @@ package com.tucomoyo.aftermath.Clases
 			
 			var level:TextField = new TextField(108, 32, "", globalResources.fontName, 28, 0xFFFFFF);
 			level.x = 540;
-			level.y = 5;
+			level.y = 10;
 			level.hAlign = "center";
 			level.vAlign = "top";
 			level.text = globalResources.textos[globalResources.idioma].Screens.GamePlay.Finish.pag6 + missionData.level;
@@ -1504,17 +1564,15 @@ package com.tucomoyo.aftermath.Clases
 			
 			var bigCrystal:Image = new Image (texturesScene.getAtlas("worldObjects").getTexture("Crystals_01"));
 			bigCrystal.x = 30;
-			bigCrystal.y = 234;
-			//bigCrystal.scaleX = 0.5;
-			//bigCrystal.scaleY = 0.5;
+			bigCrystal.y = 230;
 			bigCrystal.alpha = 0;
 			tempData.push(bigCrystal);
 			addChild(bigCrystal);
 			completeVector.push(bigCrystal);
 			bigCrystal = null;
 			
-			var crystalText:TextField = new TextField(250, 100, "100%", globalResources.fontName, 48, 0xFFFFFF);
-			crystalText.x = 80;
+			var crystalText:TextField = new TextField(120, 50, "100%", globalResources.fontName, 48, 0xFFFFFF);
+			crystalText.x = 150;
 			crystalText.y = 240;
 			crystalText.hAlign = "left";
 			crystalText.vAlign = "top";
@@ -1523,6 +1581,15 @@ package com.tucomoyo.aftermath.Clases
 			addChild(crystalText);
 			completeVector.push(crystalText);
 			crystalText = null;
+			
+			var pointsStar:Image = new Image (texturesScene.getAtlas("Botones").getTexture("hub-new"));
+			pointsStar.x = 300;
+			pointsStar.y = 235;
+			pointsStar.alpha = 0;
+			tempData.push(pointsStar);
+			addChild(pointsStar);
+			completeVector.push(pointsStar);
+			pointsStar = null;
 			
 			myTrophiesMeter = new objectsCounterMeter(0, globalResources, texturesScene, soundsScene, trophiesCount);
 			myTrophiesMeter.x = 560;
@@ -1540,7 +1607,7 @@ package com.tucomoyo.aftermath.Clases
 			missionCompleteTween.onComplete = nextFade;
 			Starling.juggler.add(missionCompleteTween);
 			
-			globalResources.trackEvent("Button-Triggered", "user: " + globalResources.user_id, "Gameplay:Mission Complete");
+			globalResources.trackEvent("Button-Triggered", "user: " + globalResources.user_id, "Gameplay: Mission "+ mission.missionId +" Complete");
 		}
 		
 		private function nextFade():void
@@ -1566,34 +1633,160 @@ package com.tucomoyo.aftermath.Clases
 			myJunksMeter.updateMeter(junkCount, "Complete");
 		}
 		
+		public function scoreTweenAnimation():void
+		{
+			retryOrSaveCount++;
+			if (retryOrSaveCount == 2) 
+			{
+				trace("Animation Score");
+				scoreText = new TextField(140, 50, scoreCounter.toString(), globalResources.fontName, 48, 0xFFFFFF);
+				scoreText.autoScale = true;
+				scoreText.x = 385;
+				scoreText.y = 240;
+				scoreText.hAlign = "right";
+				scoreText.vAlign = "top";
+				tempData.push(scoreText);
+				addChild(scoreText);
+				
+				
+				var scoreTween:Tween = new Tween (this, 4, Transitions.EASE_IN);
+				scoreTween.animate("scoreCounter", currentScore);
+				scoreTween.onUpdate = setValueScore;
+				scoreTween.onComplete = retryOrSave;
+				Starling.juggler.add(scoreTween);
+				retryOrSaveCount = 0;
+				
+			}
+			
+		}
+		
+		private function setValueScore():void
+		{
+			soundsScene.getSound("score").play(globalResources.volume);
+			scoreText.text = scoreCounter.toString();
+		}
+		
 		public function retryOrSave():void {
 			var retryBtn:Button;
 			var saveBtn:Button;
 			var textA:TextField;
 			
-			retryOrSaveCount++;
-			if (retryOrSaveCount == 2) 
+			soundsScene.getSound("score").stop();
+				
+			textA = new TextField(410, 50, globalResources.textos[globalResources.idioma].Screens.GamePlay.Finish.pag5, globalResources.fontName, 20, 0xFFFFFF);
+			textA.hAlign = "right";
+			textA.vAlign = "top";
+			textA.x = 10;
+			textA.y = 318;
+			addChild(textA);
+		
+			retryBtn = new Button(texturesScene.getAtlas("Botones").getTexture("btnBack2"));
+			retryBtn.x = 460;
+			retryBtn.y = 320;
+			retryBtn.addEventListener(Event.TRIGGERED, retryAndCleanMission);
+			addChild(retryBtn);
+			
+			saveBtn = new Button(texturesScene.getAtlas("Botones").getTexture("btnAccept"));
+			saveBtn.x = 560;
+			saveBtn.y = 318;
+			saveBtn.addEventListener(Event.TRIGGERED, saveAndComplete);
+			addChild(saveBtn);
+			
+			retryOrSaveCount = 0;
+			scoreCounter = 0;
+			
+		}
+		
+		public function megamapEndedDialog():void
+		{
+			var blackQuad:Quad = new Quad(760, 480, 0x000000);
+			blackQuad.alpha = 0.90;
+			addChild(blackQuad);
+			
+			var fondo:Image = new Image(texturesScene.getAtlas("screens").getTexture("congratulationImg"));
+			fondo.x = 60;
+			tempData.push(fondo);
+			addChild(fondo);
+			fondo = null;
+			
+			var textfield1:TextField = new TextField(360, 60, "", "ERASBD", 56, 0xFFCB00);
+			textfield1.text = globalResources.textos[globalResources.idioma].Screens.Megamap.megamapCompleted.pag1;
+			textfield1.hAlign = "center";
+			textfield1.vAlign = "top";
+			//textfield1.border = true;
+			textfield1.x = 196;
+			textfield1.y = 40;
+			tempData.push(textfield1);
+			addChild(textfield1);
+			
+			var textfield2:TextField = new TextField(260, 70, "", globalResources.fontName, 17, 0xFFFFFF);
+			textfield2.text = globalResources.textos[globalResources.idioma].Screens.Megamap.megamapCompleted.pag2;
+			//textfield2.border = true;
+			textfield2.hAlign = "center";
+			textfield2.vAlign = "top";
+			textfield2.autoScale = true;
+			textfield2.x = 290;
+			textfield2.y = 224;
+			tempData.push(textfield2);
+			addChild(textfield2);
+			
+			var resumeBtn:Button = new Button (texturesScene.getAtlas(ButtonsAssets).getTexture("btnAccept"));;
+			resumeBtn.x = 327;
+			resumeBtn.y = 300;
+			resumeBtn.addEventListener(Event.TRIGGERED, closeBtnClick);
+			tempData.push(resumeBtn);
+			addChild(resumeBtn);
+			resumeBtn = null;
+			
+		}
+		
+		public function megamapDeployableMenu():void
+		{
+			var slideImg:Image = new Image(texturesScene.getAtlas("Gui").getTexture("guiDeploy"));
+			tempData.push(slideImg);
+			addChild(slideImg);
+			slideImg = null;
+			
+			var labRoomBtn:Button = new Button(texturesScene.getAtlas(ButtonsAssets).getTexture("labButton"));
+			labRoomBtn.name = "labBtn";
+			labRoomBtn.x = 38;
+			labRoomBtn.y = 10;
+			labRoomBtn.addEventListener(Event.TRIGGERED, onBtnClicked);
+			tempData.push(labRoomBtn);
+			this.addChild(labRoomBtn);
+			
+			var comicBtn:Button = new Button(texturesScene.getAtlas(ButtonsAssets).getTexture("comicButton"));
+			comicBtn.name = "comicBtn";
+			comicBtn.x = 38;
+			comicBtn.y = 91;
+			comicBtn.addEventListener(Event.TRIGGERED, onBtnClicked);
+			this.addChild(comicBtn);
+			
+			var optionBtn:Button = new Button(texturesScene.getAtlas(ButtonsAssets).getTexture("configBtn"));
+			optionBtn.name = "optionBtn";
+			optionBtn.x = 109;
+			optionBtn.y = 17;
+			optionBtn.addEventListener(Event.TRIGGERED, onBtnClicked);
+			this.addChild(optionBtn);
+		}
+		
+		public function onBtnClicked(e:Event):void 
+		{
+			var tempBtn:Button;
+			tempBtn = (e.currentTarget as Button);
+			trace(tempBtn.name);
+			switch (tempBtn.name) 
 			{
-				retryBtn = new Button(texturesScene.getAtlas("Botones").getTexture("btnBack2"));
-				retryBtn.x = 195;
-				retryBtn.y = 232;
-				retryBtn.addEventListener(Event.TRIGGERED, retryAndCleanMission);
-				addChild(retryBtn);
-				
-				textA = new TextField(200, 62, globalResources.textos[globalResources.idioma].Screens.GamePlay.Finish.pag5, globalResources.fontName, 16, 0xFFFFFF);
-				textA.hAlign = "left";
-				textA.vAlign = "top";
-				textA.x = 290;
-				textA.y = 234;
-				addChild(textA);
-				
-				saveBtn = new Button(texturesScene.getAtlas("Botones").getTexture("btnAccept"));
-				saveBtn.x = 450;
-				saveBtn.y = 232;
-				saveBtn.addEventListener(Event.TRIGGERED, saveAndComplete);
-				addChild(saveBtn);
-				
-				retryOrSaveCount = 0;
+				case "labBtn":
+					(this.parent as MegaMap).onTrophyRoom();
+				break;
+				case "comicBtn":
+					(this.parent as MegaMap).onComicBtn();
+				break;
+				case "optionBtn":
+					(this.parent as MegaMap).onOptionBtn();
+				break;
+				default:
 			}
 		}
 		

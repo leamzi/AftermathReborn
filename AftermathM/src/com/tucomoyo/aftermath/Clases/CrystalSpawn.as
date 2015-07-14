@@ -8,7 +8,9 @@ package com.tucomoyo.aftermath.Clases
 	import flash.events.TimerEvent;
 	import flash.geom.Point;
 	import flash.utils.Timer;
+	import starling.core.Starling;
 	import starling.display.Image;
+	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	
@@ -24,6 +26,7 @@ package com.tucomoyo.aftermath.Clases
 		public static const CHASE:String = "chaseMode";
 		public static const PATROL:String = "patrolMode";
 		public static const ALERT:String = "alertMode";
+		public static const BORN:String = "bornMode";
 		
 		public var directions:Vector.<Point> = new Vector.<Point>();
 		public var directionsShoot:Vector.<Point> = new Vector.<Point>();
@@ -37,7 +40,7 @@ package com.tucomoyo.aftermath.Clases
 		public var attackRange:int;
 		public var objective:Sprite;
 		public var mode:String = PATROL;
-		public var chaseSignal:Image;
+		public var chaseSignal:MovieClip;
 		public var checkChase:int;
 		public var checkAlert:int;
 		public var limitShoot:int;
@@ -72,10 +75,33 @@ package com.tucomoyo.aftermath.Clases
 			limitShoot = objectData.bullet.timeShoot;
 			alertRange = objectData.alertRange;
 			
-			chaseSignal = new Image(texturesScene.getAtlas(objectData.animations.atlas).getTexture("chaseSignal"));
+			chaseSignal = new MovieClip(texturesScene.getAtlas(objectData.animations.atlas).getTextures("alert"),5);
 			chaseSignal.y = -50;
 			chaseSignal.visible = false;
+			Starling.juggler.add(chaseSignal);
 			npcFront.addChild(chaseSignal);
+			
+			bornEnemie();
+			
+			
+			
+		}
+		
+		public function bornEnemie():void {
+			
+			npcSprite.removeChildAt(0);
+			(animations["enemigoA_spawn_"] as MovieClip).currentFrame = 0;
+			(animations["enemigoA_spawn_"] as MovieClip).loop = false;
+			(animations["enemigoA_spawn_"] as MovieClip).addEventListener(Event.COMPLETE,onBorn);
+			npcSprite.addChild(animations["enemigoA_spawn_"]);
+			
+		}
+		
+		public function onBorn(e:Event):void {
+			
+			(animations["enemigoA_spawn_"] as MovieClip).removeEventListener(Event.COMPLETE, onBorn);
+			npcSprite.removeChildAt(0);
+			npcSprite.addChild(animations[indexName[0]]);
 			
 			tymer = new Timer(objectData.timeDecision*1000);
 			tymer.start();
@@ -84,7 +110,6 @@ package com.tucomoyo.aftermath.Clases
 			tymer.addEventListener(TimerEvent.TIMER, onTime);
 			
 		}
-		
 		
 		private function onTime(e:TimerEvent):void 
 		{
@@ -344,6 +369,7 @@ package com.tucomoyo.aftermath.Clases
 			tymer.stop();
 			tymer = null;
 			objective = null; 
+			Starling.juggler.remove(chaseSignal);
 			chaseSignal.dispose();
 			chaseSignal = null;
 

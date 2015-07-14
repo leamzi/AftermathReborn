@@ -2,11 +2,11 @@ package com.tucomoyo.aftermath.Screens
 {
 	import com.tucomoyo.aftermath.Connections.Connection;
 	import com.tucomoyo.aftermath.Engine.AssetManager;
-	import com.tucomoyo.aftermath.Engine.Assets;
 	import com.tucomoyo.aftermath.Engine.GameEvents;
 	import com.tucomoyo.aftermath.Engine.Scene;
 	import com.tucomoyo.aftermath.Engine.SoundManager;
 	import com.tucomoyo.aftermath.GlobalResources;
+	import flash.external.ExternalInterface;
 	import flash.system.LoaderContext;
 	import starling.animation.Tween;
 	import starling.display.Button;
@@ -45,12 +45,19 @@ package com.tucomoyo.aftermath.Screens
 		public function onAddedtoStage(e:Event):void {
 			this.removeEventListener(starling.events.Event.ADDED_TO_STAGE, onAddedtoStage);
 			connect = new Connection();
+			connect.resources = globalResources;
 			soundsScene.addSound(IntroSound);
 			soundsScene.addSound("Gui_Button_accept", 0);
 			texturesScene.addTexture(ScreenAssets, "Backgrounds");
 			texturesScene.addTexture(ButtonsAssets, "Buttons");
 			texturesScene.addEventListener(GameEvents.TEXTURE_LOADED, onTextureComplete);
 			texturesScene.loadTextureAtlas();
+		}
+		
+		public function responseFace(faceResponse:String):void {
+			
+			globalResources.log(faceResponse);
+			
 		}
 		
 		public function onTextureComplete(e:GameEvents):void {
@@ -70,8 +77,8 @@ package com.tucomoyo.aftermath.Screens
 			this.addChild(logo);
 
 			startText = new TextField(400, 100, "", globalResources.fontName, 32, 0xFFFFFF);
-			startText.text = globalResources.textos[globalResources.idioma].Screens.Welcome.start;
-			startText.x = (380) - (startText.width * 0.5);
+			startText.text=globalResources.textos[globalResources.idioma].Screens.Welcome.start
+			startText.x = (globalResources.stageWidth * 0.5) - (startText.width * 0.5);
 			startText.y = 294;
 			startText.alpha = 0;
 			startText.hAlign = "center";
@@ -82,8 +89,13 @@ package com.tucomoyo.aftermath.Screens
 			this.addEventListener(Event.ENTER_FRAME, onUpdate);
 			this.addEventListener(TouchEvent.TOUCH, onTrigger);
 
+			globalResources.trackEvent("Screen View", "user: " + globalResources.user_id, "Login Screen");
 			
+			
+		
 		}
+		
+		
 		
 		public function onUpdate(e:Event):void {
 			
@@ -152,16 +164,44 @@ package com.tucomoyo.aftermath.Screens
 			}
 			if (touch.phase == TouchPhase.BEGAN) 
 			{
+				trace("Aqui");
 				globalResources.trackEvent("Button-Triggered", "user: " + globalResources.user_id, "WelcomeScreen: btn_empezar");
-				trace("Tutorial Done: "+globalResources.tutorialDone);
+				trace("Tutorial Done: " + globalResources.tutorialDone);
 				
-				if (globalResources.tutorialDone) 
-				{
-					this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN, {type:"missionScreen", megatile_id:0}));
-				}else {
-					createTutorialInfo();
+				connect.request_facebook("/me/friends");
+				if (ExternalInterface.available) {
+					
+					ExternalInterface.addCallback("responseFaceAPI", faceResponse);
+					
+				}else{
+				
+					if (globalResources.tutorialDone) 
+					{
+						this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN, {type:"missionScreen", megatile_id:0}));
+					}else {
+						createTutorialInfo();
+					}
+				
 				}
+				
+				
 			}
+		}
+		
+		public function faceResponse(e:Object):void 
+		{
+			
+			globalResources.friendsList = e.data;
+			
+			
+			if (globalResources.tutorialDone) 
+					{
+				this.dispatchEvent(new GameEvents(GameEvents.CHANGE_SCREEN, {type:"missionScreen", megatile_id:0}));
+			}else {
+				createTutorialInfo();
+			}
+			
+			
 		}
 	}
 

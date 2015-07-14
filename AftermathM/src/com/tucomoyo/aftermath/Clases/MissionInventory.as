@@ -40,6 +40,7 @@ package com.tucomoyo.aftermath.Clases
 			var fondo:Image = new Image(texturesScene.getAtlas("Gui").getTexture("guiFrameOption"));
 			fondo.scaleX = 0.7;
 			fondo.scaleY = 0.7;
+			tempData.push(fondo);
 			parentSprite.addChild(fondo);
 			
 			var title_text:TextField = new TextField (200,50,"",globalResources.fontName,14,0xffffff);
@@ -125,7 +126,7 @@ package com.tucomoyo.aftermath.Clases
 			carga.splice(_i,1);
 			size--;
 			for(var _j:int=0;_j<size;_j++){
-				carga[_j].objectImage.x=((12*(_j%4))+((_j%4)*60));
+				carga[_j].objectImage.x=((12*(_j%4))+((_j%4)*60))+15;
 				carga[_j].objectImage.y=((12*(Math.floor(_j*0.25)))+(Math.floor(_j*0.25)*60))+30;
 			}
 			this.dispatchEvent(new GameEvents(GameEvents.DROP_OBJECT,o_aux,true));
@@ -160,6 +161,12 @@ package com.tucomoyo.aftermath.Clases
 			
 			globalResources = null;
 			texturesScene = null;
+			for (var j:uint = 0; j < carga.length;++j ) {
+				carga[j].dispose();
+				carga[j] = null;
+			}
+			carga.splice(0, carga.length);
+			carga = null;
 			
 			for (var i:uint = 0; i < tempData.length;++i) {
 				tempData[i].removeEventListeners();

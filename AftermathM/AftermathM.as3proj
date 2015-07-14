@@ -56,6 +56,7 @@
     <element path="analytics.swc" />
     <element path="Starling-Extension-Graphics.swc" />
     <element path="nape.swc" />
+    <element path="feathers.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

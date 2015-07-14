@@ -32,7 +32,10 @@ package com.tucomoyo.aftermath.Engine
 		public var npcSprite:Sprite = new Sprite();
 		public var npcFront:Sprite = new Sprite();
 		public var shadow:Image;
+		public var score:Number;
+		public var numShot:int = 0;
 		public var imageDirection:int = 0;
+		public var lootBonus:int = 0;
 		public var noAnimation:Boolean = false;
 		
 		public function Npc(born:Point, _texturesScene:AssetManager, _soundsScene:SoundManager, _globalResources:GlobalResources, _objectData:Object = null) 
@@ -48,9 +51,11 @@ package com.tucomoyo.aftermath.Engine
 			hp = _objectData.hp;
 			damage = _objectData.damage;
 			velocity = _objectData.velocity;
+			score = (_objectData.score != undefined) ? _objectData.score : 150;
 			totalVistas = objectData.animations.totalVistas; 
 			detectRange = _objectData.detectRange;
 			offset =  objectData.animations.offset;
+			lootBonus = objectData.loot;
 			
 			this.x = born.x;
 			this.y = born.y;
@@ -142,6 +147,12 @@ package com.tucomoyo.aftermath.Engine
 				}
 				
 			}
+			
+		}
+		
+		public function scoreReturn():Number {
+			
+			return (numShot > 0)? Number(score / Number(numShot)) : score;
 			
 		}
 		

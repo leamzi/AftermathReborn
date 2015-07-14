@@ -11,6 +11,7 @@ package com.tucomoyo.aftermath.Screens
     import com.tucomoyo.aftermath.Engine.Scene;
     import com.tucomoyo.aftermath.Engine.TileManager;
     import com.tucomoyo.aftermath.GlobalResources;
+	import flash.events.TimerEvent;
     import flash.geom.Point;
     import flash.geom.Rectangle;
 	import flash.utils.Timer;
@@ -75,6 +76,7 @@ package com.tucomoyo.aftermath.Screens
 		private var success:Dialogs;
 		
 		private var hatchDoor:MovieClip;
+		private var hatchPosition:Point; 
 		
 		private var tileFactor:Number;
         private var tileRelation:Number;
@@ -103,6 +105,7 @@ package com.tucomoyo.aftermath.Screens
 		private var mission_Id:String;
 		
 		public var gameplayTime:Timer = new Timer(1000);
+		private var timerSec:int = 0;
         
 		private var cryogelBullets:Vector.<Particle> = new Vector.<Particle>;
         public var mapPickups:Vector.<Objetos> = new Vector.<Objetos>;
@@ -143,7 +146,6 @@ package com.tucomoyo.aftermath.Screens
 			soundsScene.addSound("tutorialBGM", -1);
 			soundsScene.addSound("explosive", 0);
 			soundsScene.addSound("chopper_destroyed", 0);
-			soundsScene.addSound("Gui_beep", 0);
 			soundsScene.addSound("Gui_Button_accept", 0);
 			soundsScene.addSound("Gui_Button_click", 0);
 			soundsScene.addSound("Gui_Button_denied", 0);
@@ -161,6 +163,7 @@ package com.tucomoyo.aftermath.Screens
             texturesScene.addTexture("chooperFull", "vehicles");
             texturesScene.addTexture("Buildings", "World");
             texturesScene.addTexture("worldObjects", "World");
+            texturesScene.addTexture("cryogel", "vehicles");
 			texturesScene.addTexture("vehicleShield", "vehicles");
 			texturesScene.addTexture("vehicleExplosion", "vehicles");
 			texturesScene.addTexture("tutorial", "Tutorial");
@@ -183,6 +186,8 @@ package com.tucomoyo.aftermath.Screens
 			world.set_missionStart();
             addChild(world);
             
+			hatchPosition = new Point(world.tilemap.center.x,world.tilemap.center.y);
+			
 			world.miniWorldMap.addMiniVehicle(new Point(world.tilemap.startMission.x,world.tilemap.startMission.x),texturesScene);
 			addChild(world.miniWorldMap);
 			
@@ -225,6 +230,7 @@ package com.tucomoyo.aftermath.Screens
             globalResources.deactivateSplash();
             globalResources.trackPageview("/Tutorial Gameplay");
 			gameplayTime.start();
+			gameplayTime.addEventListener(TimerEvent.TIMER, onTimer);
 			
 			world.soundsScene.getSound("tutorialBGM").play(globalResources.volume);
 			world.hatchObj.hatchDoor.play();
@@ -263,8 +269,7 @@ package com.tucomoyo.aftermath.Screens
             
             bitmapsScene.removeEventListener(GameEvents.TEXTURE_LOADED, onSimpleTexturesLoad);
             connect.addEventListener(GameEvents.REQUEST_RECIVED, onReciveMissionSource);
-			connect.get_src_mission(globalResources.pref_url+"maps/tutorial.json");
-            //onInit();
+			connect.get_src_mission(globalResources.pref_url+"maps/tutorialShort.json");
             
         }
 		
@@ -386,7 +391,7 @@ package com.tucomoyo.aftermath.Screens
 			var save:String
 			save = JSON.stringify(_save);
 			connect.addEventListener(GameEvents.REQUEST_RECIVED, saveMissionStatusComplete);
-			connect.save_state(parseInt(globalResources.user_id),-1,save);
+			connect.save_state(parseInt(globalResources.user_id),-1,save,"");
 		}
 		
 		private function saveMissionStatusComplete(e:GameEvents):void {
@@ -600,7 +605,7 @@ package com.tucomoyo.aftermath.Screens
 								break;
 								case 5:
 								nearHatch = true;
-										if (!exitMissionDialog) 
+										if (!exitMissionDialog && timerSec > 10) 
 										{
 											//if (dialog != null) { removeChild(dialog); dialog = null;}
 											var exitDialog:Dialogs = new Dialogs(globalResources, texturesScene, soundsScene, 180, globalResources.stageHeigth);
@@ -734,6 +739,7 @@ package com.tucomoyo.aftermath.Screens
 					tempData.push(tutoFinish);
 					addChild(tutoFinish);
 					tutorialFinish = true;
+					translateHatch();
 					this.dispatchEvent(new GameEvents(GameEvents.GAME_STATE, { type:"gamePause", pauseId:1 }, true));
 				}
 			}
@@ -743,7 +749,27 @@ package com.tucomoyo.aftermath.Screens
 				crystalBool = true;
 			}
         }
+		
+		private function onTimer(e:TimerEvent):void 
+		{
+			timerSec++;
+		}
         
+		public function translateHatch():void {
+			
+			var nameObject:String = hatchPosition.x.toString() + "," + hatchPosition.y.toString();
+			var hatchAux:Objetos = objetosScene.getObjeto(nameObject);
+			objetosScene.deleteObjeto(nameObject, false);
+			
+			hatchAux.visible = true;
+			hatchAux.x = world.tilemap.startMission.x+(20*world.tilemap.tileWidth);
+			hatchAux.y = world.tilemap.startMission.y+(20*world.tilemap.tileHeight);
+			nameObject = (hatchPosition.x+40).toString() + "," +hatchPosition.y.toString();
+			objetosScene.addObjeto(nameObject, hatchAux);
+			hatchAux = null;
+			
+		}
+		
         public function translate_fondo():void {
             var p:Point=new Point(0,0);
             if (chopper.canMove) {
@@ -1307,7 +1333,7 @@ package com.tucomoyo.aftermath.Screens
 					chopper.cryogel -= 0.05;
 					if (type == 0 || targetObject.type == 12) 
 					{
-						targetObject.hp -= 100;
+						targetObject.hp -= 300;
 						bulletLevel = 0;
 					}
 				break;
@@ -1316,7 +1342,7 @@ package com.tucomoyo.aftermath.Screens
 					chopper.cryogel -= 0.10;
 					if (type == 0 || targetObject.type == 12) 
 					{
-						targetObject.hp -= 200;
+						targetObject.hp -= 300;
 						bulletLevel = 0;
 					}
 				break;
@@ -1447,6 +1473,7 @@ package com.tucomoyo.aftermath.Screens
 			hud.dispose();
 			world.dispose();
 			gameplayTime.stop();
+			gameplayTime.removeEventListener(TimerEvent.TIMER, onTimer);
 			gameplayTime = null;
 			super.dispose();
 			

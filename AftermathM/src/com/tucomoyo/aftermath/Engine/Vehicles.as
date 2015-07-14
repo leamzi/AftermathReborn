@@ -33,6 +33,7 @@ package com.tucomoyo.aftermath.Engine
 		public var texturesScene:AssetManager;
 		public var soundsScene:SoundManager;
 		public var tempData:Array = new Array();
+		public var frontSprite:Sprite = new Sprite();
 		public var vehicleSprite:Sprite = new Sprite();
 		public var vehicleSpriteBack:Sprite = new Sprite();
 		
@@ -41,6 +42,9 @@ package com.tucomoyo.aftermath.Engine
 		
 		public var fuel:Number;
 		public var cryogel:Number;
+		public var damage:Number;
+		public var shieldValue:Number;
+		public var velocityValue:Number;
 		
 		public var targetObject:Objetos;
 		public var ptoPickup:Point = new Point();
@@ -50,6 +54,7 @@ package com.tucomoyo.aftermath.Engine
 		public var velocity:Point = new Point();
 		public var clickToMove:Boolean = false;
 		public var canMove:Boolean = false;
+		public var immunity:Boolean = false;
 		
 		private var imageDirection:int = 0;
 		private var vehicleAngle:Number;
@@ -64,27 +69,26 @@ package com.tucomoyo.aftermath.Engine
 		private var vehicleSO2:Image;
 		private var vehicleSO3:Image;
 		private var vehicleS:Image;	
-		
 		public var target01:Image;
 		public var target02:Image;
 		
 		public var shield:vehicleShield;
-		public var explosion:MovieClip;
 		
-		private var chargeAnimationN:MovieClip;
-		private var chargeAnimationNO1:MovieClip;
-		private var chargeAnimationNO2:MovieClip;
-		private var chargeAnimationNO3:MovieClip;
-		private var chargeAnimationO:MovieClip;
-		private var chargeAnimationSO1:MovieClip;
-		private var chargeAnimationSO2:MovieClip;
-		private var chargeAnimationSO3:MovieClip;
-		private var chargeAnimationS:MovieClip;
+		public var vehicleData:Object;
+		
+		public var explosion:MovieClip;
+		public var doubleClick:MovieClip;
+		//private var chargeAnimationN:MovieClip;
+		//private var chargeAnimationNO1:MovieClip;
+		//private var chargeAnimationNO2:MovieClip;
+		//private var chargeAnimationNO3:MovieClip;
+		//private var chargeAnimationO:MovieClip;
+		//private var chargeAnimationSO1:MovieClip;
+		//private var chargeAnimationSO2:MovieClip;
+		//private var chargeAnimationSO3:MovieClip;
+		//private var chargeAnimationS:MovieClip;
 		
 		public var GridPos:Point = new Point();
-		public var frontSprite:Sprite = new Sprite();
-		
-		public var immunity:Boolean = false;
 		
 		public var tymer:Timer = new Timer(2000, 1);
 		public var vehicleBody:Body = new Body(BodyType.DYNAMIC);
@@ -99,6 +103,20 @@ package com.tucomoyo.aftermath.Engine
 			
 			cryogel = 1;
 			fuel = 1;
+			shieldValue = 0.0;
+			damage = 100;
+			velocityValue = 200;
+			
+			vehicleData = (globalResources.profileData!=null)?globalResources.profileData.vehicleData:null;
+			
+			if (vehicleData != null) {
+				
+				cryogel += vehicleData.cryogel;
+				fuel += vehicleData.fuel;
+				shieldValue = vehicleData.shieldValue;
+				damage += vehicleData.damage;
+				velocityValue += vehicleData.velocityValue;
+			}
 			
 			tymer.addEventListener(TimerEvent.TIMER_COMPLETE,onImmunity);
 			
@@ -114,7 +132,11 @@ package com.tucomoyo.aftermath.Engine
 			
 			type = _type;
 			
-			vehicleN = new Image(texturesScene.getAtlas(type).getTexture(type + "_N"));
+			vehicleN = new Image(texturesScene.getAtlas(type).getTexture((globalResources.profileData.vehicleData.body as int).toString()));
+			vehicleN.pivotX = Math.ceil(vehicleN.width / 2);
+			vehicleN.pivotY = Math.ceil(vehicleN.height / 2);
+			
+			/*vehicleN = new Image(texturesScene.getAtlas(type).getTexture(type + "_N"));
 			vehicleN.pivotX = Math.ceil(vehicleN.width / 2);
 			vehicleN.pivotY = Math.ceil(vehicleN.height / 2);
 			
@@ -148,18 +170,18 @@ package com.tucomoyo.aftermath.Engine
 			
 			vehicleS = new Image(texturesScene.getAtlas(type).getTexture(type + "_S"));
 			vehicleS.pivotX = Math.ceil(vehicleS.width / 2);
-			vehicleS.pivotY = Math.ceil(vehicleS.height / 2);
+			vehicleS.pivotY = Math.ceil(vehicleS.height / 2);*/
 			
 			target01 = new Image(texturesScene.getAtlas(type).getTexture("target001"));
+			target01.scaleY = 0.5;
 			target01.pivotX = Math.ceil(target01.width / 2);
 			target01.pivotY = Math.ceil(target01.height / 2);
-			target01.scaleX = 2.0;
 			tempData.push(target01);
 			
 			target02 = new Image(texturesScene.getAtlas(type).getTexture("target002"));
+			target02.scaleY = 0.5;
 			target02.pivotX = Math.ceil(target02.width / 2);
 			target02.pivotY = Math.ceil(target02.height / 2);
-			target02.scaleX = 2.0;
 			tempData.push(target02);
 			
 			shield = new vehicleShield(texturesScene);
@@ -172,11 +194,31 @@ package com.tucomoyo.aftermath.Engine
 			addChild(vehicleSpriteBack);
 			tempData.push(vehicleSprite);
 			addChild(vehicleSprite);
-			vehicleSprite.addChild(vehicleO);
+			//vehicleSprite.addChild(vehicleO);
+			vehicleSprite.addChild(vehicleN);
+			
+			doubleClick = new MovieClip(texturesScene.getAtlas("Botones").getTextures("click"), 25);
+			doubleClick.alignPivot();
+			doubleClick.setFrameDuration(13, 0.5);
+			Starling.juggler.add(doubleClick);
+			doubleClick.stop();
+			//doubleClick.x = 0;
+			//doubleClick.y = ;
+			tempData.push(doubleClick);
+			doubleClick.addEventListener(Event.COMPLETE, doubleClickAnimationOff);
+			frontSprite.addChild(doubleClick);
+			doubleClick.visible = false;
 			
 			tempData.push(frontSprite);
 			//addChild(frontSprite);
 		
+		}
+		
+		public function hitVehicle(damage:Number):void {
+			
+			this.fuel -= (damage<shieldValue)?0.01:(damage-shieldValue);
+			this.shield.visibleOn();
+			this.setImmunity();
 		}
 		
 		public function setImmunity():void {
@@ -239,14 +281,17 @@ package com.tucomoyo.aftermath.Engine
 			
 			if (clickToMove) {
 				
-				var estimated:Point = new Point((_X - this.x) * 0.75, (_Y - this.y) * 0.75);
-				
+				var estimated:Point = new Point(dx,dy);
+				estimated.normalize(1);
+				/*
 				var absEstimatedX:Number = Math.abs(estimated.x);
 				var absEstimatedY:Number = Math.abs(estimated.y);
 				var velocityRelation:Number = (absEstimatedX > 150 || absEstimatedY > 150)?((absEstimatedX > absEstimatedY)? (150.0 / absEstimatedX):(150.0 / absEstimatedY)):(1.0);
+				*/
 				
-				velocity.x = estimated.x * velocityRelation;
-				velocity.y = estimated.y * velocityRelation;
+				
+				velocity.x = estimated.x * velocityValue;
+				velocity.y = estimated.y * velocityValue;
 				if(canMove){
 					 vehicleBody.velocity.x = velocity.x;//this.x+=velocity.x;
 					 vehicleBody.velocity.y = velocity.y;//this.y+=velocity.y;
@@ -317,7 +362,7 @@ package com.tucomoyo.aftermath.Engine
 				
 			if(clickToMove){
 				
-				changeDirection();
+				//changeDirection();
 			}
 			/*******************************
 			 termino cambio de direccion
@@ -560,8 +605,6 @@ package com.tucomoyo.aftermath.Engine
 			return (auxX+auxY) < 1.0;
 		}
 		
-		
-		
 		public function targetingPickup(p:Point, obj:Objetos):void {
 			
 			if (targetPickup) return;
@@ -573,9 +616,8 @@ package com.tucomoyo.aftermath.Engine
 		}
 		
 		public function hitTestPoint(_X:int,_Y:int):Boolean{
-			var _w:int = 50;
-			var _h:int = 50;
-			
+			var _w:int =50;
+			var _h:int =50;
 			return((_X<(this.x+_w)) && (_X>(this.x-_w)) && (_Y<(this.y+_h)) && (_Y>(this.y-_h))  );
 		}
 		
@@ -588,7 +630,25 @@ package com.tucomoyo.aftermath.Engine
 			this.addChild(explosion);
 			
 		}
-
+		
+		public function doubleClickAnimation(type:String = ""):void 
+		{
+			
+			if (!doubleClick.isPlaying)
+			{
+				trace("Play");
+				doubleClick.visible = true;
+				doubleClick.play();
+			}
+		}
+		
+		public function doubleClickAnimationOff(e:Event):void 
+		{
+			trace("Pare");
+			doubleClick.visible = false;
+			doubleClick.stop();
+		}
+		
 		override public function dispose():void 
 		{
 			

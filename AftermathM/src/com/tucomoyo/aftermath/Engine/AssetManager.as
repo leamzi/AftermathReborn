@@ -86,7 +86,6 @@ package com.tucomoyo.aftermath.Engine
 				
 			}
 			
-			
 		}
 		
 		public function getAtlas(TextureName:String):TextureAtlas {

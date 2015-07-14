@@ -116,6 +116,14 @@ package com.tucomoyo.aftermath.Clases
 					img.pivotY=Math.ceil(img.height/2);
 					addChild(img);
 					break;
+					
+				case "npcBonus":
+					
+					img= new Image (texturesScene.getAtlas(WorldAssetes).getTexture("bishcoins_minimap"));
+					img.pivotX=Math.ceil(img.width/2);
+					img.pivotY=Math.ceil(img.height/2);
+					addChild(img);
+					break;
 			}
 			
 			

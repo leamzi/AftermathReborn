@@ -24,9 +24,11 @@ package com.tucomoyo.aftermath.Clases
 		private var texturesScene:AssetManager;
 		
 		public var cargoClicked:Boolean = false;
+		public var animationInProgress:Boolean = false;
 		public var corrotion_text:TextField;
 		public var objects_text:TextField;
 		public var cargo_text:TextField;
+		public var coins_text:TextField;
 		public var timer_text:TextField;
 		public var missionInventory:MissionInventory;
 		private var tempData:Array = new Array();
@@ -41,8 +43,12 @@ package com.tucomoyo.aftermath.Clases
 		public var fuelImage:Image;
 		public var boxXray:Image;
 		public var boxBomb:Image;
+		public var scoreStar:Image;
+		public var bishCoin:Image;
 		
 		public var dialogoFadeOut:Dialogs;
+		
+		public var scoreTablet:ScoreManager = new ScoreManager();
 		
 		public var dialogSprite: Sprite = new Sprite();
 		
@@ -53,7 +59,10 @@ package com.tucomoyo.aftermath.Clases
 		
 		public var timerSecs:int;
 		public var timerMin:int;
-		public var timerHour:int;
+		public var timeLimit:int;
+		
+		public var scoreTween:Tween;
+		public var coinsTween:Tween;
 		
 		public function MissionHUD(_globalResources:GlobalResources, _texturesScene:AssetManager) 
 		{
@@ -61,11 +70,11 @@ package com.tucomoyo.aftermath.Clases
 			globalResources = _globalResources;
 			texturesScene = _texturesScene;
 			
-			//hurtImage = new Image(texturesScene.getAtlas("screens").getTexture("hit"));
-			//hurtImage.alpha = 0;
-			//hurtImage.touchable = false;
-			//tempData.push(hurtImage);
-			//addChild(hurtImage);
+			hurtImage = new Image(texturesScene.getAtlas("screens").getTexture("hit"));
+			hurtImage.alpha = 0;
+			hurtImage.touchable = false;
+			tempData.push(hurtImage);
+			addChild(hurtImage);
 			
 			pickupImage = new Image(texturesScene.getAtlas("worldObjects").getTexture("Box"));
 			pickupImage.scaleX = 0.75;
@@ -101,7 +110,7 @@ package com.tucomoyo.aftermath.Clases
 			addChild(HudMeterBack);
 			HudMeterBack = null;
 			
-			fuelMeter = new MeterBar(0);
+			fuelMeter = new MeterBar(0, globalResources.profileData.vehicleData.fuel+1.0);
 			fuelMeter.x=24;
 			fuelMeter.y = 228;
 			tempData.push(fuelMeter);
@@ -121,7 +130,7 @@ package com.tucomoyo.aftermath.Clases
 			addChild(HudMeterBack);
 			HudMeterBack = null;
 			
-			cryoMeter = new MeterBar(1);
+			cryoMeter = new MeterBar(1, globalResources.profileData.vehicleData.cryogel+1.0);
 			cryoMeter.x=24;
 			cryoMeter.y = 40;
 			tempData.push(cryoMeter);
@@ -162,13 +171,26 @@ package com.tucomoyo.aftermath.Clases
 			addChild(miniMapFrame);
 			miniMapFrame = null;
 			
-			var HudTimer:Image = new Image(texturesScene.getAtlas("worldObjects").getTexture("timerHud"));
-			HudTimer.x = 260;
-			HudTimer.y = 8;
-			HudTimer.scaleX = 1.3;
+			var HudTimer:Image = new Image(texturesScene.getAtlas("worldObjects").getTexture("Score-Timer"));
+			HudTimer.x = 308;
+			HudTimer.y = 2;
 			tempData.push(HudTimer);
 			addChild(HudTimer);
 			HudTimer = null;
+			
+			var HudCoins:Image = new Image(texturesScene.getAtlas("worldObjects").getTexture("bishcoinsbar"));
+			HudCoins.x = 130;
+			HudCoins.y = 13;
+			tempData.push(HudCoins);
+			addChild(HudCoins);
+			HudCoins = null;
+			
+			bishCoin = new Image(texturesScene.getAtlas("worldObjects").getTexture("bishcoins"));
+			bishCoin.x = 123;
+			bishCoin.y = 32;
+			tempData.push(bishCoin);
+			bishCoin.alignPivot();
+			addChild(bishCoin);
 			
 			corrotion_text = new TextField(50, 100, "%" , globalResources.fontName, 14, 0xFFFFFF);
 			corrotion_text.vAlign = "top";
@@ -193,14 +215,29 @@ package com.tucomoyo.aftermath.Clases
 			tempData.push(missionInventory);
 			addChild(missionInventory);
 			
-			timer_text = new TextField(150, 30, "00:00:00", "LVDCD", 16, 0xFFFFFF);
-			timer_text.x = 275;
-			timer_text.y = 8;
-			//timer_text.border = true;
+			timer_text = new TextField(150, 30, "00:00", "LVDCD", 16, 0xFFFFFF);
+			timer_text.x = 360;
+			timer_text.y = 30;
 			timer_text.hAlign = "left";
 			timer_text.vAlign = "top";
 			timer_text.scaleY = 1.5;
 			addChild(timer_text);
+			
+			coins_text = new TextField(70, 25, globalResources.profileData.bishcoins, globalResources.fontName, 24, 0xFFFFFF);
+			coins_text.x = 144;
+			coins_text.y = 23;
+			coins_text.hAlign = "right";
+			coins_text.vAlign = "top";
+			addChild(coins_text);
+			
+			scoreStar = new Image(texturesScene.getAtlas("Botones").getTexture("hub-new"));
+			scoreStar.alignPivot();
+			scoreStar.x = 334;
+			scoreStar.y = 25;
+			tempData.push(scoreStar);
+			addChild(scoreStar);
+			
+			addChild(scoreTablet);
 			
 			invisibleQuad = new Quad(globalResources.stageWidth, globalResources.stageHeigth, 0x000000);
 			invisibleQuad.alpha = 0;
@@ -323,40 +360,73 @@ package com.tucomoyo.aftermath.Clases
 		
 		public function updateHurtImage(num:Number):void {
 			
-			num = 1 - num;
+			num = 1 - (num/fuelMeter.max);
 			hurtImage.alpha = num;
 			
 		}
 		
 		public function updateTimer(_seconds:int):void
 		{
-			timerSecs = _seconds;
-			if (timerSecs == 60) 
+			var timeLapse:int = (timeLimit - _seconds>0)?(timeLimit - _seconds):0;
+			
+			timerSecs = timeLapse % 60;
+			timerMin = timeLapse / 60;
+
+			timer_text.text =  (timerMin > 9) ? timerMin + ":" : "0" + timerMin + ":";
+			timer_text.text += (timerSecs>9) ? timerSecs : "0" + timerSecs;
+			
+		}
+		
+		public function updateBishCoins(_coins:int=0):void
+		{
+			trace("hud: "+globalResources.profileData.bishcoins);
+			coins_text.text = globalResources.profileData.bishcoins;
+		}
+		
+		public function scoreStarAnimation():void
+		{
+			trace(scoreTablet.scoreText);
+			if (scoreTween == null) 
 			{
-				timerMin++;
-				timerSecs = 00;
+				//trace("tween inicio");
+				scoreTween = new Tween(scoreStar, 0.25, Transitions.EASE_IN);
+				scoreTween.scaleTo(1.5);
+				scoreTween.repeatCount = 2;
+				scoreTween.reverse = true;
+				scoreTween.onComplete = animationCompleted;
+				Starling.juggler.add(scoreTween);
+			}
+		}
+		
+		public function coinAddAnimation():void
+		{
+			trace(scoreTablet.scoreText);
+			if (coinsTween == null) 
+			{
+				//trace("tween inicio");
+				coinsTween = new Tween(bishCoin, 0.25, Transitions.EASE_IN);
+				coinsTween.scaleTo(1.5);
+				coinsTween.repeatCount = 2;
+				coinsTween.reverse = true;
+				coinsTween.onComplete = animationCompleted;
+				Starling.juggler.add(coinsTween);
+			}
+		}
+		
+		public function animationCompleted():void
+		{
+			//trace("tween termino");
+			if (scoreTween!=null) 
+			{
+				Starling.juggler.remove(scoreTween);
+				scoreTween = null;
 			}
 			
-			if (timerMin == 60) 
+			if (coinsTween!=null) 
 			{
-				timerHour++;
-				timerMin = 00;
+				Starling.juggler.remove(coinsTween);
+				coinsTween = null;
 			}
-			
-			if (timerMin>9) 
-			{
-				timer_text.text = "0" + timerHour + ":" + timerMin + ":" + timerSecs;
-				return;
-			}
-			
-			if (timerSecs>9) 
-			{
-				timer_text.text = "0" + timerHour + ":0" + timerMin + ":" + timerSecs;
-				return;
-			}
-			
-			timer_text.text = "0" + timerHour + ":0" + timerMin + ":0" + timerSecs;
-			
 		}
 		
 		override public function dispose():void 
@@ -366,6 +436,13 @@ package com.tucomoyo.aftermath.Clases
 			
 			globalResources = null;
 			texturesScene = null;
+			pickupImage = null;
+			cryogelImage = null;
+			fuelImage = null;
+			boxXray = null;
+			boxBomb = null;
+			scoreStar = null;
+			
 			
 			if(tempData !=null){
 				for (var i:uint = 0; i < tempData.length;++i) {

@@ -83,18 +83,50 @@ package com.tucomoyo.aftermath.Engine
 			connect.removeEventListener(GameEvents.REQUEST_RECIVED, onReciveLanguage);
 			global_resources.textos = e.params;
 			
-			currentScene = new WelcomeScreen(global_resources)
+			//currentScene = new WelcomeScreen(global_resources)
+			//
+			//this.addChild(sceneSprite);
+			//this.addChild(cursorSprite);
+			//sceneSprite.addChild(currentScene);
+			//this.addChild(global_resources.loadingSplash);
+			//
+			//this.addEventListener(GameEvents.CHANGE_SCREEN, onChange);
+			/*
+			connect.addEventListener(GameEvents.REQUEST_RECIVED, onReciveNpcInfo);
+			connect.loadNpcInfo(global_resources.pref_url);
+			*/
+			
+			connect.addEventListener(GameEvents.REQUEST_RECIVED, onVehicleStats);
+			connect.getVehicleStats(global_resources.user_id);
+		}
+		
+		private function onVehicleStats(e:GameEvents):void {
+			
+			connect.removeEventListener(GameEvents.REQUEST_RECIVED, onVehicleStats);
+			
+			global_resources.profileData.vehicleData.cryogel = parseFloat(e.params[0].cryogel);
+			global_resources.profileData.vehicleData.fuel = parseFloat(e.params[0].fuel);
+			global_resources.profileData.vehicleData.shieldValue = parseFloat(e.params[0].shieldValue);
+			global_resources.profileData.vehicleData.damage = parseFloat(e.params[0].damage);
+			global_resources.profileData.vehicleData.velocityValue = parseFloat(e.params[0].velocity);
+			global_resources.profileData.vehicleData.body = parseInt(e.params[0].body);
+			global_resources.profileData.vehicleData.weapon = parseInt(e.params[0].weapon);
+			global_resources.profileData.vehicleData.shield = parseInt(e.params[0].shield);
+			global_resources.profileData.vehicleData.bodiesBought = (e.params[0].bodiesBought as String).split(",");
+			
+			
+			currentScene = new WelcomeScreen(global_resources);
 			
 			this.addChild(sceneSprite);
 			this.addChild(cursorSprite);
 			sceneSprite.addChild(currentScene);
 			this.addChild(global_resources.loadingSplash);
-			
+			//this.addChild(global_resources.createConsole());
 			this.addEventListener(GameEvents.CHANGE_SCREEN, onChange);
 			/*
 			connect.addEventListener(GameEvents.REQUEST_RECIVED, onReciveNpcInfo);
 			connect.loadNpcInfo(global_resources.pref_url);
-			*/
+			*/	
 		}
 		
 		private function onReciveNpcInfo(e:GameEvents):void 
@@ -144,11 +176,11 @@ package com.tucomoyo.aftermath.Engine
 					
 					break;
 				
-				case "comicScreen":
-					
-					currentScene = new ComicScene (global_resources, e.params.data);
-					
-					break;
+				//case "comicScreen":
+					//
+					//currentScene = new ComicScene (global_resources, e.params.data);
+					//
+					//break;
 					
 				case "newComic":
 					

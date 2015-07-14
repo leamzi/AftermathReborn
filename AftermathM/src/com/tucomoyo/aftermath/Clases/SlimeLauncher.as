@@ -30,6 +30,7 @@ package com.tucomoyo.aftermath.Clases
 		public static const PRESTUN:String = "preStunMode";
 		public static const STUN:String = "stunMode";
 		public static const ATTACK:String = "attackMode"
+		public static const BORN:String = "bornMode";
 		
 		public var directions:Vector.<Point> = new Vector.<Point>();
 		
@@ -42,7 +43,7 @@ package com.tucomoyo.aftermath.Clases
 		public var attackRange:int;
 		public var objective:Sprite;
 		public var mode:String = WANDER;
-		public var chaseSignal:Image;
+		public var chaseSignal:MovieClip;
 		public var checkSlime:int;
 		public var checkAlert:int;
 		public var limitShoot:int;
@@ -84,9 +85,11 @@ package com.tucomoyo.aftermath.Clases
 			alertRange = objectData.alertRange;
 			checkStun = objectData.checkStun;
 			
-			chaseSignal = new Image(texturesScene.getAtlas(objectData.animations.atlas).getTexture("chaseSignal"));
+			chaseSignal = new MovieClip(texturesScene.getAtlas(objectData.animations.atlas).getTextures("vul"),5);
 			chaseSignal.y = 75;
+			chaseSignal.x = -50;
 			chaseSignal.visible = false;
+			Starling.juggler.add(chaseSignal);
 			npcFront.addChild(chaseSignal);
 			
 			
@@ -101,8 +104,29 @@ package com.tucomoyo.aftermath.Clases
 				indexName.push("Pool");
 			}
 			
+			animation = null;
+			
 			tween = new Tween(this.npcSprite, 0.5);
 			
+			bornEnemie();
+			
+		}
+		
+		public function bornEnemie():void {
+			
+			npcSprite.removeChildAt(0);
+			(animations["enemigoC_spawn_"] as MovieClip).currentFrame = 0;
+			(animations["enemigoC_spawn_"] as MovieClip).loop = false;
+			(animations["enemigoC_spawn_"] as MovieClip).addEventListener(Event.COMPLETE,onBorn);
+			npcSprite.addChild(animations["enemigoC_spawn_"]);
+			
+		}
+		
+		public function onBorn(e:Event):void {
+			
+			(animations["enemigoC_spawn_"] as MovieClip).removeEventListener(Event.COMPLETE, onBorn);
+			npcSprite.removeChildAt(0);
+			npcSprite.addChild(animations[indexName[0]]);
 			
 			tymer = new Timer(objectData.timeDecision*1000);
 			tymer.start();
@@ -163,9 +187,7 @@ package com.tucomoyo.aftermath.Clases
 			}
 			
 			if ((mode == ATTACK) &&  distanceObjandMe < 75 && !(objective as Chopper).immunity) {
-				(objective as Chopper).fuel -= damage;
-				(objective as Chopper).shield.visibleOn();
-				(objective as Chopper).setImmunity();
+				(objective as Chopper).hitVehicle(damage);
 			}
 			
 			if (mode == ALERT) {
@@ -360,6 +382,7 @@ package com.tucomoyo.aftermath.Clases
 			tymer.stop();
 			tymer = null;
 			objective = null; 
+			Starling.juggler.remove(chaseSignal);
 			chaseSignal.dispose();
 			chaseSignal = null;
 

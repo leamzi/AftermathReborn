@@ -21,7 +21,7 @@ package com.tucomoyo.aftermath.Screens
 	 * @author Predictvia
 	 */
 	public class ComicScene extends Scene 
-	{
+	{ /*
 		private var nextText:Boolean = false;
 		
 		private var exitComic:Button;
@@ -346,6 +346,7 @@ package com.tucomoyo.aftermath.Screens
 			
 			super.dispose();
 		}
+		*/
 	}
 
 }

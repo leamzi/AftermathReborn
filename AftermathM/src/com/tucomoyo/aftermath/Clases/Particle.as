@@ -61,6 +61,22 @@ package com.tucomoyo.aftermath.Clases
 		// create particle system
 		public var psShoot:PDParticleSystem = new PDParticleSystem(psShootConfig, psShootTexture);
 		
+		// Particula de Monedas -----------------------
+		
+		[Embed(source="../../../../../media/graphics/Particle/coinPs.pex", mimeType="application/octet-stream")]
+		private static const coinsConfig:Class;
+
+		// embed particle texture
+		[Embed(source = "../../../../../media/graphics/Particle/coinPs.png")]
+		private static const coinsParticle:Class;
+
+		// instantiate embedded objects
+		public var psCoinsConfig:XML = XML(new coinsConfig());
+		public var psCoinsTexture:Texture = Texture.fromBitmap(new coinsParticle());
+
+		// create particle system
+		public var psCoins:PDParticleSystem = new PDParticleSystem(psCoinsConfig, psCoinsTexture);
+		
 		public function Particle(type:String) 
 		{
 			super();
@@ -79,6 +95,25 @@ package com.tucomoyo.aftermath.Clases
 
 					// start emitting particles
 					psShoot.start();
+				break;
+				case "coinsParticle":
+					psCoins.x = 0;
+					psCoins.y = 0;
+					addChild(psCoins);
+					Starling.juggler.add(psCoins);
+
+					// change position where particles are emitted
+					psCoins.emitterX = 0;
+					psCoins.emitterY = 0;
+					psCoins.emitAngleVariance = Math.PI;
+
+					// start emitting particles
+					psCoins.start();
+					
+					var tween1:Tween = new Tween(psCoins, 2, Transitions.LINEAR);
+					tween1.fadeTo(0);
+					tween1.onComplete = removeCoins;
+					Starling.juggler.add(tween1);
 				break;
 				case "explotionParticle":
 					psExplosion.x = 0;
@@ -131,22 +166,43 @@ package com.tucomoyo.aftermath.Clases
 			
 		public function removeCrystalExplotion():void 
 		{
-					psShoot.stop();
-					psShoot.maxRadius = 10;
-					psShoot.minRadius = 0;
-					psShoot.dispose();
+			psShoot.stop();
+			psShoot.maxRadius = 10;
+			psShoot.minRadius = 0;
+			psShoot.dispose();
 		}
 		
 		public function removeExplosion():void 
 		{
-					psExplosion.stop();
-					psExplosion.maxRadius = 10;
-					psExplosion.minRadius = 0;
-					psExplosion.dispose();
+			psExplosion.stop();
+			psExplosion.maxRadius = 10;
+			psExplosion.minRadius = 0;
+			psExplosion.dispose();
+		}
+		
+		public function removeCoins():void 
+		{
+			
+			psCoins.stop();
+			psCoins.dispose();
+			this.parent.dispose();
 		}
 		
 		override public function dispose():void 
 		{
+			//--------------------
+			if (psCoins!=null) 
+			{
+				psCoins.stop(true);
+				Starling.juggler.remove(psCoins);
+				psCoins.dispose();
+				psCoins = null;
+				psCoinsConfig = null;
+				psCoinsTexture.dispose();
+				psCoinsTexture = null;
+			}
+			
+			
 			//--------------------
 			if (psShoot!=null) 
 			{

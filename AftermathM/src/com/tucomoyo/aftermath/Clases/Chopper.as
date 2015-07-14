@@ -69,13 +69,13 @@ package com.tucomoyo.aftermath.Clases
 			
 			//soundsScene.getSound(ChopperSoundBlades).play(0.3);
 			soundsScene.getSound(ChopperSoundBlades).play(globalResources.volume);
-			drawVehicle("chopper");
+			drawVehicle("vehicle");
 			vehicleSprite.y = H;
 			shield.y = H;
 			
-			chargeAnimation = new MovieClip (texturesScene.getAtlas("chopper").getTextures("chargeShoot"), 10);
-			chargeAnimation.pivotX = Math.ceil(chargeAnimation.width *0.5);
-			chargeAnimation.pivotY = Math.ceil(chargeAnimation.height *0.5);
+			chargeAnimation = new MovieClip (texturesScene.getAtlas("vehicle").getTextures("chargeShoot"), 10);
+			chargeAnimation.pivotX = Math.ceil(chargeAnimation.width / 2);
+			chargeAnimation.pivotY = Math.ceil(chargeAnimation.height / 2);
 			chargeAnimation.y = H +40;
 			chargeAnimation.scaleX = 1.2;
 			chargeAnimation.scaleY = 1.2;
@@ -86,16 +86,21 @@ package com.tucomoyo.aftermath.Clases
 			tempData.push(chargeAnimation);
 			addChild(chargeAnimation);
 			
-			rotor = new MovieClip(texturesScene.getAtlas("chopper").getTextures("Chopper_Rotor"),30);
-			rotor.y = H-15;
-			rotor.pivotX = Math.ceil(rotor.width * 0.5);
-			rotor.pivotY = Math.ceil(rotor.height * 0.5);
-			rotor.touchable = false;
-			Starling.juggler.add(rotor);
-			tempData.push(rotor);
-			addChild(rotor);
+			if (texturesScene.getAtlas("vehicle").getTextures((globalResources.profileData.vehicleData.body as int).toString()+"_animation").toString() != "") 
+			{
+				rotor = new MovieClip(texturesScene.getAtlas("vehicle").getTextures((globalResources.profileData.vehicleData.body as int).toString()+"_animation"),15);
+				rotor.y = H+15;
+				rotor.pivotX = Math.ceil(rotor.width / 2);
+				rotor.pivotY = Math.ceil(rotor.height / 2);
+				rotor.touchable = false;
+				Starling.juggler.add(rotor);
+				tempData.push(rotor);
+				//frontSprite.addChild(rotor);
+				vehicleSpriteBack.addChild(rotor);
+			}
 			
-			chopperShadow = new Image(texturesScene.getAtlas("chopper").getTexture("shadow"));
+			
+			chopperShadow = new Image(texturesScene.getAtlas("vehicle").getTexture(	"shadow"));
 			chopperShadow.alpha = 0.75;
 			chopperShadow.pivotX = Math.ceil(chopperShadow.width/2);
 			chopperShadow.pivotY = Math.ceil(chopperShadow.height/2);
@@ -103,8 +108,8 @@ package com.tucomoyo.aftermath.Clases
 			tempData.push(chopperShadow);
 			addChildAt(chopperShadow,0);
 			
-			chopperCrane = new MovieClip(texturesScene.getAtlas("chopper").getTextures("crane"),11);
-			chopperCrane.pivotX = Math.ceil(chopperCrane.width * 0.5);
+			chopperCrane = new MovieClip(texturesScene.getAtlas("vehicle").getTextures("crane"),11);
+			chopperCrane.pivotX = Math.ceil(chopperCrane.width / 2);
 			chopperCrane.y = H;
 			chopperCrane.stop();
 			chopperCrane.loop = false;
@@ -112,15 +117,13 @@ package com.tucomoyo.aftermath.Clases
 			tempData.push(chopperCrane);
 			vehicleSpriteBack.addChild(chopperCrane);
 			
+			doubleClick.x = 0;
+			doubleClick.y = H + 20;
+			
 			addChild(shield);
+			
 			addChild(frontSprite);
-			/*
-			var patron:Quad = new Quad(704, 341, 0xff0000);
-			patron.alpha = 0.5;
-			patron.pivotX = patron.width * 0.5;
-			patron.pivotY = patron.height * 0.5;
-			addChild(patron);
-			*/
+
 		}
 		
 		override public function update(e:Event, _X:int, _Y:int, wPos:Point):void 
@@ -224,7 +227,6 @@ package com.tucomoyo.aftermath.Clases
 		}
 		
 		public function destroyUpdate():void {
-			
 			
 			changeDirection();
 			

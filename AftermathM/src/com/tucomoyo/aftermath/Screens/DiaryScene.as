@@ -300,9 +300,12 @@ package com.tucomoyo.aftermath.Screens
 				exitBtn.addEventListener(starling.events.Event.TRIGGERED, exitComic);
 				comicSprite.addChild(exitBtn);
 			} else {
-				textQuad.visible = false;
-				textQuad = null;
-				nextBtn.visible = true;
+				if (textQuad != null) 
+				{
+					textQuad.visible = false;
+					textQuad = null;
+					nextBtn.visible = true;
+				}
 			}
 			
 		}
@@ -407,6 +410,8 @@ package com.tucomoyo.aftermath.Screens
 		
 		override public function dispose():void 
 		{
+			this.removeEventListeners();
+			
 			if (tween != null) {
 				Starling.juggler.remove(tween);
 				tween = null;

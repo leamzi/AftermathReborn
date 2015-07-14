@@ -25,9 +25,8 @@ package com.tucomoyo.aftermath.Clases
 		public var objetosSprite:Sprite = new Sprite();
 		public var vehicleMini:MiniMapObjetos;
 		public var hatch:MiniMapObjetos;
+		public var bonus:MiniMapObjetos;
 		public var hatchPos:Point = new Point();
-		public var escaleX:Number = 1.0;
-		public var escaleY:Number = 1.0;
 		
 		public function MiniMap(_width:int, _height:int, texturesScene:AssetManager) 
 		{
@@ -71,15 +70,34 @@ package com.tucomoyo.aftermath.Clases
 			var pto:Point = hatchPos;
 			pto = objetosSprite.localToGlobal(pto);
 			
-			if (pto.x < 626*escaleX) pto.x = 626*escaleX;
-			if (pto.x > 743*escaleY) pto.x = 743*escaleY;
-			if (pto.y < 18*escaleX) pto.y = 18*escaleX;
-			if (pto.y > 78*escaleY) pto.y = 78*escaleY;
+			if (pto.x < 626) pto.x = 626;
+			if (pto.x > 743) pto.x = 743;
+			if (pto.y < 18) pto.y = 18;
+			if (pto.y > 78) pto.y = 78;
 			
 			pto = objetosSprite.globalToLocal(pto);
 			
 			hatch.x = pto.x;
 			hatch.y = pto.y;
+			
+		}
+		
+		public function updateBonus():void {
+			
+			if (bonus == null) return;
+			
+			var pto:Point = new Point(bonus.x,bonus.y);
+			pto = objetosSprite.localToGlobal(pto);
+			
+			if (pto.x < 626) pto.x = 626;
+			if (pto.x > 743) pto.x = 743;
+			if (pto.y < 18) pto.y = 18;
+			if (pto.y > 78) pto.y = 78;
+			
+			pto = objetosSprite.globalToLocal(pto);
+			
+			bonus.x = pto.x;
+			bonus.y = pto.y;
 			
 		}
 		
@@ -97,7 +115,7 @@ package com.tucomoyo.aftermath.Clases
 		public override function render(support:RenderSupport, alpha:Number):void
 		{
 			support.finishQuadBatch();
-			Starling.context.setScissorRectangle(new Rectangle(623*escaleX, 13*escaleY, 125*escaleX, 70*escaleY));
+			Starling.context.setScissorRectangle(new Rectangle(623, 13, 125, 70));
 			super.render(support,alpha);
 			support.finishQuadBatch()
 			Starling.context.setScissorRectangle(null);

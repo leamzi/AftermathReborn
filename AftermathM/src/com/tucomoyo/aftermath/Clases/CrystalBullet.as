@@ -87,9 +87,7 @@ package com.tucomoyo.aftermath.Clases
 			
 			if (distanceObjandMe < chopperRadius && !(bulletInfo.objective as Chopper).immunity) {
 
-				(bulletInfo.objective as Chopper).fuel -= bulletInfo.damage;
-				(bulletInfo.objective as Chopper).shield.visibleOn();
-				(bulletInfo.objective as Chopper).setImmunity();
+				(bulletInfo.objective as Chopper).hitVehicle(bulletInfo.damage);
 				disposeLife();
 			}
 		}

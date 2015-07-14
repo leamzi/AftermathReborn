@@ -32,6 +32,9 @@ package com.tucomoyo.aftermath.Clases
 		public var targetDialogs:Sprite = new Sprite();
 		
 		private var megatileBg:ImageLoader;
+		private var target:MissionTargets;
+		
+		private var missionTargetsVec:Vector.<MissionTargets> = new Vector.<MissionTargets>;
 		
 		
 		public function Megatile(_globalResources:GlobalResources, _textureScene:AssetManager, _soundScene:SoundManager, _megaTileInfo:Object) 
@@ -53,12 +56,13 @@ package com.tucomoyo.aftermath.Clases
 			this.addChild(megatileBg);
 			
 			for (var i:uint = 0; i < megaTileObject.megaTileInfo.megaTileTargets.length;++i) {
-				var target:MissionTargets = new MissionTargets(globalResources, texturesScene,soundsScene, megaTileObject.megaTileInfo.megaTileTargets[i]);
+				target = new MissionTargets(globalResources, texturesScene,soundsScene, megaTileObject.megaTileInfo.megaTileTargets[i]);
 				target.useHandCursor = true;
 				target.x = (megaTileObject.megaTileInfo.megaTileTargets[i].targetPosition as Point).x;
 				target.y = (megaTileObject.megaTileInfo.megaTileTargets[i].targetPosition as Point).y;
 				addChild(target);
 				targetDialogs.addChild(target.dialogo);
+				missionTargetsVec.push(target);
 				target = null
 			}
 			
@@ -79,6 +83,27 @@ package com.tucomoyo.aftermath.Clases
 			}else {
 				currentDialog = target;
 			}
+		}
+		
+		override public function dispose():void 
+		{
+			this.removeEventListeners();
+			
+			megatileBg.dispose();
+			megatileBg = null;
+			
+			for (var i:int = 0; i < missionTargetsVec.length; ++i ) {
+				
+				missionTargetsVec[i].dispose();
+				missionTargetsVec[i] = null
+				
+			}
+			missionTargetsVec.splice(0, missionTargetsVec.length);
+			
+			targetDialogs.dispose();
+			targetDialogs = null;
+			
+			super.dispose();
 		}
 
 	}
